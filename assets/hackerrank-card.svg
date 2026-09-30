@@ -4,7 +4,7 @@
     .stat-val { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 700; }
     .star-val { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 2px; }
   </style>
-  <rect x="0.5" y="0.5" width="466" height="194" rx="8" fill="#1a1b27" stroke="#24283b" stroke-width="1.5" />
+  <rect x="0.5" y="0.5" width="466" height="194" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1.5" />
 
   <!-- Header -->
   <g transform="translate(24, 30)">

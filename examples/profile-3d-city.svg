@@ -1,39 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="850" viewBox="0 0 1280 850">
 <style>
     * { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Ubuntu", "Helvetica", Arial, sans-serif; }
-    .fill-fg { fill: #0f172a; }
-    .stroke-fg { stroke: #0f172a; }
-    .fill-bg { fill: #ffffff; }
-    .stroke-bg { stroke: #ffffff; }
-    .fill-strong { fill: #4f46e5; }
-    .fill-weak { fill: #64748b; }
-    .stroke-weak { stroke: #64748b; }
+    .fill-fg { fill: #eeeeff; }
+    .stroke-fg { stroke: #eeeeff; }
+    .fill-bg { fill: #00000f; }
+    .stroke-bg { stroke: #00000f; }
+    .fill-strong { fill: rgb(255, 200, 55); }
+    .fill-weak { fill: #aaaaaa; }
+    .stroke-weak { stroke: #aaaaaa; }
     .radar {
       stroke-width: 4px;
-      stroke: #0284c7;
-      fill: #0284c7;
+      stroke: rgb(255, 200, 55);
+      fill: rgb(255, 200, 55);
       fill-opacity: 0.5;
     }
   
-        .cont-top-0 { fill: #e2e8f0; }
-        .cont-left-0 { fill: rgb(189, 194, 201); }
-        .cont-right-0 { fill: rgb(158, 162, 168); }
+        .cont-top-0 { fill: rgb(25, 60, 130); }
+        .cont-left-0 { fill: rgb(21, 50, 109); }
+        .cont-right-0 { fill: rgb(18, 42, 91); }
       
-        .cont-top-1 { fill: #38bdf8; }
-        .cont-left-1 { fill: rgb(47, 158, 207); }
-        .cont-right-1 { fill: rgb(39, 132, 174); }
+        .cont-top-1 { fill: rgb(25, 90, 210); }
+        .cont-left-1 { fill: rgb(21, 75, 176); }
+        .cont-right-1 { fill: rgb(18, 63, 147); }
       
-        .cont-top-2 { fill: #6366f1; }
-        .cont-left-2 { fill: rgb(83, 85, 201); }
-        .cont-right-2 { fill: rgb(69, 71, 169); }
+        .cont-top-2 { fill: rgb(25, 120, 220); }
+        .cont-left-2 { fill: rgb(21, 100, 184); }
+        .cont-right-2 { fill: rgb(18, 84, 154); }
       
-        .cont-top-3 { fill: #a855f7; }
-        .cont-left-3 { fill: rgb(140, 71, 206); }
-        .cont-right-3 { fill: rgb(118, 59, 173); }
+        .cont-top-3 { fill: rgb(25, 150, 230); }
+        .cont-left-3 { fill: rgb(21, 125, 192); }
+        .cont-right-3 { fill: rgb(18, 105, 161); }
       
-        .cont-top-4 { fill: #ec4899; }
-        .cont-left-4 { fill: rgb(197, 60, 128); }
-        .cont-right-4 { fill: rgb(165, 50, 107); }
+        .cont-top-4 { fill: rgb(25, 165, 240); }
+        .cont-left-4 { fill: rgb(21, 138, 201); }
+        .cont-right-4 { fill: rgb(18, 115, 168); }
       </style>
 <rect x="0" y="0" width="1280" height="850" class="fill-bg"></rect>
 
@@ -102,68 +102,67 @@
 
 <!-- Language Breakdown Donut Chart -->
 <g transform="translate(40, 520)">
-  <circle cx="130" cy="130" r="94.61111111111111" fill="none" stroke="#f1f5f9" stroke-width="44.777777777777786"></circle>
-  <g transform="translate(286, 0)">
-    <rect x="0" y="22.71" width="14.00" height="14.00" rx="3" fill="#3178c6" class="stroke-bg" stroke-width="1px">
+  <g transform="translate(273, 0)">
+    <rect x="0" y="37.92" width="21.67" height="21.67" fill="#3178c6" class="stroke-bg" stroke-width="1px">
       <animate attributeName="fill-opacity" values="0;0.2;1" dur="3s" repeatCount="1"></animate>
     </rect>
-    <text x="21.00" y="29.71" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">TypeScript <tspan font-weight="400" fill="#64748b" font-size="12.60px">58%</tspan>
+    <text x="26.00" y="48.75" dominant-baseline="middle" font-size="21.67px" class="fill-fg">TypeScript
       <animate attributeName="fill-opacity" values="0;0.2;1" dur="3s" repeatCount="1"></animate>
     </text>
-    <rect x="0" y="59.86" width="14.00" height="14.00" rx="3" fill="#3572A5" class="stroke-bg" stroke-width="1px">
+    <rect x="0" y="70.42" width="21.67" height="21.67" fill="#3572A5" class="stroke-bg" stroke-width="1px">
       <animate attributeName="fill-opacity" values="0;0.4;1" dur="3s" repeatCount="1"></animate>
     </rect>
-    <text x="21.00" y="66.86" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">Python <tspan font-weight="400" fill="#64748b" font-size="12.60px">15%</tspan>
+    <text x="26.00" y="81.25" dominant-baseline="middle" font-size="21.67px" class="fill-fg">Python
       <animate attributeName="fill-opacity" values="0;0.4;1" dur="3s" repeatCount="1"></animate>
     </text>
-    <rect x="0" y="97.00" width="14.00" height="14.00" rx="3" fill="#f1e05a" class="stroke-bg" stroke-width="1px">
+    <rect x="0" y="102.92" width="21.67" height="21.67" fill="#f1e05a" class="stroke-bg" stroke-width="1px">
       <animate attributeName="fill-opacity" values="0;0.6000000000000001;1" dur="3s" repeatCount="1"></animate>
     </rect>
-    <text x="21.00" y="104.00" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">JavaScript <tspan font-weight="400" fill="#64748b" font-size="12.60px">15%</tspan>
+    <text x="26.00" y="113.75" dominant-baseline="middle" font-size="21.67px" class="fill-fg">JavaScript
       <animate attributeName="fill-opacity" values="0;0.6000000000000001;1" dur="3s" repeatCount="1"></animate>
     </text>
-    <rect x="0" y="134.14" width="14.00" height="14.00" rx="3" fill="#b07219" class="stroke-bg" stroke-width="1px">
+    <rect x="0" y="135.42" width="21.67" height="21.67" fill="#b07219" class="stroke-bg" stroke-width="1px">
       <animate attributeName="fill-opacity" values="0;0.8;1" dur="3s" repeatCount="1"></animate>
     </rect>
-    <text x="21.00" y="141.14" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">Java <tspan font-weight="400" fill="#64748b" font-size="12.60px">4%</tspan>
+    <text x="26.00" y="146.25" dominant-baseline="middle" font-size="21.67px" class="fill-fg">Java
       <animate attributeName="fill-opacity" values="0;0.8;1" dur="3s" repeatCount="1"></animate>
     </text>
-    <rect x="0" y="171.29" width="14.00" height="14.00" rx="3" fill="#e34c26" class="stroke-bg" stroke-width="1px">
+    <rect x="0" y="167.92" width="21.67" height="21.67" fill="#e34c26" class="stroke-bg" stroke-width="1px">
       <animate attributeName="fill-opacity" values="0;1;1" dur="3s" repeatCount="1"></animate>
     </rect>
-    <text x="21.00" y="178.29" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">HTML <tspan font-weight="400" fill="#64748b" font-size="12.60px">4%</tspan>
+    <text x="26.00" y="178.75" dominant-baseline="middle" font-size="21.67px" class="fill-fg">HTML
       <animate attributeName="fill-opacity" values="0;1;1" dur="3s" repeatCount="1"></animate>
     </text>
-    <rect x="0" y="208.43" width="14.00" height="14.00" rx="3" fill="#94a3b8" class="stroke-bg" stroke-width="1px">
+    <rect x="0" y="200.42" width="21.67" height="21.67" fill="#444444" class="stroke-bg" stroke-width="1px">
       <animate attributeName="fill-opacity" values="0;1.2000000000000002;1" dur="3s" repeatCount="1"></animate>
     </rect>
-    <text x="21.00" y="215.43" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">Other <tspan font-weight="400" fill="#64748b" font-size="12.60px">4%</tspan>
+    <text x="26.00" y="211.25" dominant-baseline="middle" font-size="21.67px" class="fill-fg">other
       <animate attributeName="fill-opacity" values="0;1.2000000000000002;1" dur="3s" repeatCount="1"></animate>
     </text>
   </g>
   <g transform="translate(130, 130)">
-    <path d="M 0.000 -117.000 A 117 117 0 1 1 -54.373 103.598 L -33.563 63.950 A 72.22222222222221 72.22222222222221 0 1 0 0.000 -72.222 Z" style="fill: #3178c6;" class="stroke-bg" stroke-width="2px">
-      <title>TypeScript: 58%</title>
+    <path d="M 0.000 -117.000 A 117 117 0 0 1 4.632 -116.908 L 2.573 -64.949 A 65 65 0 0 0 0.000 -65.000 Z" style="fill: #3178c6;" class="stroke-bg" stroke-width="2px">
+      <title>TypeScript 15</title>
       <animate attributeName="fill-opacity" values="0;0.5;1" dur="3s" repeatCount="1"></animate>
     </path>
-    <path d="M -54.373 103.598 A 117 117 0 0 1 -116.147 14.103 L -71.696 8.705 A 72.22222222222221 72.22222222222221 0 0 0 -33.563 63.950 Z" style="fill: #3572A5;" class="stroke-bg" stroke-width="2px">
-      <title>Python: 15%</title>
+    <path d="M 4.632 -116.908 A 117 117 0 0 1 5.866 -116.853 L 3.259 -64.918 A 65 65 0 0 0 2.573 -64.949 Z" style="fill: #3572A5;" class="stroke-bg" stroke-width="2px">
+      <title>Python 4</title>
       <animate attributeName="fill-opacity" values="0;0.5;1" dur="3s" repeatCount="1"></animate>
     </path>
-    <path d="M -116.147 14.103 A 117 117 0 0 1 -77.585 -87.576 L -47.892 -54.059 A 72.22222222222221 72.22222222222221 0 0 0 -71.696 8.705 Z" style="fill: #f1e05a;" class="stroke-bg" stroke-width="2px">
-      <title>JavaScript: 15%</title>
+    <path d="M 5.866 -116.853 A 117 117 0 0 1 7.100 -116.784 L 3.944 -64.880 A 65 65 0 0 0 3.259 -64.918 Z" style="fill: #f1e05a;" class="stroke-bg" stroke-width="2px">
+      <title>JavaScript 4</title>
       <animate attributeName="fill-opacity" values="0;0.5;1" dur="3s" repeatCount="1"></animate>
     </path>
-    <path d="M -77.585 -87.576 A 117 117 0 0 1 -54.373 -103.598 L -33.563 -63.950 A 72.22222222222221 72.22222222222221 0 0 0 -47.892 -54.059 Z" style="fill: #b07219;" class="stroke-bg" stroke-width="2px">
-      <title>Java: 4%</title>
+    <path d="M 7.100 -116.784 A 117 117 0 0 1 7.408 -116.765 L 4.116 -64.870 A 65 65 0 0 0 3.944 -64.880 Z" style="fill: #b07219;" class="stroke-bg" stroke-width="2px">
+      <title>Java 1</title>
       <animate attributeName="fill-opacity" values="0;0.5;1" dur="3s" repeatCount="1"></animate>
     </path>
-    <path d="M -54.373 -103.598 A 117 117 0 0 1 -28.000 -113.600 L -17.284 -70.124 A 72.22222222222221 72.22222222222221 0 0 0 -33.563 -63.950 Z" style="fill: #e34c26;" class="stroke-bg" stroke-width="2px">
-      <title>HTML: 4%</title>
+    <path d="M 7.408 -116.765 A 117 117 0 0 1 7.716 -116.745 L 4.287 -64.858 A 65 65 0 0 0 4.116 -64.870 Z" style="fill: #e34c26;" class="stroke-bg" stroke-width="2px">
+      <title>HTML 1</title>
       <animate attributeName="fill-opacity" values="0;0.5;1" dur="3s" repeatCount="1"></animate>
     </path>
-    <path d="M -28.000 -113.600 A 117 117 0 0 1 -0.000 -117.000 L -0.000 -72.222 A 72.22222222222221 72.22222222222221 0 0 0 -17.284 -70.124 Z" style="fill: #94a3b8;" class="stroke-bg" stroke-width="2px">
-      <title>Other: 4%</title>
+    <path d="M 7.716 -116.745 A 117 117 0 1 1 -0.000 -117.000 L -0.000 -65.000 A 65 65 0 1 0 4.287 -64.858 Z" style="fill: #444444;" class="stroke-bg" stroke-width="2px">
+      <title>other 2355</title>
       <animate attributeName="fill-opacity" values="0;0.5;1" dur="3s" repeatCount="1"></animate>
     </path>
   </g>

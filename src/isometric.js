@@ -59,8 +59,83 @@ function shadeColor(color, factor) {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
-// Built-in 3D Themes (Pure White / Light Aesthetic with High-Contrast Luminous Towers)
+// Built-in 3D Themes (Cyberpunk Neon, Tokyo Night, Dracula, Synthwave, Emerald, Pearl Neon Light, etc.)
 const THEME_CONFIGS = {
+  cyberpunk: {
+    type: 'normal',
+    backgroundColor: '#050811',
+    foregroundColor: '#00f0ff',
+    strongColor: '#ffe600',
+    weakColor: '#8be9fd',
+    radarColor: '#ff007f',
+    levels: [
+      '#121b2f',
+      '#7928ca',
+      '#b800e6',
+      '#ff007f',
+      '#00f0ff',
+    ],
+  },
+  tokyonight: {
+    type: 'normal',
+    backgroundColor: '#1a1b26',
+    foregroundColor: '#c0caf5',
+    strongColor: '#ff9e64',
+    weakColor: '#565f89',
+    radarColor: '#7aa2f7',
+    levels: [
+      '#24283b',
+      '#3b4261',
+      '#7aa2f7',
+      '#bb9af7',
+      '#7dcfff',
+    ],
+  },
+  dracula: {
+    type: 'normal',
+    backgroundColor: '#282a36',
+    foregroundColor: '#f8f8f2',
+    strongColor: '#50fa7b',
+    weakColor: '#6272a4',
+    radarColor: '#ff79c6',
+    levels: [
+      '#343746',
+      '#6272a4',
+      '#bd93f9',
+      '#ff79c6',
+      '#50fa7b',
+    ],
+  },
+  synthwave: {
+    type: 'normal',
+    backgroundColor: '#261435',
+    foregroundColor: '#f92aad',
+    strongColor: '#fede5d',
+    weakColor: '#fe4450',
+    radarColor: '#36f9f6',
+    levels: [
+      '#3c2353',
+      '#72f1b8',
+      '#36f9f6',
+      '#fede5d',
+      '#f92aad',
+    ],
+  },
+  emerald: {
+    type: 'normal',
+    backgroundColor: '#021812',
+    foregroundColor: '#e6fffa',
+    strongColor: '#34d399',
+    weakColor: '#047857',
+    radarColor: '#10b981',
+    levels: [
+      '#064e3b',
+      '#059669',
+      '#10b981',
+      '#34d399',
+      '#6ee7b7',
+    ],
+  },
   'pearl-neon': {
     type: 'normal',
     backgroundColor: '#ffffff',
@@ -123,24 +198,14 @@ const THEME_CONFIGS = {
   },
 };
 
-// Automatic alias fallback mapping for dark/removed theme configs
 const THEME_ALIASES = {
-  cyberpunk: 'pearl-neon',
-  tokyonight: 'pearl-neon',
-  dracula: 'pearl-neon',
-  synthwave: 'pearl-neon',
-  'night-view': 'pearl-neon',
-  'night-rainbow': 'pearl-neon',
-  'night-green': 'github-light',
-  green: 'github-light',
-  emerald: 'github-light',
-  matrix: 'ocean-light',
-  nord: 'ocean-light',
-  monokai: 'solar-light',
-  sunset: 'solar-light',
-  dark: 'pearl-neon',
+  'night-view': 'cyberpunk',
+  'night-rainbow': 'cyberpunk',
+  'night-green': 'emerald',
+  green: 'emerald',
+  dark: 'cyberpunk',
   light: 'pearl-neon',
-  default: 'pearl-neon',
+  default: 'cyberpunk',
 };
 
 /**
