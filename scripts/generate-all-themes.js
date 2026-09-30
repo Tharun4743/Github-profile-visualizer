@@ -21,7 +21,15 @@ const DUO_USER = 'Tharunkumar4743';
 const GFG_USER = 'Tharun4743';
 const HR_USER = 'Tharun4743';
 
-const THEME_LIST = ['cyberpunk', 'emerald', 'pearl-neon'];
+const THEME_LIST = [
+  'cyberpunk',
+  'emerald',
+  'pearl-neon',
+  'synthwave',
+  'tokyonight',
+  'ocean-light',
+  'solar-light'
+];
 
 const DIRS = [
   path.resolve(__dirname, '../examples'),
@@ -34,7 +42,7 @@ DIRS.forEach(d => {
 });
 
 async function run() {
-  console.log('🚀 Generating Full Multi-Theme Suite (Cyberpunk, Emerald, Pearl-Neon)...');
+  console.log('🚀 Generating Full Multi-Theme Suite (Synthwave, Tokyo Night, White Ocean, White Solar, Cyberpunk, Emerald, Pearl-Neon)...');
   const token = process.env.GITHUB_TOKEN || '';
   const calendarData = await fetchContributions(USERNAME, token, 'last-year');
 
@@ -94,7 +102,7 @@ async function run() {
       ranking: 15420
     }, theme, universalOpts);
 
-    // Write files to all target directories
+    // Write primary suffixed files
     const files = {
       [`profile-3d-${themeKey}.svg`]: citySvg,
       [`activity-timeline-${themeKey}.svg`]: actSvg,
@@ -110,7 +118,38 @@ async function run() {
       [`executive-summary-${themeKey}.svg`]: sumSvg,
     };
 
-    // If cyberpunk (default primary theme), also save as standard un-suffixed filenames
+    // Also support white-ocean and white-solar alias names
+    if (themeKey === 'ocean-light') {
+      files['profile-3d-white-ocean.svg'] = citySvg;
+      files['activity-timeline-white-ocean.svg'] = actSvg;
+      files['coding-habits-white-ocean.svg'] = habitsSvg;
+      files['languages-matrix-white-ocean.svg'] = langSvg;
+      files['leetcode-card-white-ocean.svg'] = lcSvg;
+      files['gfg-card-white-ocean.svg'] = gfgSvg;
+      files['hackerrank-card-white-ocean.svg'] = hrSvg;
+      files['duolingo-card-white-ocean.svg'] = duoSvg;
+      files['achievements-white-ocean.svg'] = achSvg;
+      files['commit-velocity-white-ocean.svg'] = velSvg;
+      files['skills-radar-white-ocean.svg'] = radarSvg;
+      files['executive-summary-white-ocean.svg'] = sumSvg;
+    }
+
+    if (themeKey === 'solar-light') {
+      files['profile-3d-white-solar.svg'] = citySvg;
+      files['activity-timeline-white-solar.svg'] = actSvg;
+      files['coding-habits-white-solar.svg'] = habitsSvg;
+      files['languages-matrix-white-solar.svg'] = langSvg;
+      files['leetcode-card-white-solar.svg'] = lcSvg;
+      files['gfg-card-white-solar.svg'] = gfgSvg;
+      files['hackerrank-card-white-solar.svg'] = hrSvg;
+      files['duolingo-card-white-solar.svg'] = duoSvg;
+      files['achievements-white-solar.svg'] = achSvg;
+      files['commit-velocity-white-solar.svg'] = velSvg;
+      files['skills-radar-white-solar.svg'] = radarSvg;
+      files['executive-summary-white-solar.svg'] = sumSvg;
+    }
+
+    // Default un-suffixed filenames map to cyberpunk
     if (themeKey === 'cyberpunk') {
       files['profile-3d-city.svg'] = citySvg;
       files['activity-timeline.svg'] = actSvg;
@@ -133,10 +172,10 @@ async function run() {
         }
       }
     }
-    console.log(`✅ Saved all ${Object.keys(files).length} SVGs for theme [${themeKey}]!`);
+    console.log(`✅ Saved ${Object.keys(files).length} SVGs for theme [${themeKey}]!`);
   }
 
-  console.log('\n🎉 Successfully generated all multi-theme SVGs (Cyberpunk, Emerald, Pearl-Neon) across all repositories!');
+  console.log('\n🎉 Successfully generated all multi-theme SVGs (Synthwave, Tokyo Night, White Ocean, White Solar, Cyberpunk, Emerald, Pearl-Neon)!');
 }
 
 run().catch(console.error);

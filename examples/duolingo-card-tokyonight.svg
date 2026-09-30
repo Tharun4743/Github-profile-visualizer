@@ -1,0 +1,51 @@
+<svg width="467" height="195" viewBox="0 0 467 195" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .stat-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 600; fill: #c0caf5; }
+    .stat-val { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 700; }
+    @keyframes duoGlowPulse {
+      0%, 100% { stroke: #58cc02; }
+      50% { stroke: #ffc800; }
+    }
+    .card-border { animation: duoGlowPulse 6s ease-in-out infinite; }
+  </style>
+  <rect x="0.5" y="0.5" width="466" height="194" rx="8" fill="#1a1b26" stroke="#414868" stroke-width="1.5" class="card-border" />
+
+  <!-- Header -->
+  <g transform="translate(24, 30)">
+    <text fill="#58cc02" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">
+      🦉 Duolingo Learning Streak • @Tharunkumar4743
+    </text>
+  </g>
+
+  <!-- Metrics -->
+  <g transform="translate(24, 54)">
+    <g transform="translate(0, 10)">
+      <text class="stat-label">Daily Streak:</text>
+      <text x="240" class="stat-val" fill="#ff9600">19 Days 🔥</text>
+    </g>
+    <g transform="translate(0, 36)">
+      <text class="stat-label">Total Experience:</text>
+      <text x="240" class="stat-val" fill="#ffc800">676 XP ⚡</text>
+    </g>
+    <g transform="translate(0, 62)">
+      <text class="stat-label">Active Language:</text>
+      <text x="240" class="stat-val" fill="#58cc02">Japanese</text>
+    </g>
+    <g transform="translate(0, 88)">
+      <text class="stat-label">Language XP / Crowns:</text>
+      <text x="240" class="stat-val" fill="#00d26a">598 XP • 9999 👑</text>
+    </g>
+  </g>
+
+  <!-- Courses Badges -->
+  <g transform="translate(24, 168)">
+    <text fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
+      Enrolled Courses: <tspan fill="#c0caf5" font-weight="700">2</tspan> (Japanese, English)
+    </text>
+  </g>
+
+  <!-- Personal Branding Watermark -->
+  <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
+    <text x="443" y="183" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+  </a>
+</svg>

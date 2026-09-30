@@ -1,0 +1,44 @@
+<svg width="467" height="195" viewBox="0 0 467 195" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="radar-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c2410c" stop-opacity="0.38" />
+      <stop offset="100%" stop-color="#d97706" stop-opacity="0.08" />
+    </radialGradient>
+  </defs>
+
+  <rect x="0.5" y="0.5" width="466" height="194" rx="8" fill="#ffffff" stroke="#fed7aa" stroke-width="1.5" />
+  
+  <!-- Header -->
+  <g transform="translate(24, 28)">
+    <text fill="#c2410c" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">
+      🎯 Engineering Competency Radar • @Tharun4743
+    </text>
+  </g>
+
+  <!-- Concentric Rings and Spokes -->
+  <polygon points="233.5,91.7 252.8,105.7 245.4,128.4 221.6,128.4 214.2,105.7" fill="none" stroke="#24283b" stroke-width="1" /><polygon points="233.5,71.4 272.1,99.5 257.4,144.8 209.6,144.8 194.9,99.5" fill="none" stroke="#24283b" stroke-width="1" /><polygon points="233.5,54.0 288.7,94.1 267.6,158.9 199.4,158.9 178.3,94.1" fill="none" stroke="#24283b" stroke-width="1" />
+  <line x1="233.5" y1="112" x2="233.5" y2="54" stroke="#24283b" stroke-width="1" />
+      <text x="233.5" y="44" text-anchor="middle" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
+        Algorithms
+      </text><line x1="233.5" y1="112" x2="288.6612779451189" y2="94.07701432625305" stroke="#24283b" stroke-width="1" />
+      <text x="305.7802952384317" y="93.75077640500379" text-anchor="start" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
+        Full Stack
+      </text><line x1="233.5" y1="112" x2="267.59154463296346" y2="158.92298567374695" stroke="#24283b" stroke-width="1" />
+      <text x="278.17167917422796" y="174.2492235949962" text-anchor="start" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
+        Distributed
+      </text><line x1="233.5" y1="112" x2="199.40845536703657" y2="158.92298567374695" stroke="#24283b" stroke-width="1" />
+      <text x="188.82832082577204" y="174.2492235949962" text-anchor="end" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
+        System Design
+      </text><line x1="233.5" y1="112" x2="178.3387220548811" y2="94.07701432625305" stroke="#24283b" stroke-width="1" />
+      <text x="161.21970476156832" y="93.75077640500379" text-anchor="end" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
+        APIs &amp; DBs
+      </text>
+
+  <!-- Data Filled Polygon -->
+  <polygon points="233.5,57.5 286.5,94.8 263.5,153.3 202.8,154.2 181.1,95.0" fill="url(#radar-glow)" stroke="#c2410c" stroke-width="2" />
+
+  <!-- Personal Branding Watermark -->
+  <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
+    <text x="443" y="185" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+  </a>
+</svg>

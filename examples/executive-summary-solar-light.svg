@@ -1,0 +1,89 @@
+<svg width="940" height="130" viewBox="0 0 940 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes bannerPulse {
+      0%, 100% { stroke: #c2410c; }
+      50% { stroke: #bd93f9; }
+    }
+    .banner-border { animation: bannerPulse 8s ease-in-out infinite; }
+  </style>
+  <rect x="0.5" y="0.5" width="939" height="129" rx="10" fill="#ffffff" stroke="#fed7aa" stroke-width="1.5" class="banner-border" />
+
+  <!-- Header Banner Title -->
+  <g transform="translate(28, 28)">
+    <text fill="#c2410c" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700">
+      ⚡ Executive Engineering Velocity Summary • @Tharun4743
+    </text>
+  </g>
+
+  <!-- 5 Unified Metric Cards across the banner -->
+  
+    <g transform="translate(28, 48)">
+      <rect width="168" height="60" rx="6" fill="#131620" stroke="#24283b" stroke-width="0.8" />
+      <text x="14" y="20" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" text-transform="uppercase" letter-spacing="0.5px">
+        Lifetime Commits
+      </text>
+      <text x="14" y="42" fill="#00f0ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700">
+        2,380
+      </text>
+      <text x="154" y="42" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">
+        GitHub
+      </text>
+    </g>
+  
+    <g transform="translate(208, 48)">
+      <rect width="168" height="60" rx="6" fill="#131620" stroke="#24283b" stroke-width="0.8" />
+      <text x="14" y="20" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" text-transform="uppercase" letter-spacing="0.5px">
+        Pull Requests
+      </text>
+      <text x="14" y="42" fill="#bd93f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700">
+        12 PRs
+      </text>
+      <text x="154" y="42" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">
+        Merged
+      </text>
+    </g>
+  
+    <g transform="translate(388, 48)">
+      <rect width="168" height="60" rx="6" fill="#131620" stroke="#24283b" stroke-width="0.8" />
+      <text x="14" y="20" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" text-transform="uppercase" letter-spacing="0.5px">
+        Stars Earned
+      </text>
+      <text x="14" y="42" fill="#ffd866" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700">
+        8 ⭐
+      </text>
+      <text x="154" y="42" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">
+        Community
+      </text>
+    </g>
+  
+    <g transform="translate(568, 48)">
+      <rect width="168" height="60" rx="6" fill="#131620" stroke="#24283b" stroke-width="0.8" />
+      <text x="14" y="20" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" text-transform="uppercase" letter-spacing="0.5px">
+        LeetCode Solved
+      </text>
+      <text x="14" y="42" fill="#ffa116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700">
+        350
+      </text>
+      <text x="154" y="42" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">
+        DSA Problems
+      </text>
+    </g>
+  
+    <g transform="translate(748, 48)">
+      <rect width="168" height="60" rx="6" fill="#131620" stroke="#24283b" stroke-width="0.8" />
+      <text x="14" y="20" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" text-transform="uppercase" letter-spacing="0.5px">
+        LeetCode Ranking
+      </text>
+      <text x="14" y="42" fill="#00d26a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700">
+        15,420
+      </text>
+      <text x="154" y="42" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">
+        Global
+      </text>
+    </g>
+
+  <!-- Personal Branding Watermark -->
+  <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
+    <text x="912" y="32" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+  </a>
+</svg>
