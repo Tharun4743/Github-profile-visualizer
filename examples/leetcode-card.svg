@@ -8,7 +8,7 @@
     }
     .card-border { animation: liveThemePulse 7s ease-in-out infinite; }
   </style>
-  <rect x="0.5" y="0.5" width="466" height="194" rx="8" fill="#1a1b26" stroke="#414868" stroke-width="1.5" class="card-border" />
+  <rect x="0.5" y="0.5" width="466" height="194" rx="8" fill="#1a1b27" stroke="#24283b" stroke-width="1.5" class="card-border" />
 
   <!-- Header -->
   <g transform="translate(24, 32)">
@@ -37,11 +37,7 @@
     </g>
     <g transform="translate(0, 114)">
       <text class="stat-label">Global Ranking:</text>
-<<<<<<< Updated upstream
-      <text x="240" class="stat-val" fill="#8b949e">1,015,054</text>
-=======
       <text x="240" class="stat-val" fill="#8b949e">N/A</text>
->>>>>>> Stashed changes
     </g>
   </g>
 
