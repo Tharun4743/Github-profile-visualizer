@@ -1,0 +1,62 @@
+<svg width="467" height="195" viewBox="0 0 467 195" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0.5" y="0.5" width="466" height="194" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  
+  <!-- Header -->
+  <g transform="translate(24, 30)">
+    <text fill="#0f172a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">
+      ⚡ Recent GitHub Activity • @Tharun4743
+    </text>
+  </g>
+
+  
+      <g transform="translate(24, 50)">
+        <text x="0" y="12" font-size="12">⚡</text>
+        <text x="22" y="12" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">
+          Pushed 1 commit to <tspan fill="#00f0ff" font-weight="600">Tharun4743</tspan>
+        </text>
+        <text x="419" y="12" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">
+          16m ago
+        </text>
+      </g>
+      <g transform="translate(24, 76)">
+        <text x="0" y="12" font-size="12">⚡</text>
+        <text x="22" y="12" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">
+          Pushed 1 commit to <tspan fill="#00f0ff" font-weight="600">Tharun4743</tspan>
+        </text>
+        <text x="419" y="12" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">
+          27m ago
+        </text>
+      </g>
+      <g transform="translate(24, 102)">
+        <text x="0" y="12" font-size="12">⚡</text>
+        <text x="22" y="12" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">
+          Pushed 1 commit to <tspan fill="#00f0ff" font-weight="600">TharunkumarK_Portfolio</tspan>
+        </text>
+        <text x="419" y="12" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">
+          4h ago
+        </text>
+      </g>
+      <g transform="translate(24, 128)">
+        <text x="0" y="12" font-size="12">⚡</text>
+        <text x="22" y="12" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">
+          Pushed 1 commit to <tspan fill="#00f0ff" font-weight="600">findora-ai</tspan>
+        </text>
+        <text x="419" y="12" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">
+          1d ago
+        </text>
+      </g>
+      <g transform="translate(24, 154)">
+        <text x="0" y="12" font-size="12">⚡</text>
+        <text x="22" y="12" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">
+          Pushed 1 commit to <tspan fill="#00f0ff" font-weight="600">Tharun4743</tspan>
+        </text>
+        <text x="419" y="12" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">
+          4h ago
+        </text>
+      </g>
+
+  <!-- Personal Branding Watermark -->
+  <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
+    <text x="443" y="183" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+  </a>
+</svg>
