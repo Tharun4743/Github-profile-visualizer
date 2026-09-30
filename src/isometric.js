@@ -59,125 +59,88 @@ function shadeColor(color, factor) {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
-// Built-in 3D Themes
+// Built-in 3D Themes (Pure White / Light Aesthetic with High-Contrast Luminous Towers)
 const THEME_CONFIGS = {
-  'night-view': {
+  'pearl-neon': {
     type: 'normal',
-    backgroundColor: '#00000f',
-    foregroundColor: '#eeeeff',
-    strongColor: 'rgb(255, 200, 55)',
-    weakColor: '#aaaaaa',
-    radarColor: 'rgb(255, 200, 55)',
+    backgroundColor: '#ffffff',
+    foregroundColor: '#0f172a',
+    strongColor: '#4f46e5',
+    weakColor: '#64748b',
+    radarColor: '#0284c7',
     levels: [
-      'rgb(25, 60, 130)',
-      'rgb(25, 90, 210)',
-      'rgb(25, 120, 220)',
-      'rgb(25, 150, 230)',
-      'rgb(25, 165, 240)',
+      '#e2e8f0',
+      '#38bdf8',
+      '#6366f1',
+      '#a855f7',
+      '#ec4899',
     ],
   },
-  'night-green': {
+  'solar-light': {
     type: 'normal',
-    backgroundColor: '#00000f',
-    foregroundColor: '#eeeeff',
-    strongColor: '#26a641',
-    weakColor: '#aaaaaa',
-    radarColor: '#39d353',
+    backgroundColor: '#ffffff',
+    foregroundColor: '#1e293b',
+    strongColor: '#ea580c',
+    weakColor: '#78716c',
+    radarColor: '#f59e0b',
     levels: [
-      '#161b22',
-      '#0e4429',
-      '#006d32',
-      '#26a641',
-      '#39d353',
+      '#f1f5f9',
+      '#fbbf24',
+      '#f97316',
+      '#ef4444',
+      '#e11d48',
     ],
   },
-  green: {
+  'ocean-light': {
     type: 'normal',
-    backgroundColor: '#0d1117',
-    foregroundColor: '#e6edf3',
-    strongColor: '#39d353',
-    weakColor: '#8b949e',
-    radarColor: '#2ea043',
+    backgroundColor: '#ffffff',
+    foregroundColor: '#0f172a',
+    strongColor: '#0284c7',
+    weakColor: '#64748b',
+    radarColor: '#0d9488',
     levels: [
-      '#161b22',
-      '#0e4429',
-      '#006d32',
-      '#26a641',
-      '#39d353',
+      '#e2e8f0',
+      '#2dd4bf',
+      '#0ea5e9',
+      '#3b82f6',
+      '#6366f1',
     ],
   },
-  cyberpunk: {
+  'github-light': {
     type: 'normal',
-    backgroundColor: '#050811',
-    foregroundColor: '#00f0ff',
-    strongColor: '#ffe600',
-    weakColor: '#7000ff',
-    radarColor: '#ff007f',
+    backgroundColor: '#ffffff',
+    foregroundColor: '#24292f',
+    strongColor: '#1a7f37',
+    weakColor: '#57606a',
+    radarColor: '#2da04b',
     levels: [
-      '#121b2f',
-      '#7928ca',
-      '#b800e6',
-      '#ff007f',
-      '#00f0ff',
+      '#ebedf0',
+      '#9be9a8',
+      '#40c463',
+      '#30a14e',
+      '#216e39',
     ],
   },
-  tokyonight: {
-    type: 'normal',
-    backgroundColor: '#1a1b26',
-    foregroundColor: '#c0caf5',
-    strongColor: '#ff9e64',
-    weakColor: '#565f89',
-    radarColor: '#7aa2f7',
-    levels: [
-      '#24283b',
-      '#3b4261',
-      '#7aa2f7',
-      '#bb9af7',
-      '#7dcfff',
-    ],
-  },
-  dracula: {
-    type: 'normal',
-    backgroundColor: '#282a36',
-    foregroundColor: '#f8f8f2',
-    strongColor: '#50fa7b',
-    weakColor: '#6272a4',
-    radarColor: '#ff79c6',
-    levels: [
-      '#343746',
-      '#6272a4',
-      '#bd93f9',
-      '#ff79c6',
-      '#50fa7b',
-    ],
-  },
-  emerald: {
-    type: 'normal',
-    backgroundColor: '#021812',
-    foregroundColor: '#e6fffa',
-    strongColor: '#34d399',
-    weakColor: '#047857',
-    radarColor: '#10b981',
-    levels: [
-      '#064e3b',
-      '#059669',
-      '#10b981',
-      '#34d399',
-      '#6ee7b7',
-    ],
-  },
-  'night-rainbow': {
-    type: 'rainbow',
-    backgroundColor: '#00000f',
-    foregroundColor: '#eeeeff',
-    strongColor: 'rgb(255, 200, 55)',
-    weakColor: '#aaaaaa',
-    radarColor: 'rgb(255, 200, 55)',
-    saturation: '50%',
-    duration: '10s',
-    hueRatio: -7,
-    contribLightness: ['20%', '30%', '40%', '50%', '60%'],
-  },
+};
+
+// Automatic alias fallback mapping for dark/removed theme configs
+const THEME_ALIASES = {
+  cyberpunk: 'pearl-neon',
+  tokyonight: 'pearl-neon',
+  dracula: 'pearl-neon',
+  synthwave: 'pearl-neon',
+  'night-view': 'pearl-neon',
+  'night-rainbow': 'pearl-neon',
+  'night-green': 'github-light',
+  green: 'github-light',
+  emerald: 'github-light',
+  matrix: 'ocean-light',
+  nord: 'ocean-light',
+  monokai: 'solar-light',
+  sunset: 'solar-light',
+  dark: 'pearl-neon',
+  light: 'pearl-neon',
+  default: 'pearl-neon',
 };
 
 /**
@@ -322,39 +285,46 @@ function renderRadar(radarX, radarY, radarWidth, radarHeight, telemetry, isAnima
 }
 
 /**
- * Renders the Language Donut Pie Chart with animated arc segments and legend.
+ * Renders the Language Donut Pie Chart with animated arc segments and accurate percentage legend.
  */
 function renderLanguageDonut(pieX, pieY, pieWidth, pieHeight, languages, totalCommits, isAnimate) {
   if (!languages || languages.length === 0) return '';
 
-  const topLangs = languages.slice(0, 5);
-  const sumCount = topLangs.reduce((a, b) => a + (b.contributions || 0), 0);
-  const otherCount = Math.max(0, (totalCommits || sumCount) - sumCount);
-  if (otherCount > 0) {
-    topLangs.push({ language: 'other', color: '#444444', contributions: otherCount });
+  const totalLangVolume = languages.reduce((sum, l) => sum + (l.contributions || 0), 0) || 1;
+  const topLangs = languages.slice(0, 5).map(l => ({ ...l }));
+  const topSum = topLangs.reduce((sum, l) => sum + (l.contributions || 0), 0);
+  const remaining = totalLangVolume - topSum;
+  if (remaining > 0 && languages.length > 5) {
+    topLangs.push({ language: 'Other', color: '#94a3b8', contributions: remaining });
   }
 
-  const grandTotal = topLangs.reduce((a, b) => a + b.contributions, 0) || 1;
+  const grandTotal = topLangs.reduce((a, b) => a + (b.contributions || 0), 0) || 1;
   const radius = pieHeight / 2;
   const margin = radius / 10;
   const outerR = radius - margin;
-  const innerR = radius / 2;
-  const row = 8;
-  const offset = (row - topLangs.length) / 2 + 0.5;
-  const fontSize = pieHeight / row / 1.5;
+  const innerR = radius / 1.8;
+  const row = Math.max(6, topLangs.length + 1);
+  const offset = 0.8;
+  const fontSize = Math.min(14, pieHeight / row / 1.4);
 
   let out = `<g transform="translate(${pieX}, ${pieY})">\n`;
 
+  // Background subtle track ring
+  out += `  <circle cx="${radius}" cy="${radius}" r="${(outerR + innerR) / 2}" fill="none" stroke="#f1f5f9" stroke-width="${outerR - innerR}"></circle>\n`;
+
   // Legend markers & labels
-  out += `  <g transform="translate(${radius * 2.1}, 0)">\n`;
+  out += `  <g transform="translate(${radius * 2.2}, 0)">\n`;
   topLangs.forEach((lang, i) => {
+    const fraction = (lang.contributions || 0) / grandTotal;
+    const pct = Math.max(1, Math.round(fraction * 100));
     const y = (i + offset) * (pieHeight / row);
-    out += `    <rect x="0" y="${(y - fontSize / 2).toFixed(2)}" width="${fontSize.toFixed(2)}" height="${fontSize.toFixed(2)}" fill="${lang.color}" class="stroke-bg" stroke-width="1px">\n`;
+
+    out += `    <rect x="0" y="${(y - fontSize / 2).toFixed(2)}" width="${fontSize.toFixed(2)}" height="${fontSize.toFixed(2)}" rx="3" fill="${lang.color}" class="stroke-bg" stroke-width="1px">\n`;
     if (isAnimate) {
       out += `      <animate attributeName="fill-opacity" values="0;${(i + 1) * 0.2};1" dur="3s" repeatCount="1"></animate>\n`;
     }
     out += `    </rect>\n`;
-    out += `    <text x="${(fontSize * 1.2).toFixed(2)}" y="${y.toFixed(2)}" dominant-baseline="middle" font-size="${fontSize.toFixed(2)}px" class="fill-fg">${lang.language}\n`;
+    out += `    <text x="${(fontSize * 1.5).toFixed(2)}" y="${y.toFixed(2)}" dominant-baseline="middle" font-size="${fontSize.toFixed(2)}px" font-weight="600" class="fill-fg">${lang.language} <tspan font-weight="400" fill="#64748b" font-size="${(fontSize * 0.9).toFixed(2)}px">${pct}%</tspan>\n`;
     if (isAnimate) {
       out += `      <animate attributeName="fill-opacity" values="0;${(i + 1) * 0.2};1" dur="3s" repeatCount="1"></animate>\n`;
     }
@@ -366,30 +336,39 @@ function renderLanguageDonut(pieX, pieY, pieWidth, pieHeight, languages, totalCo
   out += `  <g transform="translate(${radius}, ${radius})">\n`;
   let currentAngle = 0;
   topLangs.forEach((lang) => {
-    const sliceAngle = (lang.contributions / grandTotal) * 2 * Math.PI;
+    const fraction = (lang.contributions || 0) / grandTotal;
+    const sliceAngle = fraction * 2 * Math.PI;
     const startAngle = currentAngle;
     const endAngle = currentAngle + sliceAngle;
     currentAngle = endAngle;
 
-    // SVG arc path
-    const x1 = (Math.sin(startAngle) * outerR).toFixed(3);
-    const y1 = (-Math.cos(startAngle) * outerR).toFixed(3);
-    const x2 = (Math.sin(endAngle) * outerR).toFixed(3);
-    const y2 = (-Math.cos(endAngle) * outerR).toFixed(3);
-    const x3 = (Math.sin(endAngle) * innerR).toFixed(3);
-    const y3 = (-Math.cos(endAngle) * innerR).toFixed(3);
-    const x4 = (Math.sin(startAngle) * innerR).toFixed(3);
-    const y4 = (-Math.cos(startAngle) * innerR).toFixed(3);
+    let d = '';
+    if (fraction >= 0.999) {
+      // Full complete 360-degree annular donut ring
+      d = `M 0 ${-outerR} A ${outerR} ${outerR} 0 1 1 0 ${outerR} A ${outerR} ${outerR} 0 1 1 0 ${-outerR} M 0 ${-innerR} A ${innerR} ${innerR} 0 1 0 0 ${innerR} A ${innerR} ${innerR} 0 1 0 0 ${-innerR} Z`;
+    } else if (sliceAngle > 0.001) {
+      // Annular sector segment
+      const x1 = (Math.sin(startAngle) * outerR).toFixed(3);
+      const y1 = (-Math.cos(startAngle) * outerR).toFixed(3);
+      const x2 = (Math.sin(endAngle) * outerR).toFixed(3);
+      const y2 = (-Math.cos(endAngle) * outerR).toFixed(3);
+      const x3 = (Math.sin(endAngle) * innerR).toFixed(3);
+      const y3 = (-Math.cos(endAngle) * innerR).toFixed(3);
+      const x4 = (Math.sin(startAngle) * innerR).toFixed(3);
+      const y4 = (-Math.cos(startAngle) * innerR).toFixed(3);
 
-    const largeArc = sliceAngle > Math.PI ? 1 : 0;
-    const d = `M ${x1} ${y1} A ${outerR} ${outerR} 0 ${largeArc} 1 ${x2} ${y2} L ${x3} ${y3} A ${innerR} ${innerR} 0 ${largeArc} 0 ${x4} ${y4} Z`;
-
-    out += `    <path d="${d}" style="fill: ${lang.color};" class="stroke-bg" stroke-width="2px">\n`;
-    out += `      <title>${lang.language} ${lang.contributions}</title>\n`;
-    if (isAnimate) {
-      out += `      <animate attributeName="fill-opacity" values="0;0.5;1" dur="3s" repeatCount="1"></animate>\n`;
+      const largeArc = sliceAngle > Math.PI ? 1 : 0;
+      d = `M ${x1} ${y1} A ${outerR} ${outerR} 0 ${largeArc} 1 ${x2} ${y2} L ${x3} ${y3} A ${innerR} ${innerR} 0 ${largeArc} 0 ${x4} ${y4} Z`;
     }
-    out += `    </path>\n`;
+
+    if (d) {
+      out += `    <path d="${d}" style="fill: ${lang.color};" class="stroke-bg" stroke-width="2px">\n`;
+      out += `      <title>${lang.language}: ${Math.round(fraction * 100)}%</title>\n`;
+      if (isAnimate) {
+        out += `      <animate attributeName="fill-opacity" values="0;0.5;1" dur="3s" repeatCount="1"></animate>\n`;
+      }
+      out += `    </path>\n`;
+    }
   });
   out += `  </g>\n`;
   out += `</g>\n`;
@@ -405,17 +384,17 @@ function render3DCity(telemetry, username, options = {}) {
   const total = telemetry.total || 0;
   const isAnimate = options.animate !== false;
 
-  // Resolve theme
-  const themeInput = (options.theme || 'night-view').toLowerCase();
-  let themeConfig = THEME_CONFIGS[themeInput] || THEME_CONFIGS['night-view'];
+  // Resolve theme (pure white / light aesthetics with automatic fallback for dark/removed themes)
+  const themeInput = (options.theme || 'pearl-neon').toLowerCase().trim();
+  let themeConfig = THEME_CONFIGS[themeInput] || THEME_CONFIGS[THEME_ALIASES[themeInput]] || THEME_CONFIGS['pearl-neon'];
   if (options.customColors && options.customColors.length >= 5) {
     themeConfig = {
       type: 'normal',
-      backgroundColor: options.customBg || '#00000f',
-      foregroundColor: '#eeeeff',
-      strongColor: options.customColors[4] || 'rgb(255, 200, 55)',
-      weakColor: '#aaaaaa',
-      radarColor: options.customColors[3] || 'rgb(255, 200, 55)',
+      backgroundColor: '#ffffff',
+      foregroundColor: '#0f172a',
+      strongColor: options.customColors[4] || '#4f46e5',
+      weakColor: '#64748b',
+      radarColor: options.customColors[3] || '#0284c7',
       levels: options.customColors.slice(0, 5),
     };
   }

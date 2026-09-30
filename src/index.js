@@ -20,7 +20,7 @@ async function run() {
   try {
     const username = core.getInput('username') || process.env.GITHUB_REPOSITORY_OWNER;
     const token = core.getInput('token') || process.env.GITHUB_TOKEN;
-    const themeKey = (core.getInput('theme') || 'cyberpunk').toLowerCase();
+    const themeKey = (core.getInput('theme') || 'pearl-neon').toLowerCase();
     const visualizersInput = (core.getInput('visualizers') || 'all').toLowerCase();
     const customColors = core.getInput('custom-colors');
     const customBg = core.getInput('custom-bg');

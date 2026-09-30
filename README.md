@@ -2,7 +2,7 @@
 
 # ⚡ GitHub Profile Visualizer
 
-### The ultimate all-in-one developer activity visualizer suite: 3D contribution city skylines, developer achievements, commit velocity waves, coding habits, competency radar, language matrix, LeetCode, GeeksforGeeks, HackerRank, and Duolingo cards.
+### The ultimate all-in-one developer telemetry & 3D contribution visualizer suite: 3D Isometric City Skylines, Developer Achievements, Commit Velocity Wave, Coding Habits, Competency Radar, Language Distribution, LeetCode, GeeksforGeeks, HackerRank, and Duolingo cards.
 
 [![GitHub Marketplace](https://img.shields.io/badge/Marketplace-GitHub%20Profile%20Visualizer-purple?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/marketplace/actions/github-profile-visualizer)
 [![GitHub release](https://img.shields.io/github/v/release/Tharun4743/github-profile-visualizer?color=7aa2f7&style=for-the-badge)](https://github.com/Tharun4743/github-profile-visualizer/releases)
@@ -13,43 +13,50 @@
 <br/>
 
 <!-- Flagship 3D City Preview -->
-<img src="examples/profile-3d-cyberpunk.svg" alt="3D Isometric Contribution City" width="100%" />
+<img src="examples/profile-3d-pearl-neon.svg" alt="3D Isometric Contribution City" width="100%" />
 
 </div>
 
 ---
 
-## 🌟 The 9-Visualizer Suite
+## 🌟 The 12-in-1 Visualizer Suite
 
-Generate **any or all developer telemetry cards in a single, fast action run**:
+Generate **any or all developer telemetry cards in a single, ultra-fast action pass**:
 
-### 1. Executive Summary Banner (Full Width)
+### 1. 🏙️ 3D Isometric Contribution City
+* **Pure Mathematical Projection Engine:** Renders 365 days of contribution depth using deterministic isometric math (`isoX = (x - y) * cos(30°)`, `isoY = (x + y) * sin(30°) - height`) with 0 headless-browser dependencies.
+* **Auto-Adaptive High-Contrast Themes:** Pure White Pearl Neon, Solar Sunrise, Ocean Breeze, and Emerald Light. Legacy/dark requests are automatically adapted into bright, high-contrast aesthetics.
+* **5-Axis Radar & Accurate Donut Progress:** Multi-metric activity radar (Commit, Issue, PR, Review, Repo) and language percentage ring.
+
+---
+
+### 2. 🎛️ Executive Summary Banner
 <img src="examples/executive-summary.svg" alt="Executive Summary" width="100%" />
 
 ---
 
-### 2. Achievements & Momentum Wave
+### 3. 🏆 Achievements & 📈 Velocity Wave
 | 🏆 Developer Achievements & Medals | 📈 Commit Velocity Wave Chart |
 | :---: | :---: |
 | ![Achievements](examples/achievements.svg) | ![Commit Velocity](examples/commit-velocity.svg) |
 
 ---
 
-### 3. Engineering Radar & Coding Habits
+### 4. 🎯 Engineering Radar & 🕒 Coding Habits
 | 🎯 Engineering Competency Radar | 🕒 Productive Coding Habits |
 | :---: | :---: |
 | ![Competency Radar](examples/skills-radar.svg) | ![Coding Habits](examples/coding-habits.svg) |
 
 ---
 
-### 4. Language Matrix & Live Activity Stream
+### 5. 💻 Language Matrix & ⚡ Live Activity Stream
 | 💻 Language Distribution Matrix | ⚡ Live Activity Stream |
 | :---: | :---: |
 | ![Languages Matrix](examples/languages-matrix.svg) | ![Recent Activity](examples/activity-timeline.svg) |
 
 ---
 
-### 5. Multi-Platform Problem Solving & Learning Telemetry
+### 6. 🧩 Multi-Platform Problem Solving & Learning Telemetry
 <div align="center">
 
 | 🧩 LeetCode Card | 🌿 GeeksforGeeks Card |
@@ -64,65 +71,56 @@ Generate **any or all developer telemetry cards in a single, fast action run**:
 
 ---
 
-## 🎨 3D City Themes Gallery
+## 📖 Step-by-Step Setup Guide for Your Profile ("Magic") Repo
 
-<div align="center">
+Transform your special profile repository (`github.com/username/username`) in **4 simple steps**:
 
-| Cyberpunk Neon | Dracula |
-| :---: | :---: |
-| ![Cyberpunk](examples/profile-3d-cyberpunk.svg) | ![Dracula](examples/profile-3d-dracula.svg) |
+### Step 1: Create Workflow Directory
+In your GitHub profile repository (`username/username`), create a new directory and workflow file:
+```
+.github/workflows/profile-visualizers.yml
+```
 
-| Tokyo Night | Nord Frost |
-| :---: | :---: |
-| ![Tokyo Night](examples/profile-3d-tokyonight.svg) | ![Nord](examples/profile-3d-nord.svg) |
-
-| Matrix Code | Synthwave 84 |
-| :---: | :---: |
-| ![Matrix](examples/profile-3d-matrix.svg) | ![Synthwave](examples/profile-3d-synthwave.svg) |
-
-| Monokai Pro | Custom Hex Palette |
-| :---: | :---: |
-| ![Monokai](examples/profile-3d-monokai.svg) | ![Custom](examples/profile-3d-custom.svg) |
-
-</div>
-
----
-
-## 🚀 Quickstart: GitHub Actions
-
-Add this workflow to your profile repository (`username/username`) at `.github/workflows/profile-visualizers.yml`:
+### Step 2: Paste the GitHub Action Workflow
+Paste the following complete workflow into `.github/workflows/profile-visualizers.yml`:
 
 ```yaml
 name: Update Profile Visualizers
 
 on:
   schedule:
-    - cron: "0 0,6,12,18 * * *" # Runs every 6 hours
+    - cron: "0 0,6,12,18 * * *" # Runs automatically every 6 hours
   push:
     branches: [main]
-  workflow_dispatch:
+  workflow_dispatch: # Allows manual one-click trigger
 
 permissions:
   contents: write
 
 jobs:
-  build:
+  generate:
     runs-on: ubuntu-latest
-    name: generate-visualizers
-    steps:
-      - uses: actions/checkout@v4
+    name: Generate Multi-Platform Visualizers
+    timeout-minutes: 10
 
-      - name: Generate All Profile Visualizers
+    steps:
+      - name: 📥 Checkout Profile Repository
+        uses: actions/checkout@v4
+
+      - name: ⚡ Generate All Profile Visualizers
         uses: Tharun4743/github-profile-visualizer@v1
         with:
           username: ${{ github.repository_owner }}
-          visualizers: 'all' # Generates all 9 visualizers in one pass
-          theme: 'cyberpunk'
-          leetcode-username: 'Tharunkumar__K'
-          transparent: false
+          visualizers: 'all' # Generates all 12 cards in 1 pass
+          theme: 'pearl-neon' # Auto-configured with high-contrast white aesthetic
+          leetcode-username: ${{ github.repository_owner }} # Or custom LeetCode handle
+          gfg-username: ${{ github.repository_owner }}      # Or custom GFG handle
+          hackerrank-username: ${{ github.repository_owner }} # Or custom HackerRank handle
+          duolingo-username: ${{ github.repository_owner }}  # Or custom Duolingo handle
           output-dir: 'assets'
+          filename: 'profile-3d-city.svg'
 
-      - name: Commit & Push Changes
+      - name: 🚀 Commit & Push Generated Visualizers
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -130,96 +128,112 @@ jobs:
           if git diff --cached --quiet; then
             echo "No visualizer changes to commit."
           else
-            git commit -m "chore: update profile visualizers [skip ci]"
+            git commit -m "chore(telemetry): update profile visualizers [skip ci]"
             git pull --rebase origin main
-            git push
+            git push origin main
           fi
 ```
 
-### Embed in Your Profile README
+### Step 3: Enable Workflow Permissions
+1. Go to your profile repository on GitHub: `Settings` → `Actions` → `General`.
+2. Scroll to **Workflow permissions**.
+3. Select **Read and write permissions**.
+4. Check **Allow GitHub Actions to create and approve pull requests**.
+5. Click **Save**.
+
+### Step 4: Embed the Cards in your `README.md`
+Add the following layout snippet to your profile `README.md`:
 
 ```html
-<!-- Executive Banner -->
+<!-- 3D Contribution Skyline -->
+<div align="center">
+  <img src="assets/profile-3d-city.svg" width="100%" alt="3D Contribution City" />
+</div>
+
+<!-- Executive Summary -->
 <img src="assets/executive-summary.svg" width="100%" alt="Executive Summary" />
 
-<!-- 3D Contribution City -->
-<img src="assets/profile-3d-city.svg" width="100%" alt="3D Contribution City" />
-
-<!-- 2x2 Telemetry Grid -->
+<!-- 2-Column Telemetry Grid -->
 <table border="0" width="100%">
   <tr>
-    <td width="50%"><img src="assets/achievements.svg" width="100%" /></td>
-    <td width="50%"><img src="assets/commit-velocity.svg" width="100%" /></td>
+    <td width="50%"><img src="assets/achievements.svg" width="100%" alt="Achievements" /></td>
+    <td width="50%"><img src="assets/commit-velocity.svg" width="100%" alt="Commit Velocity" /></td>
   </tr>
   <tr>
-    <td width="50%"><img src="assets/skills-radar.svg" width="100%" /></td>
-    <td width="50%"><img src="assets/coding-habits.svg" width="100%" /></td>
+    <td width="50%"><img src="assets/skills-radar.svg" width="100%" alt="Skills Radar" /></td>
+    <td width="50%"><img src="assets/coding-habits.svg" width="100%" alt="Coding Habits" /></td>
   </tr>
   <tr>
-    <td width="50%"><img src="assets/languages-matrix.svg" width="100%" /></td>
-    <td width="50%"><img src="assets/leetcode-card.svg" width="100%" /></td>
+    <td width="50%"><img src="assets/languages-matrix.svg" width="100%" alt="Languages Matrix" /></td>
+    <td width="50%"><img src="assets/leetcode-card.svg" width="100%" alt="LeetCode Card" /></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="assets/gfg-card.svg" width="100%" alt="GeeksforGeeks Card" /></td>
+    <td width="50%"><img src="assets/duolingo-card.svg" width="100%" alt="Duolingo Streak" /></td>
   </tr>
 </table>
 ```
 
 ---
 
-## ⚙️ Configuration Inputs
+## 🤖 One-Click AI / Antigravity Prompt
 
-| Input | Description | Required | Default |
-| :--- | :--- | :---: | :--- |
-| `username` | Target GitHub username | No | `${{ github.repository_owner }}` |
-| `visualizers`| Choice of visualizers: `'all'` or comma-separated list (`'3d-city,activity,habits,languages,leetcode,gfg,hackerrank,duolingo,achievements,velocity,radar,summary'`) | No | `'all'` |
-| `theme` | Built-in palette: `cyberpunk`, `tokyonight`, `dracula`, `nord`, `matrix`, `synthwave`, `monokai`, `sunset`, `github-dark`, `github-light`, `emerald` | No | `'cyberpunk'` |
-| `custom-colors` | 5 comma-separated hex codes for custom palette (`"#161b22,#0e4429,#006d32,#26a641,#39d353"`) | No | `''` |
-| `transparent` | Render transparent backgrounds for seamless dark/light theme integration (`true`/`false`) | No | `'false'` |
-| `border-radius`| Corner radius in pixels (`0`, `8`, `14`, `20`) | No | `''` |
-| `show-border` | Display card borders (`true`/`false`) | No | `'true'` |
-| `title` | Custom header title for the 3D City | No | `⚡ {username}'s 3D Contribution City` |
-| `height-scale`| Multiplier for 3D tower elevation (`1.0`, `1.5`, `2.0`) | No | `'1.0'` |
-| `animate` | Enable neon lighting reflection animation (`true`/`false`) | No | `'true'` |
-| `hide-header` | Hide header title and telemetry counters (`true`/`false`) | No | `'false'` |
-| `hide-legend` | Hide bottom activity legend (`true`/`false`) | No | `'false'` |
-| `year` | Specific calendar year (e.g. `2025`) or `'last-year'` | No | `'last-year'` |
-| `leetcode-username`| LeetCode handle for problem solving telemetry | No | `${{ github.repository_owner }}` |
-| `gfg-username` | GeeksforGeeks handle for problem solving telemetry | No | `${{ github.repository_owner }}` |
-| `hackerrank-username`| HackerRank handle for badges and achievements | No | `${{ github.repository_owner }}` |
-| `duolingo-username`| Duolingo handle for streak and course telemetry | No | `${{ github.repository_owner }}` |
-| `output-dir` | Output folder where SVGs will be saved | No | `'assets'` |
-| `filename` | Output filename for primary 3D city SVG | No | `'profile-3d-city.svg'` |
+Want an AI coding assistant (like **Google Antigravity**, **Cursor**, **ChatGPT**, or **Claude**) to automatically set up and enhance your profile repository with this action?
 
-### Action Outputs
+Copy and paste this prompt into your assistant:
 
-| Output | Description |
-| :--- | :--- |
-| `svg-path` | Path to generated 3D City SVG |
-| `achievements-svg-path`| Path to generated Achievements & Medals SVG |
-| `velocity-svg-path`| Path to generated Commit Velocity Wave SVG |
-| `radar-svg-path` | Path to generated Competency Radar SVG |
-| `summary-svg-path` | Path to generated Executive Summary SVG |
-| `activity-svg-path` | Path to generated Recent Activity SVG |
-| `habits-svg-path` | Path to generated Coding Habits SVG |
-| `languages-svg-path` | Path to generated Language Matrix SVG |
-| `leetcode-svg-path` | Path to generated LeetCode Telemetry SVG |
-| `gfg-svg-path` | Path to generated GeeksforGeeks Telemetry SVG |
-| `hackerrank-svg-path`| Path to generated HackerRank Achievements SVG |
-| `duolingo-svg-path` | Path to generated Duolingo Streak SVG |
-| `total-contributions` | Total contribution count detected |
-| `active-days` | Count of active contribution days |
+```text
+Please build and upgrade my GitHub Profile Magic Repository (username/username) into a stunning, world-class developer profile.
+
+STRICT INSTRUCTION:
+Do NOT write custom SVG generators, headless scrapers, or ad-hoc scripts from scratch.
+You MUST strictly configure and use the official published GitHub Marketplace Action: `Tharun4743/github-profile-visualizer@v1`.
+
+Requirements:
+1. Create/update `.github/workflows/profile-visualizers.yml` using `uses: Tharun4743/github-profile-visualizer@v1` with `visualizers: 'all'` and `theme: 'pearl-neon'`.
+2. Configure my platform usernames (GitHub, LeetCode, GeeksforGeeks, HackerRank, Duolingo) in the action parameters.
+3. Update `README.md` to embed the generated 3D City (`profile-3d-city.svg`), Executive Summary (`executive-summary.svg`), Achievements, Commit Velocity Wave, Engineering Radar, Coding Habits, Language Matrix, and Multi-Platform Cards inside clean responsive tables.
+4. Verify that all SVGs sync cleanly into `assets/` on every push and scheduled run.
+```
+
+---
+
+## ⚙️ Configuration Inputs & Auto-Fallback
+
+| Input | Description | Default |
+| :--- | :--- | :--- |
+| `username` | Target GitHub username | `${{ github.repository_owner }}` |
+| `visualizers`| Choice of visualizers: `'all'` or comma-separated list (`'3d-city,activity,habits,languages,leetcode,gfg,hackerrank,duolingo,achievements,velocity,radar,summary'`) | `'all'` |
+| `theme` | Built-in palette: `pearl-neon`, `solar-light`, `ocean-light`, `github-light` *(Any dark/legacy theme name automatically adapts to bright pearl aesthetic)* | `'pearl-neon'` |
+| `custom-colors` | 5 comma-separated hex codes for custom tower levels | `''` |
+| `border-radius`| Corner radius in pixels (`0`, `8`, `14`, `20`) | `''` |
+| `show-border` | Display card borders (`true`/`false`) | `'true'` |
+| `title` | Custom header title for the 3D City | `⚡ {username}'s 3D Contribution City` |
+| `height-scale`| Multiplier for 3D tower elevation (`1.0`, `1.5`, `2.0`) | `'1.0'` |
+| `animate` | Enable neon lighting reflection animation (`true`/`false`) | `'true'` |
+| `year` | Specific calendar year (e.g. `2025`) or `'last-year'` | `'last-year'` |
+| `leetcode-username`| LeetCode handle for problem solving telemetry | `${{ github.repository_owner }}` |
+| `gfg-username` | GeeksforGeeks handle for problem solving telemetry | `${{ github.repository_owner }}` |
+| `hackerrank-username`| HackerRank handle for badges and achievements | `${{ github.repository_owner }}` |
+| `duolingo-username`| Duolingo handle for streak and course telemetry | `${{ github.repository_owner }}` |
+| `output-dir` | Output folder where SVGs will be saved | `'assets'` |
+| `filename` | Output filename for primary 3D city SVG | `'profile-3d-city.svg'` |
 
 ---
 
 ## 💻 CLI Usage
 
+You can also run the visualizer directly from your terminal or CI runner:
+
 ```bash
-# Generate all 9 visualizers
+# Generate all visualizers in Pearl Neon Light theme
 npx github-profile-visualizer --username Tharun4743 --visualizers all --output ./assets
 
-# Generate transparent cards with custom corner radius
-npx github-profile-visualizer --username Tharun4743 --visualizers "achievements,velocity,radar,summary" --transparent --border-radius 16
+# Generate specific cards with custom border radius
+npx github-profile-visualizer --username Tharun4743 --visualizers "achievements,velocity,radar,summary" --border-radius 16
 
-# Generate in Dracula theme with 1.5x 3D tower height
-npx github-profile-visualizer --username Tharun4743 --theme dracula --height-scale 1.5
+# Generate Solar Sunrise Light theme
+npx github-profile-visualizer --username Tharun4743 --theme solar-light
 ```
 
 ---

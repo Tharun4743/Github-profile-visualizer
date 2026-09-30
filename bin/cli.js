@@ -21,7 +21,7 @@ function parseArgs() {
   const args = process.argv.slice(2);
   const options = {
     username: null,
-    theme: 'cyberpunk',
+    theme: 'pearl-neon',
     visualizers: 'all',
     customColors: null,
     customBg: null,

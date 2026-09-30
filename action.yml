@@ -12,9 +12,9 @@ inputs:
     required: false
     default: 'all'
   theme:
-    description: 'Color theme: cyberpunk, tokyonight, dracula, nord, matrix, synthwave, monokai, sunset, github-dark, github-light, emerald'
+    description: 'Color theme: pearl-neon, solar-light, ocean-light, github-light (automatically maps any legacy/dark request to light aesthetic)'
     required: false
-    default: 'cyberpunk'
+    default: 'pearl-neon'
   custom-colors:
     description: 'Optional comma-separated list of 5 hex colors for levels 0 to 4 (e.g. "#161b22,#0e4429,#006d32,#26a641,#39d353")'
     required: false
