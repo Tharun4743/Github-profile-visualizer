@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { fetchContributions } = require('../src/fetcher');
 const { render3DCity } = require('../src/isometric');
-const { THEMES } = require('../src/themes');
+const { THEMES, getTheme, createCustomTheme } = require('../src/themes');
 const { renderActivityTimeline } = require('../src/visualizers/activity');
 const { renderCodingHabits } = require('../src/visualizers/habits');
 const { renderLanguageMatrix } = require('../src/visualizers/languages');
@@ -16,6 +16,7 @@ const { renderExecutiveSummary } = require('../src/visualizers/summary');
 const { renderGFGCard } = require('../src/visualizers/gfg');
 const { renderHackerRankCard } = require('../src/visualizers/hackerrank');
 const { renderDuolingoCard } = require('../src/visualizers/duolingo');
+const { renderStatsCard } = require('../src/visualizers/stats');
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -147,19 +148,23 @@ async function main() {
   }
 
   const token = process.env.GITHUB_TOKEN;
-  const allVisualizers = ['3d-city', 'activity', 'habits', 'languages', 'leetcode', 'gfg', 'hackerrank', 'duolingo', 'achievements', 'velocity', 'radar', 'summary'];
+  const allVisualizers = ['3d-city', 'activity', 'habits', 'languages', 'leetcode', 'gfg', 'hackerrank', 'duolingo', 'achievements', 'velocity', 'radar', 'summary', 'stats'];
   const requested = options.visualizers.toLowerCase() === 'all'
     ? allVisualizers
     : options.visualizers.toLowerCase().split(',').map((v) => v.trim());
 
   const themeKeys = Object.keys(THEMES);
-  let activeThemeKey = (options.theme || 'cyberpunk').toLowerCase();
+  let activeThemeKey = (options.theme || 'pearl-neon').toLowerCase();
   if (activeThemeKey === 'random' || activeThemeKey === 'auto' || activeThemeKey === 'rotate') {
     activeThemeKey = themeKeys[Math.floor(Math.random() * themeKeys.length)];
     console.log(`🎲 Dynamic Theme Engine: Selected "${activeThemeKey}" theme.`);
   }
 
-  const selectedTheme = THEMES[activeThemeKey] || THEMES.cyberpunk;
+  let selectedTheme = getTheme(activeThemeKey);
+  if (options.customColors) {
+    selectedTheme = createCustomTheme(options.customColors, options.customBg || selectedTheme.bgStart);
+  }
+
   const universalOptions = {
     theme: activeThemeKey,
     customColors: options.customColors,
@@ -174,7 +179,7 @@ async function main() {
   console.log(`📋 Active visualizers: ${requested.join(', ')}`);
 
   let calendarData = null;
-  const needCalendar = requested.some((r) => ['3d-city', 'city', 'velocity', 'achievements', 'summary'].includes(r));
+  const needCalendar = requested.some((r) => ['3d-city', 'city', 'velocity', 'achievements', 'summary', 'stats', 'analytics'].includes(r));
   if (needCalendar) {
     console.log(`🏙️  Fetching contribution history (${options.year})...`);
     calendarData = await fetchContributions(options.username, token, options.year);
@@ -320,6 +325,25 @@ async function main() {
     const sumPath = path.join(outDir, 'executive-summary.svg');
     fs.writeFileSync(sumPath, sumSvg, 'utf8');
     console.log(`✨ Generated: ${sumPath}`);
+  }
+
+  // 10. GitHub Core Analytics & Stats Card
+  if (requested.includes('stats') || requested.includes('analytics')) {
+    console.log('📊 Generating GitHub Core Analytics & Stats Card...');
+    const statsSvg = renderStatsCard(
+      options.username,
+      {
+        commits: calendarData?.totalCommitContributions || calendarData?.total || 3113,
+        prs: calendarData?.totalPullRequestContributions || 15,
+        stars: calendarData?.totalStars || 8,
+        publicRepos: calendarData?.totalRepositoryContributions || 28
+      },
+      selectedTheme,
+      universalOptions
+    );
+    const statsPath = path.join(outDir, 'stats.svg');
+    fs.writeFileSync(statsPath, statsSvg, 'utf8');
+    console.log(`✨ Generated: ${statsPath}`);
   }
 
   console.log('🎉 Done! All requested visualizers generated successfully.');

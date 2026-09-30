@@ -14,6 +14,7 @@ const { renderExecutiveSummary } = require('../src/visualizers/summary');
 const { renderGFGCard } = require('../src/visualizers/gfg');
 const { renderHackerRankCard } = require('../src/visualizers/hackerrank');
 const { renderDuolingoCard } = require('../src/visualizers/duolingo');
+const { renderStatsCard } = require('../src/visualizers/stats');
 
 const USERNAME = 'Tharun4743';
 const LC_USER = 'Tharunkumar__K';
@@ -110,6 +111,14 @@ async function run() {
       ranking: 15420
     }, theme, universalOpts);
 
+    // 13. GitHub Core Analytics & Stats Card
+    const statsSvg = renderStatsCard(USERNAME, {
+      commits: calendarData.totalCommitContributions || calendarData.total || 3113,
+      prs: calendarData.totalPullRequestContributions || 15,
+      stars: calendarData.totalStars || 8,
+      publicRepos: calendarData.totalRepositoryContributions || 28,
+    }, theme, universalOpts);
+
     // Write primary suffixed files
     const files = {
       [`profile-3d-${themeKey}.svg`]: citySvg,
@@ -124,6 +133,7 @@ async function run() {
       [`commit-velocity-${themeKey}.svg`]: velSvg,
       [`skills-radar-${themeKey}.svg`]: radarSvg,
       [`executive-summary-${themeKey}.svg`]: sumSvg,
+      [`stats-${themeKey}.svg`]: statsSvg,
     };
 
     // Also support white-ocean and white-solar alias names
@@ -140,6 +150,8 @@ async function run() {
       files['commit-velocity-white-ocean.svg'] = velSvg;
       files['skills-radar-white-ocean.svg'] = radarSvg;
       files['executive-summary-white-ocean.svg'] = sumSvg;
+      files['stats-white-ocean.svg'] = statsSvg;
+      files['stats-ocean-light.svg'] = statsSvg;
     }
 
     if (themeKey === 'solar-light') {
@@ -155,6 +167,8 @@ async function run() {
       files['commit-velocity-white-solar.svg'] = velSvg;
       files['skills-radar-white-solar.svg'] = radarSvg;
       files['executive-summary-white-solar.svg'] = sumSvg;
+      files['stats-white-solar.svg'] = statsSvg;
+      files['stats-solar-light.svg'] = statsSvg;
     }
 
     // Default un-suffixed filenames map to cyberpunk
@@ -171,6 +185,7 @@ async function run() {
       files['commit-velocity.svg'] = velSvg;
       files['skills-radar.svg'] = radarSvg;
       files['executive-summary.svg'] = sumSvg;
+      files['stats.svg'] = statsSvg;
     }
 
     for (const d of DIRS) {

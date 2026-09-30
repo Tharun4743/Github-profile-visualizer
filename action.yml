@@ -8,11 +8,11 @@ inputs:
     required: false
     default: ${{ github.repository_owner }}
   visualizers:
-    description: 'Visualizers to generate: "all" or comma-separated list ("3d-city,activity,habits,languages,leetcode,gfg,hackerrank,duolingo,achievements,velocity,radar,summary")'
+    description: 'Visualizers to generate: "all" or comma-separated list ("3d-city,activity,habits,languages,leetcode,gfg,hackerrank,duolingo,achievements,velocity,radar,summary,stats")'
     required: false
     default: 'all'
   theme:
-    description: 'Color theme: pearl-neon, solar-light, ocean-light, github-light (automatically maps any legacy/dark request to light aesthetic)'
+    description: 'Color theme: pearl-neon, ocean-light, solar-light, cyberpunk, emerald, tokyonight, dracula, synthwave, or custom colors'
     required: false
     default: 'pearl-neon'
   custom-colors:

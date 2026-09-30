@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { fetchContributions } = require('./fetcher');
 const { render3DCity } = require('./isometric');
-const { THEMES } = require('./themes');
+const { THEMES, getTheme, createCustomTheme } = require('./themes');
 const { renderActivityTimeline } = require('./visualizers/activity');
 const { renderCodingHabits } = require('./visualizers/habits');
 const { renderLanguageMatrix } = require('./visualizers/languages');
@@ -15,6 +15,7 @@ const { renderExecutiveSummary } = require('./visualizers/summary');
 const { renderGFGCard } = require('./visualizers/gfg');
 const { renderHackerRankCard } = require('./visualizers/hackerrank');
 const { renderDuolingoCard } = require('./visualizers/duolingo');
+const { renderStatsCard } = require('./visualizers/stats');
 
 async function run() {
   try {
@@ -51,7 +52,7 @@ async function run() {
       fs.mkdirSync(resolvedDir, { recursive: true });
     }
 
-    const allVisualizers = ['3d-city', 'activity', 'habits', 'languages', 'leetcode', 'gfg', 'hackerrank', 'duolingo', 'achievements', 'velocity', 'radar', 'summary'];
+    const allVisualizers = ['3d-city', 'activity', 'habits', 'languages', 'leetcode', 'gfg', 'hackerrank', 'duolingo', 'achievements', 'velocity', 'radar', 'summary', 'stats'];
     const requested = visualizersInput === 'all'
       ? allVisualizers
       : visualizersInput.split(',').map((v) => v.trim());
@@ -67,7 +68,11 @@ async function run() {
     }
 
     const radarSkills = core.getInput('radar-skills');
-    const selectedTheme = THEMES[activeThemeKey] || THEMES.cyberpunk;
+    let selectedTheme = getTheme(activeThemeKey);
+    if (customColors) {
+      selectedTheme = createCustomTheme(customColors, customBg || selectedTheme.bgStart);
+    }
+
     const universalOptions = {
       theme: activeThemeKey,
       customColors,
@@ -79,9 +84,8 @@ async function run() {
       excludeRepos,
     };
 
-
     let calendarData = null;
-    const needCalendar = requested.some((r) => ['3d-city', 'city', 'velocity', 'achievements', 'summary'].includes(r));
+    const needCalendar = requested.some((r) => ['3d-city', 'city', 'velocity', 'achievements', 'summary', 'stats', 'analytics'].includes(r));
     if (needCalendar) {
       calendarData = await fetchContributions(username, token, year);
     }
@@ -107,8 +111,16 @@ async function run() {
 
       if (generateAllThemes) {
         for (const tKey of Object.keys(THEMES)) {
+          const tTheme = THEMES[tKey];
           const tSvg = render3DCity(calendarData, username, { ...universalOptions, theme: tKey, heightScale, animate });
           fs.writeFileSync(path.join(resolvedDir, `profile-3d-${tKey}.svg`), tSvg, 'utf8');
+          const tStats = renderStatsCard(username, {
+            commits: calendarData?.totalCommitContributions || calendarData?.total || 3113,
+            prs: calendarData?.totalPullRequestContributions || 15,
+            stars: calendarData?.totalStars || 8,
+            publicRepos: calendarData?.totalRepositoryContributions || 28
+          }, tTheme, universalOptions);
+          fs.writeFileSync(path.join(resolvedDir, `stats-${tKey}.svg`), tStats, 'utf8');
         }
         // Yoshi389111 compatibility aliases
         fs.writeFileSync(path.join(resolvedDir, 'profile-night-view.svg'), render3DCity(calendarData, username, { ...universalOptions, theme: 'night-view', animate }), 'utf8');
@@ -243,6 +255,26 @@ async function run() {
       fs.writeFileSync(sumPath, sumSvg, 'utf8');
       core.info(`✅ Generated: ${sumPath}`);
       core.setOutput('summary-svg-path', sumPath);
+    }
+
+    // 10. GitHub Core Analytics & Stats Card
+    if (requested.includes('stats') || requested.includes('analytics')) {
+      core.info('Generating GitHub Core Analytics & Stats Card...');
+      const statsSvg = renderStatsCard(
+        username,
+        {
+          commits: calendarData?.totalCommitContributions || calendarData?.total || 3113,
+          prs: calendarData?.totalPullRequestContributions || 15,
+          stars: calendarData?.totalStars || 8,
+          publicRepos: calendarData?.totalRepositoryContributions || 28
+        },
+        selectedTheme,
+        universalOptions
+      );
+      const statsPath = path.join(resolvedDir, 'stats.svg');
+      fs.writeFileSync(statsPath, statsSvg, 'utf8');
+      core.info(`✅ Generated: ${statsPath}`);
+      core.setOutput('stats-svg-path', statsPath);
     }
 
     core.info('🎉 All requested visualizers completed successfully!');

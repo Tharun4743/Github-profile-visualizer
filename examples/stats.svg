@@ -1,33 +1,29 @@
 <svg width="467" height="195" viewBox="0 0 467 195" fill="none" xmlns="http://www.w3.org/2000/svg">
   <style>
-    .header { font: 600 18px "Segoe UI", Ubuntu, Sans-Serif; fill: #70a5fd; }
-    .stat { font: 600 14px "Segoe UI", Ubuntu, Sans-Serif; fill: #38bdae; }
-    .bold { font-weight: 700; }
+    .header { font: 700 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: #00f0ff; }
+    .stat-label { font: 600 13px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: #c0caf5; }
+    .stat-val { font: 700 13px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
   </style>
-  <rect x="0.5" y="0.5" rx="8" height="99%" width="466" fill="#1a1b27" stroke="#24283b" stroke-width="1.5" />
-  <g transform="translate(25, 35)">
-    <text x="0" y="0" class="header">Tharunkumar K's GitHub Stats</text>
+  <rect x="0.5" y="0.5" rx="8" height="194" width="466" fill="#090d16" stroke="#243048" stroke-width="1.5" />
+  <g transform="translate(24, 32)">
+    <text x="0" y="0" class="header">📊 GitHub Core Analytics • @Tharun4743</text>
   </g>
-  <g transform="translate(0, 55)">
-    <g transform="translate(25, 0)">
-      <text class="stat bold" x="25" y="12.5">Total Stars Earned:</text>
-      <text class="stat bold" x="224" y="12.5">8</text>
+  <g transform="translate(24, 56)">
+    <g transform="translate(0, 0)">
+      <text class="stat-label" x="0" y="12">Total Stars Earned:</text>
+      <text class="stat-val" x="220" y="12" fill="#ffd866">8 ⭐</text>
     </g>
-    <g transform="translate(25, 25)">
-      <text class="stat bold" x="25" y="12.5">Total Commits:</text>
-      <text class="stat bold" x="224" y="12.5">3,038</text>
+    <g transform="translate(0, 26)">
+      <text class="stat-label" x="0" y="12">Total Lifetime Commits:</text>
+      <text class="stat-val" x="220" y="12" fill="#00f0ff">2,380 ⚡</text>
     </g>
-    <g transform="translate(25, 50)">
-      <text class="stat bold" x="25" y="12.5">Total PRs:</text>
-      <text class="stat bold" x="224" y="12.5">15</text>
+    <g transform="translate(0, 52)">
+      <text class="stat-label" x="0" y="12">Pull Requests Merged:</text>
+      <text class="stat-val" x="220" y="12" fill="#bd93f9">15 PRs</text>
     </g>
-    <g transform="translate(25, 75)">
-      <text class="stat bold" x="25" y="12.5">Total Issues:</text>
-      <text class="stat bold" x="224" y="12.5">0</text>
-    </g>
-    <g transform="translate(25, 100)">
-      <text class="stat bold" x="25" y="12.5">Contributed to (last year):</text>
-      <text class="stat bold" x="224" y="12.5">28</text>
+    <g transform="translate(0, 78)">
+      <text class="stat-label" x="0" y="12">Public Repositories:</text>
+      <text class="stat-val" x="220" y="12" fill="#50fa7b">28 Repos</text>
     </g>
   </g>
   <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
