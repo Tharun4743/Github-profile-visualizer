@@ -109,7 +109,7 @@ const THEME_CONFIGS = {
   synthwave: {
     type: 'normal',
     backgroundColor: '#261435',
-    foregroundColor: '#f92aad',
+    foregroundColor: '#f8f8f2',
     strongColor: '#fede5d',
     weakColor: '#fe4450',
     radarColor: '#36f9f6',
@@ -151,32 +151,62 @@ const THEME_CONFIGS = {
       '#ec4899',
     ],
   },
-  'solar-light': {
+  'white-solar': {
     type: 'normal',
     backgroundColor: '#ffffff',
-    foregroundColor: '#1e293b',
-    strongColor: '#ea580c',
+    foregroundColor: '#1c1917',
+    strongColor: '#c2410c',
     weakColor: '#78716c',
-    radarColor: '#f59e0b',
+    radarColor: '#d97706',
     levels: [
       '#f1f5f9',
       '#fbbf24',
-      '#f97316',
-      '#ef4444',
-      '#e11d48',
+      '#fb923c',
+      '#f87171',
+      '#f43f5e',
+    ],
+  },
+  'solar-light': {
+    type: 'normal',
+    backgroundColor: '#ffffff',
+    foregroundColor: '#1c1917',
+    strongColor: '#c2410c',
+    weakColor: '#78716c',
+    radarColor: '#d97706',
+    levels: [
+      '#f1f5f9',
+      '#fbbf24',
+      '#fb923c',
+      '#f87171',
+      '#f43f5e',
+    ],
+  },
+  'white-ocean': {
+    type: 'normal',
+    backgroundColor: '#ffffff',
+    foregroundColor: '#0f172a',
+    strongColor: '#0f766e',
+    weakColor: '#64748b',
+    radarColor: '#0d9488',
+    levels: [
+      '#e2e8f0',
+      '#5eead4',
+      '#38bdf8',
+      '#3b82f6',
+      '#6366f1',
     ],
   },
   'ocean-light': {
     type: 'normal',
     backgroundColor: '#ffffff',
     foregroundColor: '#0f172a',
-    strongColor: '#0284c7',
+    strongColor: '#0f766e',
     weakColor: '#64748b',
     radarColor: '#0d9488',
     levels: [
       '#e2e8f0',
-      '#2dd4bf',
-      '#0ea5e9',
+      '#5eead4',
+      '#38bdf8',
       '#3b82f6',
       '#6366f1',
     ],
@@ -199,12 +229,28 @@ const THEME_CONFIGS = {
 };
 
 const THEME_ALIASES = {
+  'tokyo-night': 'tokyonight',
+  tokyo: 'tokyonight',
+  synthwave84: 'synthwave',
+  'synthwave-84': 'synthwave',
+  'white-ocean': 'white-ocean',
+  'ocean-light': 'white-ocean',
+  ocean: 'white-ocean',
+  whiteocean: 'white-ocean',
+  'white-solar': 'white-solar',
+  'solar-light': 'white-solar',
+  solar: 'white-solar',
+  whitesolar: 'white-solar',
+  'pearl-neon': 'pearl-neon',
+  pearlneon: 'pearl-neon',
+  pearl: 'pearl-neon',
+  white: 'pearl-neon',
+  light: 'pearl-neon',
   'night-view': 'cyberpunk',
   'night-rainbow': 'cyberpunk',
   'night-green': 'emerald',
   green: 'emerald',
   dark: 'cyberpunk',
-  light: 'pearl-neon',
   default: 'cyberpunk',
 };
 
@@ -375,7 +421,7 @@ function renderLanguageDonut(pieX, pieY, pieWidth, pieHeight, languages, totalCo
   let out = `<g transform="translate(${pieX}, ${pieY})">\n`;
 
   // Background subtle track ring
-  out += `  <circle cx="${radius}" cy="${radius}" r="${(outerR + innerR) / 2}" fill="none" stroke="#f1f5f9" stroke-width="${outerR - innerR}"></circle>\n`;
+  out += `  <circle cx="${radius}" cy="${radius}" r="${(outerR + innerR) / 2}" fill="none" class="stroke-weak" stroke-opacity="0.25" stroke-width="${outerR - innerR}"></circle>\n`;
 
   // Legend markers & labels
   out += `  <g transform="translate(${radius * 2.2}, 0)">\n`;
@@ -389,7 +435,7 @@ function renderLanguageDonut(pieX, pieY, pieWidth, pieHeight, languages, totalCo
       out += `      <animate attributeName="fill-opacity" values="0;${(i + 1) * 0.2};1" dur="3s" repeatCount="1"></animate>\n`;
     }
     out += `    </rect>\n`;
-    out += `    <text x="${(fontSize * 1.5).toFixed(2)}" y="${y.toFixed(2)}" dominant-baseline="middle" font-size="${fontSize.toFixed(2)}px" font-weight="600" class="fill-fg">${lang.language} <tspan font-weight="400" fill="#64748b" font-size="${(fontSize * 0.9).toFixed(2)}px">${pct}%</tspan>\n`;
+    out += `    <text x="${(fontSize * 1.5).toFixed(2)}" y="${y.toFixed(2)}" dominant-baseline="middle" font-size="${fontSize.toFixed(2)}px" font-weight="600" class="fill-fg">${lang.language} <tspan font-weight="500" class="fill-weak" font-size="${(fontSize * 0.9).toFixed(2)}px">${pct}%</tspan>\n`;
     if (isAnimate) {
       out += `      <animate attributeName="fill-opacity" values="0;${(i + 1) * 0.2};1" dur="3s" repeatCount="1"></animate>\n`;
     }

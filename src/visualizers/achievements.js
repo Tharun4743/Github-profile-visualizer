@@ -15,6 +15,9 @@ function renderAchievements(username, data = {}, theme = {}, options = {}) {
   const bg = options.transparent ? 'none' : (theme.bgStart || '#1a1b27');
   const border = showBorder ? (theme.border || '#24283b') : 'none';
   const titleColor = theme.titleColor || '#7aa2f7';
+  const textColor = theme.textColor || (theme.isLight ? '#1e293b' : '#c0caf5');
+  const cardBg = theme.cardBg || (theme.isLight ? '#f8fafc' : '#131620');
+  const watermarkColor = theme.watermarkColor || (theme.isLight ? '#94a3b8' : '#565f89');
 
   // Gamified achievements list
   const achievements = [
@@ -23,32 +26,32 @@ function renderAchievements(username, data = {}, theme = {}, options = {}) {
       title: 'Commit Titan',
       desc: `${totalCommits.toLocaleString()}+ commits`,
       tier: 'Diamond',
-      color: '#00f0ff',
-      border: '#00f0ff',
+      color: theme.isLight ? '#0284c7' : '#00f0ff',
+      border: theme.isLight ? '#38bdf8' : '#00f0ff',
     },
     {
       icon: '🏆',
       title: 'Streak Master',
       desc: `${activeDays}+ active days`,
       tier: 'Gold',
-      color: '#ffd866',
-      border: '#ffd866',
+      color: theme.isLight ? '#d97706' : '#ffd866',
+      border: theme.isLight ? '#f59e0b' : '#ffd866',
     },
     {
       icon: '🧠',
       title: 'Polyglot Dev',
       desc: '5+ Languages',
       tier: 'Platinum',
-      color: '#bd93f9',
-      border: '#bd93f9',
+      color: theme.isLight ? '#7c3aed' : '#bd93f9',
+      border: theme.isLight ? '#8b5cf6' : '#bd93f9',
     },
     {
       icon: '🚀',
       title: 'Open Source',
       desc: `${reposCount}+ Repositories`,
       tier: 'Silver',
-      color: '#50fa7b',
-      border: '#50fa7b',
+      color: theme.isLight ? '#16a34a' : '#50fa7b',
+      border: theme.isLight ? '#22c55e' : '#50fa7b',
     },
   ];
 
@@ -61,9 +64,9 @@ function renderAchievements(username, data = {}, theme = {}, options = {}) {
 
     cardsSvg += `
       <g transform="translate(${x}, ${y})">
-        <rect width="195" height="48" rx="6" fill="#131620" stroke="${ach.border}" stroke-opacity="0.5" stroke-width="1" />
+        <rect width="195" height="48" rx="6" fill="${cardBg}" stroke="${ach.border}" stroke-opacity="0.5" stroke-width="1" />
         <text x="12" y="30" font-size="20">${ach.icon}</text>
-        <text x="42" y="20" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">
+        <text x="42" y="20" fill="${textColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">
           ${ach.title}
         </text>
         <text x="42" y="36" fill="${ach.color}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
@@ -86,7 +89,7 @@ function renderAchievements(username, data = {}, theme = {}, options = {}) {
 
   <!-- Personal Branding Watermark -->
   <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
-    <text x="${width - 24}" y="${height - 10}" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+    <text x="${width - 24}" y="${height - 10}" text-anchor="end" fill="${watermarkColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
   </a>
 </svg>`;
 }

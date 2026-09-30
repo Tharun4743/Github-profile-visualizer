@@ -141,6 +141,9 @@ async function renderActivityTimeline(username, token, theme = {}, options = {})
   const bg = options.transparent ? 'none' : (theme.bgStart || '#1a1b27');
   const border = showBorder ? (theme.border || '#24283b') : 'none';
   const titleColor = theme.titleColor || '#70a5fd';
+  const textColor = theme.textColor || (theme.isLight ? '#1e293b' : '#c0caf5');
+  const subtextColor = theme.subtextColor || (theme.isLight ? '#64748b' : '#8b949e');
+  const watermarkColor = theme.watermarkColor || (theme.isLight ? '#94a3b8' : '#565f89');
 
   let itemsSvg = '';
   events.forEach((item, idx) => {
@@ -148,10 +151,10 @@ async function renderActivityTimeline(username, token, theme = {}, options = {})
     itemsSvg += `
       <g transform="translate(24, ${y})">
         <text x="0" y="12" font-size="12">${item.icon}</text>
-        <text x="22" y="12" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">
+        <text x="22" y="12" fill="${textColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">
           ${item.action} <tspan fill="${item.color}" font-weight="600">${item.target}</tspan>
         </text>
-        <text x="${width - 48}" y="12" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">
+        <text x="${width - 48}" y="12" text-anchor="end" fill="${subtextColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">
           ${item.time}
         </text>
       </g>`;
@@ -159,7 +162,7 @@ async function renderActivityTimeline(username, token, theme = {}, options = {})
 
   if (events.length === 0) {
     itemsSvg = `
-      <text x="${width / 2}" y="110" text-anchor="middle" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13">
+      <text x="${width / 2}" y="110" text-anchor="middle" fill="${subtextColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13">
         No recent public events found.
       </text>`;
   }
@@ -178,7 +181,7 @@ async function renderActivityTimeline(username, token, theme = {}, options = {})
 
   <!-- Personal Branding Watermark -->
   <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
-    <text x="${width - 24}" y="${height - 12}" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+    <text x="${width - 24}" y="${height - 12}" text-anchor="end" fill="${watermarkColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
   </a>
 </svg>`;
 }

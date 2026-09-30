@@ -66,16 +66,20 @@ async function renderCodingHabits(username, token, theme = {}, options = {}) {
   const bg = options.transparent ? 'none' : (theme.bgStart || '#1a1b27');
   const border = showBorder ? (theme.border || '#24283b') : 'none';
   const titleColor = theme.titleColor || '#7aa2f7';
+  const textColor = theme.textColor || (theme.isLight ? '#1e293b' : '#c0caf5');
+  const subtextColor = theme.subtextColor || (theme.isLight ? '#64748b' : '#8b949e');
+  const trackBg = theme.trackBg || (theme.isLight ? '#e2e8f0' : '#131620');
+  const watermarkColor = theme.watermarkColor || (theme.isLight ? '#94a3b8' : '#565f89');
 
   const bar = (pctVal, color, y, label, icon) => {
     const barWidth = Math.max(4, Math.round((pctVal / 100) * 200));
     return `
       <g transform="translate(24, ${y})">
         <text x="0" y="12" font-size="12">${icon}</text>
-        <text x="22" y="12" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500">${label}</text>
-        <rect x="130" y="2" width="200" height="12" rx="6" fill="#131620" />
+        <text x="22" y="12" fill="${textColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500">${label}</text>
+        <rect x="130" y="2" width="200" height="12" rx="6" fill="${trackBg}" />
         <rect x="130" y="2" width="${barWidth}" height="12" rx="6" fill="${color}" />
-        <text x="345" y="12" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">${pctVal}%</text>
+        <text x="345" y="12" fill="${subtextColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">${pctVal}%</text>
       </g>`;
   };
 
@@ -95,13 +99,13 @@ async function renderCodingHabits(username, token, theme = {}, options = {}) {
   ${bar(nPct, '#ff79c6', 136, 'Night Owl (00-06)', '🌙')}
 
   <!-- Footer Tip -->
-  <text x="24" y="${height - 12}" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="9">
+  <text x="24" y="${height - 12}" fill="${subtextColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="9">
     Computed from recent activity telemetry
   </text>
 
   <!-- Personal Branding Watermark -->
   <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
-    <text x="${width - 24}" y="${height - 12}" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+    <text x="${width - 24}" y="${height - 12}" text-anchor="end" fill="${watermarkColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
   </a>
 </svg>`;
 }

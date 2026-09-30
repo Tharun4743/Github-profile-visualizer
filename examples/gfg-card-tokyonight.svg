@@ -14,7 +14,7 @@
 
   <!-- Distribution Progress Bar -->
   <g transform="translate(24, 46)">
-    <rect x="0" y="0" width="419" height="6" rx="3" fill="#282a36" />
+    <rect x="0" y="0" width="419" height="6" rx="3" fill="#292e42" />
     <rect x="0" y="0" width="0" height="6" rx="3" fill="#00b8a3" />
     <rect x="0" y="0" width="0" height="6" fill="#00ea64" />
     <rect x="0" y="0" width="0" height="6" fill="#ffc01e" />
@@ -41,7 +41,7 @@
     </g>
     <g transform="translate(0, 106)">
       <text class="stat-label">Coding Score / Streak:</text>
-      <text x="240" class="stat-val" fill="#8b949e">0 pts • 0d 🔥</text>
+      <text x="240" class="stat-val" fill="#9aa5ce">0 pts • 0d 🔥</text>
     </g>
   </g>
 

@@ -1,6 +1,6 @@
 <svg width="467" height="195" viewBox="0 0 467 195" fill="none" xmlns="http://www.w3.org/2000/svg">
   <style>
-    .stat-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 600; fill: #c0caf5; }
+    .stat-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 600; fill: #f8f8f2; }
     .stat-val { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 700; }
     @keyframes liveThemePulse {
       0%, 100% { stroke: #ffa116; }
@@ -37,12 +37,12 @@
     </g>
     <g transform="translate(0, 114)">
       <text class="stat-label">Global Ranking:</text>
-      <text x="240" class="stat-val" fill="#8b949e">1,015,054</text>
+      <text x="240" class="stat-val" fill="#fede5d">1,015,054</text>
     </g>
   </g>
 
   <!-- Personal Branding Watermark -->
   <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
-    <text x="443" y="183" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+    <text x="443" y="183" text-anchor="end" fill="#fe4450" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
   </a>
 </svg>

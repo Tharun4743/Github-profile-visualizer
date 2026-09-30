@@ -89,6 +89,9 @@ async function renderHackerRankCard(username, theme = {}, options = {}) {
   const border = showBorder ? (theme.border || '#24283b') : 'none';
   const cleanUser = escapeXml(username);
   const cleanName = escapeXml(hr.name);
+  const textColor = theme.textColor || (theme.isLight ? '#1e293b' : '#c0caf5');
+  const subtextColor = theme.subtextColor || (theme.isLight ? '#64748b' : '#8b949e');
+  const watermarkColor = theme.watermarkColor || (theme.isLight ? '#94a3b8' : '#565f89');
 
   const rows = [];
   hr.badges.forEach((b) => {
@@ -109,7 +112,7 @@ async function renderHackerRankCard(username, theme = {}, options = {}) {
     rows.push({ label: 'Challenges Solved:', val: `${hr.totalSolved} challenges`, color: '#00d26a' });
   }
   if (rows.length < 4) {
-    rows.push({ label: 'Profile Standing:', val: `Active Candidate (Lvl ${hr.level})`, color: '#8b949e' });
+    rows.push({ label: 'Profile Standing:', val: `Active Candidate (Lvl ${hr.level})`, color: subtextColor });
   }
 
   const displayRows = rows.slice(0, 4);
@@ -124,7 +127,7 @@ async function renderHackerRankCard(username, theme = {}, options = {}) {
 
   return `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" fill="none" xmlns="http://www.w3.org/2000/svg">
   <style>
-    .stat-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 600; fill: #c0caf5; }
+    .stat-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 600; fill: ${textColor}; }
     .stat-val { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 700; }
     .star-val { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 2px; }
   </style>
@@ -135,7 +138,7 @@ async function renderHackerRankCard(username, theme = {}, options = {}) {
     <text fill="#00ea64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">
       🎖️ HackerRank Achievements • @${cleanUser}
     </text>
-    <text x="419" y="0" text-anchor="end" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
+    <text x="419" y="0" text-anchor="end" fill="${subtextColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
       Level ${hr.level}${hr.country ? ' • ' + escapeXml(hr.country) : ''}
     </text>
   </g>
@@ -147,14 +150,14 @@ async function renderHackerRankCard(username, theme = {}, options = {}) {
 
   <!-- Summary Footer Line -->
   <g transform="translate(24, 168)">
-    <text fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
+    <text fill="${subtextColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
       Total Solved: <tspan fill="#00ea64" font-weight="700">${hr.totalSolved}</tspan> • Earned Stars: <tspan fill="#ffa116" font-weight="700">${hr.totalStars}★</tspan>
     </text>
   </g>
 
   <!-- Personal Branding Watermark -->
   <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
-    <text x="${width - 24}" y="${height - 12}" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+    <text x="${width - 24}" y="${height - 12}" text-anchor="end" fill="${watermarkColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
   </a>
 </svg>`;
 }

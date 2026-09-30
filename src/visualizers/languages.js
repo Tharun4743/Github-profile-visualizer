@@ -80,6 +80,10 @@ async function renderLanguageMatrix(username, token, theme = {}, options = {}) {
   const bg = options.transparent ? 'none' : (theme.bgStart || '#1a1b27');
   const border = showBorder ? (theme.border || '#24283b') : 'none';
   const titleColor = theme.titleColor || '#7aa2f7';
+  const textColor = theme.textColor || (theme.isLight ? '#1e293b' : '#c0caf5');
+  const subtextColor = theme.subtextColor || (theme.isLight ? '#64748b' : '#8b949e');
+  const trackBg = theme.trackBg || (theme.isLight ? '#e2e8f0' : '#131620');
+  const watermarkColor = theme.watermarkColor || (theme.isLight ? '#94a3b8' : '#565f89');
 
   const totalBarWidth = width - 48;
   let currentX = 24;
@@ -101,10 +105,10 @@ async function renderLanguageMatrix(username, token, theme = {}, options = {}) {
     chipsSvg += `
       <g transform="translate(${x}, ${y})">
         <circle cx="6" cy="6" r="5" fill="${item.color}" />
-        <text x="18" y="10" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">
+        <text x="18" y="10" fill="${textColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">
           ${item.lang}
         </text>
-        <text x="120" y="10" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">
+        <text x="120" y="10" fill="${subtextColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">
           ${item.pct}%
         </text>
       </g>`;
@@ -121,7 +125,7 @@ async function renderLanguageMatrix(username, token, theme = {}, options = {}) {
   </g>
 
   <!-- Progress Bar -->
-  <rect x="24" y="65" width="${totalBarWidth}" height="14" rx="6" fill="#131620" />
+  <rect x="24" y="65" width="${totalBarWidth}" height="14" rx="6" fill="${trackBg}" />
   ${barRects}
 
   <!-- Chips -->
@@ -129,7 +133,7 @@ async function renderLanguageMatrix(username, token, theme = {}, options = {}) {
 
   <!-- Personal Branding Watermark -->
   <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
-    <text x="${width - 24}" y="${height - 12}" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+    <text x="${width - 24}" y="${height - 12}" text-anchor="end" fill="${watermarkColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
   </a>
 </svg>`;
 }

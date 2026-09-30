@@ -39,7 +39,7 @@
 
   <!-- Courses Badges -->
   <g transform="translate(24, 168)">
-    <text fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
+    <text fill="#9aa5ce" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
       Enrolled Courses: <tspan fill="#c0caf5" font-weight="700">2</tspan> (Japanese, English)
     </text>
   </g>

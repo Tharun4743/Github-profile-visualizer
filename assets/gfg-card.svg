@@ -14,7 +14,7 @@
 
   <!-- Distribution Progress Bar -->
   <g transform="translate(24, 46)">
-    <rect x="0" y="0" width="419" height="6" rx="3" fill="#282a36" />
+    <rect x="0" y="0" width="419" height="6" rx="3" fill="#181f2f" />
     <rect x="0" y="0" width="0" height="6" rx="3" fill="#00b8a3" />
     <rect x="0" y="0" width="0" height="6" fill="#00ea64" />
     <rect x="0" y="0" width="0" height="6" fill="#ffc01e" />

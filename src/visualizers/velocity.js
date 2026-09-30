@@ -11,6 +11,9 @@ function renderCommitVelocity(days = [], username = '', theme = {}, options = {}
   const border = showBorder ? (theme.border || '#24283b') : 'none';
   const lineColor = theme.titleColor || '#00f0ff';
   const glowColor = theme.statColor || '#7aa2f7';
+  const subtextColor = theme.subtextColor || (theme.isLight ? '#64748b' : '#8b949e');
+  const cardBg = theme.cardBg || (theme.isLight ? '#f8fafc' : '#131620');
+  const watermarkColor = theme.watermarkColor || (theme.isLight ? '#94a3b8' : '#565f89');
 
   // Group days into 12 monthly buckets
   const monthSums = new Array(12).fill(0);
@@ -52,7 +55,7 @@ function renderCommitVelocity(days = [], username = '', theme = {}, options = {}
     const cp2x = p2.x - (p3.x - p1.x) / 6;
     const cp2y = p2.y - (p3.y - p1.y) / 6;
 
-    pathD += ` C ${cp1x.toFixed(1)},${cp1y.toFixed(1)} ${cp2x.toFixed(1)},${cp2y.toFixed(1)} ${p2.x.toFixed(1)},${p2.y.toFixed(1)}`;
+    pathD += ` C ${cp1x.toFixed(1)},${cp1y.toFixed(1)} ${cp2x.toFixed(1)},${cp2y.toFixed(1)} ${p2.x.toFixed(1)},${p2.x.toFixed(1)}`;
   }
 
   // Closed area path for gradient fill
@@ -62,11 +65,11 @@ function renderCommitVelocity(days = [], username = '', theme = {}, options = {}
   let markersSvg = '';
   points.forEach((p, i) => {
     if (i % 2 === 0 || i === 11) {
-      markersSvg += `<text x="${p.x}" y="${height - 18}" text-anchor="middle" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">${p.month}</text>`;
+      markersSvg += `<text x="${p.x}" y="${height - 18}" text-anchor="middle" fill="${subtextColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">${p.month}</text>`;
     }
     if (p.val > 0) {
       markersSvg += `
-        <circle cx="${p.x}" cy="${p.y}" r="3" fill="${lineColor}" stroke="#131620" stroke-width="1.5">
+        <circle cx="${p.x}" cy="${p.y}" r="3.5" fill="${lineColor}" stroke="${cardBg}" stroke-width="1.5">
           <title>${p.month}: ${p.val} contributions</title>
         </circle>`;
     }
@@ -87,7 +90,7 @@ function renderCommitVelocity(days = [], username = '', theme = {}, options = {}
     <text fill="${lineColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">
       📈 Commit Velocity Wave • @${username}
     </text>
-    <text y="18" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">
+    <text y="18" fill="${subtextColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">
       Monthly Engineering Momentum &amp; Volume Curve
     </text>
   </g>
@@ -103,7 +106,7 @@ function renderCommitVelocity(days = [], username = '', theme = {}, options = {}
 
   <!-- Personal Branding Watermark -->
   <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
-    <text x="${width - 24}" y="${height - 10}" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+    <text x="${width - 24}" y="${height - 10}" text-anchor="end" fill="${watermarkColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
   </a>
 </svg>`;
 }

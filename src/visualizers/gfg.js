@@ -79,6 +79,10 @@ async function renderGFGCard(username, theme = {}, options = {}) {
   const bg = options.transparent ? 'none' : (theme.bgStart || '#1a1b27');
   const border = showBorder ? (theme.border || '#24283b') : 'none';
   const cleanUser = escapeXml(username);
+  const textColor = theme.textColor || (theme.isLight ? '#1e293b' : '#c0caf5');
+  const subtextColor = theme.subtextColor || (theme.isLight ? '#64748b' : '#8b949e');
+  const trackBg = theme.trackBg || (theme.isLight ? '#e2e8f0' : '#282a36');
+  const watermarkColor = theme.watermarkColor || (theme.isLight ? '#94a3b8' : '#565f89');
 
   // Distribution bar calculation
   const total = gfg.total || (gfg.basic + gfg.easy + gfg.medium + gfg.hard) || 1;
@@ -90,7 +94,7 @@ async function renderGFGCard(username, theme = {}, options = {}) {
 
   return `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" fill="none" xmlns="http://www.w3.org/2000/svg">
   <style>
-    .stat-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 600; fill: #c0caf5; }
+    .stat-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 600; fill: ${textColor}; }
     .stat-val { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 700; }
   </style>
   <rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="${rx}" fill="${bg}" stroke="${border}" stroke-width="1.5" />
@@ -104,7 +108,7 @@ async function renderGFGCard(username, theme = {}, options = {}) {
 
   <!-- Distribution Progress Bar -->
   <g transform="translate(24, 46)">
-    <rect x="0" y="0" width="${barWidth}" height="6" rx="3" fill="#282a36" />
+    <rect x="0" y="0" width="${barWidth}" height="6" rx="3" fill="${trackBg}" />
     <rect x="0" y="0" width="${basicW}" height="6" rx="3" fill="#00b8a3" />
     <rect x="${basicW}" y="0" width="${easyW}" height="6" fill="#00ea64" />
     <rect x="${basicW + easyW}" y="0" width="${medW}" height="6" fill="#ffc01e" />
@@ -131,13 +135,13 @@ async function renderGFGCard(username, theme = {}, options = {}) {
     </g>
     <g transform="translate(0, 106)">
       <text class="stat-label">Coding Score / Streak:</text>
-      <text x="240" class="stat-val" fill="#8b949e">${gfg.score || gfg.total * 2} pts • ${gfg.streak}d 🔥</text>
+      <text x="240" class="stat-val" fill="${subtextColor}">${gfg.score || gfg.total * 2} pts • ${gfg.streak}d 🔥</text>
     </g>
   </g>
 
   <!-- Personal Branding Watermark -->
   <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
-    <text x="${width - 24}" y="${height - 12}" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+    <text x="${width - 24}" y="${height - 12}" text-anchor="end" fill="${watermarkColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
   </a>
 </svg>`;
 }

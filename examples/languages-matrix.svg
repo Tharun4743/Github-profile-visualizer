@@ -9,7 +9,7 @@
   </g>
 
   <!-- Progress Bar -->
-  <rect x="24" y="65" width="419" height="14" rx="6" fill="#131620" />
+  <rect x="24" y="65" width="419" height="14" rx="6" fill="#181f2f" />
   <rect x="24" y="65" width="253" height="14" rx="5" fill="#3178c6" /><rect x="277" y="65" width="84" height="14"  fill="#3572A5" /><rect x="361" y="65" width="77" height="14"  fill="#f7df1e" /><rect x="438" y="65" width="3" height="14"  fill="#00B4AB" /><rect x="441" y="65" width="3" height="14" rx="5" fill="#e34c26" />
 
   <!-- Chips -->

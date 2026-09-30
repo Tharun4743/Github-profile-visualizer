@@ -12,6 +12,11 @@ function renderExecutiveSummary(username = '', ghData = {}, lcData = {}, theme =
   const titleColor = theme.titleColor || '#00f0ff';
   const statColor = theme.statColor || '#7aa2f7';
 
+  const cardBg = theme.cardBg || (theme.isLight ? '#f8fafc' : '#131620');
+  const cardBorder = theme.cardBorder || (theme.isLight ? '#e2e8f0' : '#24283b');
+  const subtextColor = theme.subtextColor || (theme.isLight ? '#64748b' : '#8b949e');
+  const watermarkColor = theme.watermarkColor || (theme.isLight ? '#94a3b8' : '#565f89');
+
   const commits = (ghData.commits || 2480).toLocaleString();
   const prs = ghData.prs || 12;
   const stars = ghData.stars || 5;
@@ -20,14 +25,14 @@ function renderExecutiveSummary(username = '', ghData = {}, lcData = {}, theme =
 
   const metricBlock = (x, label, value, sublabel, valColor) => `
     <g transform="translate(${x}, 48)">
-      <rect width="168" height="60" rx="6" fill="#131620" stroke="#24283b" stroke-width="0.8" />
-      <text x="14" y="20" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" text-transform="uppercase" letter-spacing="0.5px">
+      <rect width="168" height="60" rx="6" fill="${cardBg}" stroke="${cardBorder}" stroke-width="0.8" />
+      <text x="14" y="20" fill="${subtextColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" text-transform="uppercase" letter-spacing="0.5px">
         ${label}
       </text>
       <text x="14" y="42" fill="${valColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700">
         ${value}
       </text>
-      <text x="154" y="42" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">
+      <text x="154" y="42" text-anchor="end" fill="${subtextColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">
         ${sublabel}
       </text>
     </g>`;
@@ -50,15 +55,15 @@ function renderExecutiveSummary(username = '', ghData = {}, lcData = {}, theme =
   </g>
 
   <!-- 5 Unified Metric Cards across the banner -->
-  ${metricBlock(28, 'Lifetime Commits', commits, 'GitHub', '#00f0ff')}
-  ${metricBlock(208, 'Pull Requests', `${prs} PRs`, 'Merged', '#bd93f9')}
-  ${metricBlock(388, 'Stars Earned', `${stars} ⭐`, 'Community', '#ffd866')}
+  ${metricBlock(28, 'Lifetime Commits', commits, 'GitHub', theme.isLight ? '#0284c7' : '#00f0ff')}
+  ${metricBlock(208, 'Pull Requests', `${prs} PRs`, 'Merged', theme.isLight ? '#7c3aed' : '#bd93f9')}
+  ${metricBlock(388, 'Stars Earned', `${stars} ⭐`, 'Community', theme.isLight ? '#d97706' : '#ffd866')}
   ${metricBlock(568, 'LeetCode Solved', `${lcSolved}`, 'DSA Problems', '#ffa116')}
-  ${metricBlock(748, 'LeetCode Ranking', `${lcRank}`, 'Global', '#00d26a')}
+  ${metricBlock(748, 'LeetCode Ranking', `${lcRank}`, 'Global', theme.isLight ? '#16a34a' : '#00d26a')}
 
   <!-- Personal Branding Watermark -->
   <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
-    <text x="${width - 28}" y="32" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+    <text x="${width - 28}" y="32" text-anchor="end" fill="${watermarkColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
   </a>
 </svg>`;
 }

@@ -5,7 +5,7 @@
     .stroke-fg { stroke: #0f172a; }
     .fill-bg { fill: #ffffff; }
     .stroke-bg { stroke: #ffffff; }
-    .fill-strong { fill: #0284c7; }
+    .fill-strong { fill: #0f766e; }
     .fill-weak { fill: #64748b; }
     .stroke-weak { stroke: #64748b; }
     .radar {
@@ -19,13 +19,13 @@
         .cont-left-0 { fill: rgb(189, 194, 201); }
         .cont-right-0 { fill: rgb(158, 162, 168); }
       
-        .cont-top-1 { fill: #2dd4bf; }
-        .cont-left-1 { fill: rgb(38, 177, 160); }
-        .cont-right-1 { fill: rgb(31, 148, 134); }
+        .cont-top-1 { fill: #5eead4; }
+        .cont-left-1 { fill: rgb(79, 196, 177); }
+        .cont-right-1 { fill: rgb(66, 164, 148); }
       
-        .cont-top-2 { fill: #0ea5e9; }
-        .cont-left-2 { fill: rgb(12, 138, 195); }
-        .cont-right-2 { fill: rgb(10, 115, 163); }
+        .cont-top-2 { fill: #38bdf8; }
+        .cont-left-2 { fill: rgb(47, 158, 207); }
+        .cont-right-2 { fill: rgb(39, 132, 174); }
       
         .cont-top-3 { fill: #3b82f6; }
         .cont-left-3 { fill: rgb(49, 109, 206); }
@@ -102,42 +102,42 @@
 
 <!-- Language Breakdown Donut Chart -->
 <g transform="translate(40, 520)">
-  <circle cx="130" cy="130" r="94.61111111111111" fill="none" stroke="#f1f5f9" stroke-width="44.777777777777786"></circle>
+  <circle cx="130" cy="130" r="94.61111111111111" fill="none" class="stroke-weak" stroke-opacity="0.25" stroke-width="44.777777777777786"></circle>
   <g transform="translate(286, 0)">
     <rect x="0" y="22.71" width="14.00" height="14.00" rx="3" fill="#3178c6" class="stroke-bg" stroke-width="1px">
       <animate attributeName="fill-opacity" values="0;0.2;1" dur="3s" repeatCount="1"></animate>
     </rect>
-    <text x="21.00" y="29.71" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">TypeScript <tspan font-weight="400" fill="#64748b" font-size="12.60px">58%</tspan>
+    <text x="21.00" y="29.71" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">TypeScript <tspan font-weight="500" class="fill-weak" font-size="12.60px">58%</tspan>
       <animate attributeName="fill-opacity" values="0;0.2;1" dur="3s" repeatCount="1"></animate>
     </text>
     <rect x="0" y="59.86" width="14.00" height="14.00" rx="3" fill="#3572A5" class="stroke-bg" stroke-width="1px">
       <animate attributeName="fill-opacity" values="0;0.4;1" dur="3s" repeatCount="1"></animate>
     </rect>
-    <text x="21.00" y="66.86" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">Python <tspan font-weight="400" fill="#64748b" font-size="12.60px">15%</tspan>
+    <text x="21.00" y="66.86" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">Python <tspan font-weight="500" class="fill-weak" font-size="12.60px">15%</tspan>
       <animate attributeName="fill-opacity" values="0;0.4;1" dur="3s" repeatCount="1"></animate>
     </text>
     <rect x="0" y="97.00" width="14.00" height="14.00" rx="3" fill="#f1e05a" class="stroke-bg" stroke-width="1px">
       <animate attributeName="fill-opacity" values="0;0.6000000000000001;1" dur="3s" repeatCount="1"></animate>
     </rect>
-    <text x="21.00" y="104.00" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">JavaScript <tspan font-weight="400" fill="#64748b" font-size="12.60px">15%</tspan>
+    <text x="21.00" y="104.00" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">JavaScript <tspan font-weight="500" class="fill-weak" font-size="12.60px">15%</tspan>
       <animate attributeName="fill-opacity" values="0;0.6000000000000001;1" dur="3s" repeatCount="1"></animate>
     </text>
     <rect x="0" y="134.14" width="14.00" height="14.00" rx="3" fill="#b07219" class="stroke-bg" stroke-width="1px">
       <animate attributeName="fill-opacity" values="0;0.8;1" dur="3s" repeatCount="1"></animate>
     </rect>
-    <text x="21.00" y="141.14" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">Java <tspan font-weight="400" fill="#64748b" font-size="12.60px">4%</tspan>
+    <text x="21.00" y="141.14" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">Java <tspan font-weight="500" class="fill-weak" font-size="12.60px">4%</tspan>
       <animate attributeName="fill-opacity" values="0;0.8;1" dur="3s" repeatCount="1"></animate>
     </text>
     <rect x="0" y="171.29" width="14.00" height="14.00" rx="3" fill="#e34c26" class="stroke-bg" stroke-width="1px">
       <animate attributeName="fill-opacity" values="0;1;1" dur="3s" repeatCount="1"></animate>
     </rect>
-    <text x="21.00" y="178.29" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">HTML <tspan font-weight="400" fill="#64748b" font-size="12.60px">4%</tspan>
+    <text x="21.00" y="178.29" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">HTML <tspan font-weight="500" class="fill-weak" font-size="12.60px">4%</tspan>
       <animate attributeName="fill-opacity" values="0;1;1" dur="3s" repeatCount="1"></animate>
     </text>
     <rect x="0" y="208.43" width="14.00" height="14.00" rx="3" fill="#94a3b8" class="stroke-bg" stroke-width="1px">
       <animate attributeName="fill-opacity" values="0;1.2000000000000002;1" dur="3s" repeatCount="1"></animate>
     </rect>
-    <text x="21.00" y="215.43" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">Other <tspan font-weight="400" fill="#64748b" font-size="12.60px">4%</tspan>
+    <text x="21.00" y="215.43" dominant-baseline="middle" font-size="14.00px" font-weight="600" class="fill-fg">Other <tspan font-weight="500" class="fill-weak" font-size="12.60px">4%</tspan>
       <animate attributeName="fill-opacity" values="0;1.2000000000000002;1" dur="3s" repeatCount="1"></animate>
     </text>
   </g>

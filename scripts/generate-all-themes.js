@@ -44,7 +44,15 @@ DIRS.forEach(d => {
 async function run() {
   console.log('🚀 Generating Full Multi-Theme Suite (Synthwave, Tokyo Night, White Ocean, White Solar, Cyberpunk, Emerald, Pearl-Neon)...');
   const token = process.env.GITHUB_TOKEN || '';
-  const calendarData = await fetchContributions(USERNAME, token, 'last-year');
+  
+  console.log('📡 Fetching telemetry data once...');
+  const [calendarData, lcCardDefault, gfgCardDefault, hrCardDefault, duoCardDefault] = await Promise.all([
+    fetchContributions(USERNAME, token, 'last-year'),
+    renderLeetCodeCard(LC_USER, THEMES.cyberpunk, {}),
+    renderGFGCard(GFG_USER, THEMES.cyberpunk, {}),
+    renderHackerRankCard(HR_USER, THEMES.cyberpunk, {}),
+    renderDuolingoCard(DUO_USER, THEMES.cyberpunk, {}),
+  ]);
 
   for (const themeKey of THEME_LIST) {
     console.log(`\n🎨 Rendering Theme: [${themeKey}]...`);
@@ -84,7 +92,7 @@ async function run() {
     }, theme, universalOpts);
 
     // 10. Commit Velocity Wave
-    const velSvg = renderCommitVelocity(calendarData.days, theme, universalOpts);
+    const velSvg = renderCommitVelocity(calendarData.days, USERNAME, theme, universalOpts);
 
     // 11. Skills Radar
     const radarSvg = renderSkillsRadar(USERNAME, theme, {

@@ -75,6 +75,9 @@ async function renderDuolingoCard(username, theme = {}, options = {}) {
   const bg = options.transparent ? 'none' : (theme.bgStart || '#1a1b27');
   const border = showBorder ? (theme.border || '#24283b') : 'none';
   const cleanUser = escapeXml(username);
+  const textColor = theme.textColor || (theme.isLight ? '#1e293b' : '#c0caf5');
+  const subtextColor = theme.subtextColor || (theme.isLight ? '#64748b' : '#8b949e');
+  const watermarkColor = theme.watermarkColor || (theme.isLight ? '#94a3b8' : '#565f89');
 
   const topCourse = duo.courses.length > 0 ? duo.courses[0] : null;
   const courseTitle = topCourse?.title || duo.learningLanguage?.toUpperCase() || 'Language Practice';
@@ -82,7 +85,7 @@ async function renderDuolingoCard(username, theme = {}, options = {}) {
 
   return `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" fill="none" xmlns="http://www.w3.org/2000/svg">
   <style>
-    .stat-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 600; fill: #c0caf5; }
+    .stat-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 600; fill: ${textColor}; }
     .stat-val { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 700; }
     @keyframes duoGlowPulse {
       0%, 100% { stroke: #58cc02; }
@@ -121,14 +124,14 @@ async function renderDuolingoCard(username, theme = {}, options = {}) {
 
   <!-- Courses Badges -->
   <g transform="translate(24, 168)">
-    <text fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
-      Enrolled Courses: <tspan fill="#c0caf5" font-weight="700">${duo.courses.length || 1}</tspan> (${duo.courses.map(c => escapeXml(c.title)).slice(0, 3).join(', ') || 'Global'})
+    <text fill="${subtextColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
+      Enrolled Courses: <tspan fill="${textColor}" font-weight="700">${duo.courses.length || 1}</tspan> (${duo.courses.map(c => escapeXml(c.title)).slice(0, 3).join(', ') || 'Global'})
     </text>
   </g>
 
   <!-- Personal Branding Watermark -->
   <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
-    <text x="${width - 24}" y="${height - 12}" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+    <text x="${width - 24}" y="${height - 12}" text-anchor="end" fill="${watermarkColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
   </a>
 </svg>`;
 }

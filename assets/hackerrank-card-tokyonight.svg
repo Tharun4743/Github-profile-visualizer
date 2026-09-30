@@ -11,7 +11,7 @@
     <text fill="#00ea64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">
       🎖️ HackerRank Achievements • @Tharun4743
     </text>
-    <text x="419" y="0" text-anchor="end" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
+    <text x="419" y="0" text-anchor="end" fill="#9aa5ce" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
       Level 1
     </text>
   </g>
@@ -28,13 +28,13 @@
     </g>
     <g transform="translate(0, 52)">
       <text class="stat-label">Profile Standing:</text>
-      <text x="220" class="stat-val" fill="#8b949e">Active Candidate (Lvl 1)</text>
+      <text x="220" class="stat-val" fill="#9aa5ce">Active Candidate (Lvl 1)</text>
     </g>
   </g>
 
   <!-- Summary Footer Line -->
   <g transform="translate(24, 168)">
-    <text fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
+    <text fill="#9aa5ce" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
       Total Solved: <tspan fill="#00ea64" font-weight="700">0</tspan> • Earned Stars: <tspan fill="#ffa116" font-weight="700">0★</tspan>
     </text>
   </g>

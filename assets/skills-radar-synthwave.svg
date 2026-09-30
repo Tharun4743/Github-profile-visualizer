@@ -18,19 +18,19 @@
   <!-- Concentric Rings and Spokes -->
   <polygon points="233.5,91.7 252.8,105.7 245.4,128.4 221.6,128.4 214.2,105.7" fill="none" stroke="#24283b" stroke-width="1" /><polygon points="233.5,71.4 272.1,99.5 257.4,144.8 209.6,144.8 194.9,99.5" fill="none" stroke="#24283b" stroke-width="1" /><polygon points="233.5,54.0 288.7,94.1 267.6,158.9 199.4,158.9 178.3,94.1" fill="none" stroke="#24283b" stroke-width="1" />
   <line x1="233.5" y1="112" x2="233.5" y2="54" stroke="#24283b" stroke-width="1" />
-      <text x="233.5" y="44" text-anchor="middle" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
+      <text x="233.5" y="44" text-anchor="middle" fill="#f8f8f2" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
         Algorithms
       </text><line x1="233.5" y1="112" x2="288.6612779451189" y2="94.07701432625305" stroke="#24283b" stroke-width="1" />
-      <text x="305.7802952384317" y="93.75077640500379" text-anchor="start" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
+      <text x="305.7802952384317" y="93.75077640500379" text-anchor="start" fill="#f8f8f2" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
         Full Stack
       </text><line x1="233.5" y1="112" x2="267.59154463296346" y2="158.92298567374695" stroke="#24283b" stroke-width="1" />
-      <text x="278.17167917422796" y="174.2492235949962" text-anchor="start" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
+      <text x="278.17167917422796" y="174.2492235949962" text-anchor="start" fill="#f8f8f2" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
         Distributed
       </text><line x1="233.5" y1="112" x2="199.40845536703657" y2="158.92298567374695" stroke="#24283b" stroke-width="1" />
-      <text x="188.82832082577204" y="174.2492235949962" text-anchor="end" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
+      <text x="188.82832082577204" y="174.2492235949962" text-anchor="end" fill="#f8f8f2" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
         System Design
       </text><line x1="233.5" y1="112" x2="178.3387220548811" y2="94.07701432625305" stroke="#24283b" stroke-width="1" />
-      <text x="161.21970476156832" y="93.75077640500379" text-anchor="end" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
+      <text x="161.21970476156832" y="93.75077640500379" text-anchor="end" fill="#f8f8f2" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
         APIs &amp; DBs
       </text>
 
@@ -39,6 +39,6 @@
 
   <!-- Personal Branding Watermark -->
   <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
-    <text x="443" y="185" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+    <text x="443" y="185" text-anchor="end" fill="#fe4450" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
   </a>
 </svg>

@@ -47,6 +47,10 @@ function renderSkillsRadar(username = '', theme = {}, options = {}) {
   const totalAxes = skills.length;
   const angleStep = (Math.PI * 2) / totalAxes;
 
+  const gridStroke = theme.isLight ? '#cbd5e1' : '#24283b';
+  const textColor = theme.textColor || (theme.isLight ? '#1e293b' : '#c0caf5');
+  const watermarkColor = theme.watermarkColor || (theme.isLight ? '#94a3b8' : '#565f89');
+
   // Concentric grid rings (25%, 50%, 75%, 100%)
   let ringsSvg = '';
   [0.35, 0.7, 1.0].forEach((rPct) => {
@@ -58,7 +62,7 @@ function renderSkillsRadar(username = '', theme = {}, options = {}) {
       const y = centerY + r * Math.sin(angle);
       ringPts += `${x.toFixed(1)},${y.toFixed(1)} `;
     }
-    ringsSvg += `<polygon points="${ringPts.trim()}" fill="none" stroke="#24283b" stroke-width="1" />`;
+    ringsSvg += `<polygon points="${ringPts.trim()}" fill="none" stroke="${gridStroke}" stroke-width="1" />`;
   });
 
   // Axis Spokes and Labels
@@ -68,7 +72,7 @@ function renderSkillsRadar(username = '', theme = {}, options = {}) {
     const angle = i * angleStep - Math.PI / 2;
     const endX = centerX + maxRadius * Math.cos(angle);
     const endY = centerY + maxRadius * Math.sin(angle);
-    spokesSvg += `<line x1="${centerX}" y1="${centerY}" x2="${endX}" y2="${endY}" stroke="#24283b" stroke-width="1" />`;
+    spokesSvg += `<line x1="${centerX}" y1="${centerY}" x2="${endX}" y2="${endY}" stroke="${gridStroke}" stroke-width="1" />`;
 
     // Data polygon vertex
     const dataRadius = maxRadius * skill.score;
@@ -82,7 +86,7 @@ function renderSkillsRadar(username = '', theme = {}, options = {}) {
     const anchor = Math.cos(angle) > 0.3 ? 'start' : Math.cos(angle) < -0.3 ? 'end' : 'middle';
 
     spokesSvg += `
-      <text x="${labelX}" y="${labelY}" text-anchor="${anchor}" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
+      <text x="${labelX}" y="${labelY}" text-anchor="${anchor}" fill="${textColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">
         ${skill.name}
       </text>`;
   });
@@ -113,7 +117,7 @@ function renderSkillsRadar(username = '', theme = {}, options = {}) {
 
   <!-- Personal Branding Watermark -->
   <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
-    <text x="${width - 24}" y="${height - 10}" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+    <text x="${width - 24}" y="${height - 10}" text-anchor="end" fill="${watermarkColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
   </a>
 </svg>`;
 }
