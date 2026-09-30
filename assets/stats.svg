@@ -1,0 +1,36 @@
+<svg width="467" height="195" viewBox="0 0 467 195" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .header { font: 600 18px "Segoe UI", Ubuntu, Sans-Serif; fill: #70a5fd; }
+    .stat { font: 600 14px "Segoe UI", Ubuntu, Sans-Serif; fill: #38bdae; }
+    .bold { font-weight: 700; }
+  </style>
+  <rect x="0.5" y="0.5" rx="8" height="99%" width="466" fill="#1a1b27" stroke="#24283b" stroke-width="1.5" />
+  <g transform="translate(25, 35)">
+    <text x="0" y="0" class="header">Tharunkumar K's GitHub Stats</text>
+  </g>
+  <g transform="translate(0, 55)">
+    <g transform="translate(25, 0)">
+      <text class="stat bold" x="25" y="12.5">Total Stars Earned:</text>
+      <text class="stat bold" x="224" y="12.5">8</text>
+    </g>
+    <g transform="translate(25, 25)">
+      <text class="stat bold" x="25" y="12.5">Total Commits:</text>
+      <text class="stat bold" x="224" y="12.5">3,036</text>
+    </g>
+    <g transform="translate(25, 50)">
+      <text class="stat bold" x="25" y="12.5">Total PRs:</text>
+      <text class="stat bold" x="224" y="12.5">15</text>
+    </g>
+    <g transform="translate(25, 75)">
+      <text class="stat bold" x="25" y="12.5">Total Issues:</text>
+      <text class="stat bold" x="224" y="12.5">0</text>
+    </g>
+    <g transform="translate(25, 100)">
+      <text class="stat bold" x="25" y="12.5">Contributed to (last year):</text>
+      <text class="stat bold" x="224" y="12.5">28</text>
+    </g>
+  </g>
+  <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">
+    <text x="443" y="183" text-anchor="end" fill="#565f89" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" opacity="0.85">⚡ by @Tharun4743</text>
+  </a>
+</svg>
