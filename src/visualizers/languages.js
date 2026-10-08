@@ -54,14 +54,6 @@ const LANG_COLORS = {
   Other: '#8b949e',
 };
 
-const DEFAULT_LANGS = [
-  { lang: 'TypeScript', pct: 45.2, color: '#3178c6' },
-  { lang: 'JavaScript', pct: 26.8, color: '#f7df1e' },
-  { lang: 'Java', pct: 14.5, color: '#b07219' },
-  { lang: 'Python', pct: 8.5, color: '#3572A5' },
-  { lang: 'HTML/CSS', pct: 5.0, color: '#e34c26' }
-];
-
 async function renderLanguageMatrix(username, token, theme = {}, options = {}) {
   let sorted = [];
   try {
@@ -88,8 +80,8 @@ async function renderLanguageMatrix(username, token, theme = {}, options = {}) {
     sorted = [];
   }
 
-  if (!sorted || sorted.length === 0) {
-    sorted = DEFAULT_LANGS;
+  if (!sorted) {
+    sorted = [];
   }
 
   const width = options.width || 467;

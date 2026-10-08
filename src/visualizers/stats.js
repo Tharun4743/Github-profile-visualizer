@@ -21,10 +21,10 @@ function renderStatsCard(username = '', data = {}, theme = {}, options = {}) {
   const textColor = theme.textColor || (theme.isLight ? '#0f172a' : '#c0caf5');
   const watermarkColor = theme.watermarkColor || (theme.isLight ? '#94a3b8' : '#565f89');
 
-  const stars = data.stars || 8;
-  const commits = (data.commits || 3113).toLocaleString();
-  const prs = data.prs || 15;
-  const repos = data.publicRepos || data.repos || 28;
+  const stars = Number(data.stars || 0);
+  const commits = (data.commits !== undefined ? Number(data.commits) : 0).toLocaleString();
+  const prs = Number(data.prs || 0);
+  const repos = Number(data.publicRepos || data.repos || 0);
 
   return `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" fill="none" xmlns="http://www.w3.org/2000/svg">
   <style>

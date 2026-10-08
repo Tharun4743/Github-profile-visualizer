@@ -135,7 +135,7 @@ async function renderGFGCard(username, theme = {}, options = {}) {
     </g>
     <g transform="translate(0, 106)">
       <text class="stat-label">Coding Score / Streak:</text>
-      <text x="240" class="stat-val" fill="${subtextColor}">${gfg.score || gfg.total * 2} pts • ${gfg.streak}d 🔥</text>
+      <text x="240" class="stat-val" fill="${subtextColor}">${gfg.score || 0} pts • ${gfg.streak || 0}d 🔥</text>
     </g>
   </g>
 

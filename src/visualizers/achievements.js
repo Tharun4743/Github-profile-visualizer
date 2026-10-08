@@ -3,10 +3,10 @@
  * Calculates gamified developer achievement medals based on real telemetry.
  */
 function renderAchievements(username, data = {}, theme = {}, options = {}) {
-  const totalCommits = data.commits || 2480;
-  const stars = data.stars || 5;
-  const reposCount = data.publicRepos || 26;
-  const activeDays = data.activeDays || 190;
+  const totalCommits = Number(data.commits || 0);
+  const stars = Number(data.stars || 0);
+  const reposCount = Number(data.publicRepos || 0);
+  const activeDays = Number(data.activeDays || 0);
 
   const width = options.width || 467;
   const height = 195;

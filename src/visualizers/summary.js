@@ -17,11 +17,11 @@ function renderExecutiveSummary(username = '', ghData = {}, lcData = {}, theme =
   const subtextColor = theme.subtextColor || (theme.isLight ? '#64748b' : '#8b949e');
   const watermarkColor = theme.watermarkColor || (theme.isLight ? '#94a3b8' : '#565f89');
 
-  const commits = (ghData.commits || 2480).toLocaleString();
-  const prs = ghData.prs || 12;
-  const stars = ghData.stars || 5;
-  const lcSolved = lcData.total || 'Active';
-  const lcRank = lcData.ranking ? lcData.ranking.toLocaleString() : 'Top Tier';
+  const commits = (ghData.commits !== undefined ? ghData.commits : 0).toLocaleString();
+  const prs = ghData.prs || 0;
+  const stars = ghData.stars || 0;
+  const lcSolved = lcData.total !== undefined ? lcData.total : 0;
+  const lcRank = lcData.ranking ? lcData.ranking.toLocaleString() : 'N/A';
 
   const metricBlock = (x, label, value, sublabel, valColor) => `
     <g transform="translate(${x}, 48)">

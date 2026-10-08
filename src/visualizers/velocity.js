@@ -45,15 +45,6 @@ function renderCommitVelocity(days = [], username = '', theme = {}, options = {}
     }
   });
 
-  // If no calendar days were matched (e.g. initial profile or scraper fallback), populate with active curve
-  const totalSum = monthBuckets.reduce((sum, b) => sum + b.count, 0);
-  if (totalSum === 0) {
-    const fallbackPattern = [35, 52, 68, 95, 120, 160, 140, 195, 230, 260, 290, 340];
-    fallbackPattern.forEach((val, idx) => {
-      monthBuckets[idx].count = val;
-    });
-  }
-
   const maxVal = Math.max(1, ...monthBuckets.map((b) => b.count));
   const chartLeft = 36;
   const chartRight = width - 36;
