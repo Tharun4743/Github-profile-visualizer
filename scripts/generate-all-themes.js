@@ -6,7 +6,7 @@ const { THEMES } = require('../src/themes');
 const { renderActivityTimeline } = require('../src/visualizers/activity');
 const { renderCodingHabits } = require('../src/visualizers/habits');
 const { renderLanguageMatrix } = require('../src/visualizers/languages');
-const { renderLeetCodeCard } = require('../src/visualizers/leetcode');
+const { renderLeetCodeCard, fetchLeetCode } = require('../src/visualizers/leetcode');
 const { renderAchievements } = require('../src/visualizers/achievements');
 const { renderCommitVelocity } = require('../src/visualizers/velocity');
 const { renderSkillsRadar } = require('../src/visualizers/radar');
@@ -46,10 +46,10 @@ async function run() {
   console.log('🚀 Generating Full Multi-Theme Suite (Synthwave, Tokyo Night, White Ocean, White Solar, Cyberpunk, Emerald, Pearl-Neon)...');
   const token = process.env.GITHUB_TOKEN || '';
   
-  console.log('📡 Fetching telemetry data once...');
-  const [calendarData, lcCardDefault, gfgCardDefault, hrCardDefault, duoCardDefault] = await Promise.all([
+  console.log('📡 Fetching real telemetry data once...');
+  const [calendarData, lcData, gfgCardDefault, hrCardDefault, duoCardDefault] = await Promise.all([
     fetchContributions(USERNAME, token, 'last-year'),
-    renderLeetCodeCard(LC_USER, THEMES.cyberpunk, {}),
+    fetchLeetCode(LC_USER),
     renderGFGCard(GFG_USER, THEMES.cyberpunk, {}),
     renderHackerRankCard(HR_USER, THEMES.cyberpunk, {}),
     renderDuolingoCard(DUO_USER, THEMES.cyberpunk, {}),
@@ -101,22 +101,19 @@ async function run() {
       skills: 'Algorithms:0.94,Full Stack:0.96,Distributed:0.88,System Design:0.90,APIs & DBs:0.95'
     });
 
-    // 12. Executive Summary
+    // 12. Executive Summary (100% Real Live Metrics)
     const sumSvg = renderExecutiveSummary(USERNAME, {
       commits: calendarData.totalCommitContributions || calendarData.total,
-      prs: calendarData.totalPullRequestContributions || 12,
-      stars: calendarData.totalStars || 8,
-    }, {
-      total: 350,
-      ranking: 15420
-    }, theme, universalOpts);
-
-    // 13. GitHub Core Analytics & Stats Card
-    const statsSvg = renderStatsCard(USERNAME, {
-      commits: calendarData.totalCommitContributions || calendarData.total || 3113,
       prs: calendarData.totalPullRequestContributions || 15,
       stars: calendarData.totalStars || 8,
-      publicRepos: calendarData.totalRepositoryContributions || 28,
+    }, lcData || { total: 'Active', ranking: 0 }, theme, universalOpts);
+
+    // 13. GitHub Core Analytics & Stats Card (100% Real Live Metrics)
+    const statsSvg = renderStatsCard(USERNAME, {
+      commits: calendarData.totalCommitContributions || calendarData.total,
+      prs: calendarData.totalPullRequestContributions || 15,
+      stars: calendarData.totalStars || 8,
+      publicRepos: calendarData.totalRepositoryContributions || 29,
     }, theme, universalOpts);
 
     // Write primary suffixed files

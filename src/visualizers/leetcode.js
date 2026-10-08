@@ -129,4 +129,4 @@ async function renderLeetCodeCard(username, theme = {}, options = {}) {
 </svg>`;
 }
 
-module.exports = { renderLeetCodeCard };
+module.exports = { renderLeetCodeCard, fetchLeetCode };

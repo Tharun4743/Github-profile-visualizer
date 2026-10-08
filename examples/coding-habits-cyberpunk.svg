@@ -13,32 +13,32 @@
         <text x="0" y="12" font-size="12">🌅</text>
         <text x="22" y="12" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500">Morning (06-12)</text>
         <rect x="130" y="2" width="200" height="12" rx="6" fill="#181f2f" />
-        <rect x="130" y="2" width="54" height="12" rx="6" fill="#00d26a" />
-        <text x="345" y="12" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">27%</text>
+        <rect x="130" y="2" width="10" height="12" rx="6" fill="#00d26a" />
+        <text x="345" y="12" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">5%</text>
       </g>
   
       <g transform="translate(24, 80)">
         <text x="0" y="12" font-size="12">☀️</text>
         <text x="22" y="12" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500">Daytime (12-18)</text>
         <rect x="130" y="2" width="200" height="12" rx="6" fill="#181f2f" />
-        <rect x="130" y="2" width="110" height="12" rx="6" fill="#00f0ff" />
-        <text x="345" y="12" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">55%</text>
+        <rect x="130" y="2" width="66" height="12" rx="6" fill="#00f0ff" />
+        <text x="345" y="12" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">33%</text>
       </g>
   
       <g transform="translate(24, 108)">
         <text x="0" y="12" font-size="12">🌆</text>
         <text x="22" y="12" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500">Evening (18-24)</text>
         <rect x="130" y="2" width="200" height="12" rx="6" fill="#181f2f" />
-        <rect x="130" y="2" width="22" height="12" rx="6" fill="#bd93f9" />
-        <text x="345" y="12" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">11%</text>
+        <rect x="130" y="2" width="114" height="12" rx="6" fill="#bd93f9" />
+        <text x="345" y="12" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">57%</text>
       </g>
   
       <g transform="translate(24, 136)">
         <text x="0" y="12" font-size="12">🌙</text>
         <text x="22" y="12" fill="#c0caf5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500">Night Owl (00-06)</text>
         <rect x="130" y="2" width="200" height="12" rx="6" fill="#181f2f" />
-        <rect x="130" y="2" width="14" height="12" rx="6" fill="#ff79c6" />
-        <text x="345" y="12" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">7%</text>
+        <rect x="130" y="2" width="10" height="12" rx="6" fill="#ff79c6" />
+        <text x="345" y="12" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">5%</text>
       </g>
 
   <!-- Footer Tip -->

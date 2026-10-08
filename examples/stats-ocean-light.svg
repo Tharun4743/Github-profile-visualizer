@@ -15,7 +15,7 @@
     </g>
     <g transform="translate(0, 26)">
       <text class="stat-label" x="0" y="12">Total Lifetime Commits:</text>
-      <text class="stat-val" x="220" y="12" fill="#0f766e">2,389 ⚡</text>
+      <text class="stat-val" x="220" y="12" fill="#0f766e">2,436 ⚡</text>
     </g>
     <g transform="translate(0, 52)">
       <text class="stat-label" x="0" y="12">Pull Requests Merged:</text>
@@ -23,7 +23,7 @@
     </g>
     <g transform="translate(0, 78)">
       <text class="stat-label" x="0" y="12">Public Repositories:</text>
-      <text class="stat-val" x="220" y="12" fill="#6366f1">28 Repos</text>
+      <text class="stat-val" x="220" y="12" fill="#6366f1">29 Repos</text>
     </g>
   </g>
   <a href="https://github.com/Tharun4743/github-profile-visualizer" target="_blank">

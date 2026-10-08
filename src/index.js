@@ -7,7 +7,7 @@ const { THEMES, getTheme, createCustomTheme } = require('./themes');
 const { renderActivityTimeline } = require('./visualizers/activity');
 const { renderCodingHabits } = require('./visualizers/habits');
 const { renderLanguageMatrix } = require('./visualizers/languages');
-const { renderLeetCodeCard } = require('./visualizers/leetcode');
+const { renderLeetCodeCard, fetchLeetCode } = require('./visualizers/leetcode');
 const { renderAchievements } = require('./visualizers/achievements');
 const { renderCommitVelocity } = require('./visualizers/velocity');
 const { renderSkillsRadar } = require('./visualizers/radar');
@@ -84,6 +84,32 @@ async function run() {
       excludeRepos,
     };
 
+    // Helper to persist files under both standard and themed names
+    function saveSvg(baseName, content, extraFilename = null) {
+      if (!content) return;
+      // 1. Standard base filename (e.g. assets/commit-velocity.svg)
+      const standardPath = path.join(resolvedDir, `${baseName}.svg`);
+      fs.writeFileSync(standardPath, content, 'utf8');
+
+      // 2. Themed filename (e.g. assets/commit-velocity-ocean-light.svg)
+      if (activeThemeKey) {
+        const themedPath = path.join(resolvedDir, `${baseName}-${activeThemeKey}.svg`);
+        fs.writeFileSync(themedPath, content, 'utf8');
+      }
+
+      // 3. Theme aliases for white-ocean and white-solar
+      if (activeThemeKey === 'ocean-light') {
+        fs.writeFileSync(path.join(resolvedDir, `${baseName}-white-ocean.svg`), content, 'utf8');
+      } else if (activeThemeKey === 'solar-light') {
+        fs.writeFileSync(path.join(resolvedDir, `${baseName}-white-solar.svg`), content, 'utf8');
+      }
+
+      // 4. Custom specified filename if provided
+      if (extraFilename && extraFilename !== `${baseName}.svg`) {
+        fs.writeFileSync(path.join(resolvedDir, extraFilename), content, 'utf8');
+      }
+    }
+
     let calendarData = null;
     const needCalendar = requested.some((r) => ['3d-city', 'city', 'velocity', 'achievements', 'summary', 'stats', 'analytics'].includes(r));
     if (needCalendar) {
@@ -102,11 +128,14 @@ async function run() {
         heightScale,
       });
       const cityPath = path.join(resolvedDir, filename);
-      fs.writeFileSync(cityPath, citySvg, 'utf8');
-      core.info(`✅ Generated: ${cityPath}`);
+      saveSvg('profile-3d-city', citySvg, filename);
+      if (activeThemeKey) {
+        fs.writeFileSync(path.join(resolvedDir, `profile-3d-${activeThemeKey}.svg`), citySvg, 'utf8');
+      }
+      core.info(`✅ Generated 3D City: ${cityPath}`);
       core.setOutput('svg-path', cityPath);
-      core.setOutput('total-contributions', calendarData.total.toString());
-      const activeDays = calendarData.days.filter((d) => (d.level || 0) > 0).length;
+      core.setOutput('total-contributions', (calendarData?.total || 0).toString());
+      const activeDays = calendarData?.days ? calendarData.days.filter((d) => (d.count || d.level || 0) > 0).length : 0;
       core.setOutput('active-days', activeDays.toString());
 
       if (generateAllThemes) {
@@ -115,10 +144,10 @@ async function run() {
           const tSvg = render3DCity(calendarData, username, { ...universalOptions, theme: tKey, heightScale, animate });
           fs.writeFileSync(path.join(resolvedDir, `profile-3d-${tKey}.svg`), tSvg, 'utf8');
           const tStats = renderStatsCard(username, {
-            commits: calendarData?.totalCommitContributions || calendarData?.total || 3113,
-            prs: calendarData?.totalPullRequestContributions || 15,
-            stars: calendarData?.totalStars || 8,
-            publicRepos: calendarData?.totalRepositoryContributions || 28
+            commits: calendarData?.totalCommitContributions || calendarData?.total || 0,
+            prs: calendarData?.totalPullRequestContributions || 0,
+            stars: calendarData?.totalStars || 0,
+            publicRepos: calendarData?.totalRepositoryContributions || 0
           }, tTheme, universalOptions);
           fs.writeFileSync(path.join(resolvedDir, `stats-${tKey}.svg`), tStats, 'utf8');
         }
@@ -133,40 +162,42 @@ async function run() {
     if (requested.includes('activity') || requested.includes('activity-timeline')) {
       core.info('Generating Recent Activity Timeline...');
       const actSvg = await renderActivityTimeline(username, token, selectedTheme, universalOptions);
-      const actPath = path.join(resolvedDir, 'activity-timeline.svg');
-      fs.writeFileSync(actPath, actSvg, 'utf8');
-      core.info(`✅ Generated: ${actPath}`);
-      core.setOutput('activity-svg-path', actPath);
+      saveSvg('activity-timeline', actSvg);
+      core.info('✅ Generated Activity Timeline');
+      core.setOutput('activity-svg-path', path.join(resolvedDir, 'activity-timeline.svg'));
     }
 
     // 3. Coding Habits
     if (requested.includes('habits') || requested.includes('coding-habits')) {
       core.info('Generating Coding Habits Radar...');
       const habitsSvg = await renderCodingHabits(username, token, selectedTheme, universalOptions);
-      const habitsPath = path.join(resolvedDir, 'coding-habits.svg');
-      fs.writeFileSync(habitsPath, habitsSvg, 'utf8');
-      core.info(`✅ Generated: ${habitsPath}`);
-      core.setOutput('habits-svg-path', habitsPath);
+      saveSvg('coding-habits', habitsSvg);
+      core.info('✅ Generated Coding Habits');
+      core.setOutput('habits-svg-path', path.join(resolvedDir, 'coding-habits.svg'));
     }
 
     // 4. Languages Matrix
     if (requested.includes('languages') || requested.includes('langs')) {
       core.info('Generating Languages Matrix...');
       const langSvg = await renderLanguageMatrix(username, token, selectedTheme, universalOptions);
-      const langPath = path.join(resolvedDir, 'languages-matrix.svg');
-      fs.writeFileSync(langPath, langSvg, 'utf8');
-      core.info(`✅ Generated: ${langPath}`);
-      core.setOutput('languages-svg-path', langPath);
+      saveSvg('languages-matrix', langSvg);
+      core.info('✅ Generated Languages Matrix');
+      core.setOutput('languages-svg-path', path.join(resolvedDir, 'languages-matrix.svg'));
     }
 
     // 5. LeetCode Card
+    let realLeetCodeData = null;
+    if (requested.includes('leetcode') || requested.includes('summary') || requested.includes('executive-summary')) {
+      core.info(`Fetching real LeetCode stats for @${leetcodeUser}...`);
+      realLeetCodeData = await fetchLeetCode(leetcodeUser);
+    }
+
     if (requested.includes('leetcode')) {
       core.info(`Generating LeetCode Card for @${leetcodeUser}...`);
       const lcSvg = await renderLeetCodeCard(leetcodeUser, selectedTheme, universalOptions);
-      const lcPath = path.join(resolvedDir, 'leetcode-card.svg');
-      fs.writeFileSync(lcPath, lcSvg, 'utf8');
-      core.info(`✅ Generated: ${lcPath}`);
-      core.setOutput('leetcode-svg-path', lcPath);
+      saveSvg('leetcode-card', lcSvg);
+      core.info('✅ Generated LeetCode Card');
+      core.setOutput('leetcode-svg-path', path.join(resolvedDir, 'leetcode-card.svg'));
     }
 
     // 5b. GeeksforGeeks Card
@@ -174,10 +205,9 @@ async function run() {
       core.info(`Generating GeeksforGeeks Card for @${gfgUser}...`);
       const gfgSvg = await renderGFGCard(gfgUser, selectedTheme, universalOptions);
       if (gfgSvg) {
-        const gfgPath = path.join(resolvedDir, 'gfg-card.svg');
-        fs.writeFileSync(gfgPath, gfgSvg, 'utf8');
-        core.info(`✅ Generated: ${gfgPath}`);
-        core.setOutput('gfg-svg-path', gfgPath);
+        saveSvg('gfg-card', gfgSvg);
+        core.info('✅ Generated GeeksforGeeks Card');
+        core.setOutput('gfg-svg-path', path.join(resolvedDir, 'gfg-card.svg'));
       }
     }
 
@@ -186,10 +216,9 @@ async function run() {
       core.info(`Generating HackerRank Card for @${hackerrankUser}...`);
       const hrSvg = await renderHackerRankCard(hackerrankUser, selectedTheme, universalOptions);
       if (hrSvg) {
-        const hrPath = path.join(resolvedDir, 'hackerrank-card.svg');
-        fs.writeFileSync(hrPath, hrSvg, 'utf8');
-        core.info(`✅ Generated: ${hrPath}`);
-        core.setOutput('hackerrank-svg-path', hrPath);
+        saveSvg('hackerrank-card', hrSvg);
+        core.info('✅ Generated HackerRank Card');
+        core.setOutput('hackerrank-svg-path', path.join(resolvedDir, 'hackerrank-card.svg'));
       }
     }
 
@@ -198,86 +227,89 @@ async function run() {
       core.info(`Generating Duolingo Card for @${duolingoUser}...`);
       const duoSvg = await renderDuolingoCard(duolingoUser, selectedTheme, universalOptions);
       if (duoSvg) {
-        const duoPath = path.join(resolvedDir, 'duolingo-card.svg');
-        fs.writeFileSync(duoPath, duoSvg, 'utf8');
-        core.info(`✅ Generated: ${duoPath}`);
-        core.setOutput('duolingo-svg-path', duoPath);
+        saveSvg('duolingo-card', duoSvg);
+        core.info('✅ Generated Duolingo Card');
+        core.setOutput('duolingo-svg-path', path.join(resolvedDir, 'duolingo-card.svg'));
       }
     }
 
-    // 6. Developer Trophies & Achievements
+    // 6. Developer Trophies & Achievements (100% Real Numbers)
     if (requested.includes('achievements') || requested.includes('trophies')) {
-      core.info('Generating Achievements & Trophies...');
-      const activeDays = calendarData?.days ? calendarData.days.filter((d) => (d.level || 0) > 0).length : 190;
+      core.info('Generating Achievements & Trophies with live telemetry...');
+      const activeDays = calendarData?.days ? calendarData.days.filter((d) => (d.count || d.level || 0) > 0).length : 0;
       const achSvg = renderAchievements(
         username,
-        { commits: calendarData?.total || 2480, activeDays },
+        {
+          commits: calendarData?.totalCommitContributions || calendarData?.total || 0,
+          stars: calendarData?.totalStars || 0,
+          publicRepos: calendarData?.totalRepositoryContributions || 0,
+          activeDays,
+        },
         selectedTheme,
         universalOptions
       );
-      const achPath = path.join(resolvedDir, 'achievements.svg');
-      fs.writeFileSync(achPath, achSvg, 'utf8');
-      core.info(`✅ Generated: ${achPath}`);
-      core.setOutput('achievements-svg-path', achPath);
+      saveSvg('achievements', achSvg);
+      core.info('✅ Generated Achievements');
+      core.setOutput('achievements-svg-path', path.join(resolvedDir, 'achievements.svg'));
     }
 
-    // 7. Commit Velocity Wave Chart
+    // 7. Commit Velocity Wave Chart (100% Real 365-day Velocity Data)
     if (requested.includes('velocity') || requested.includes('commit-velocity')) {
       core.info('Generating Commit Velocity Wave Chart...');
       const velSvg = renderCommitVelocity(calendarData?.days || [], username, selectedTheme, universalOptions);
-      const velPath = path.join(resolvedDir, 'commit-velocity.svg');
-      fs.writeFileSync(velPath, velSvg, 'utf8');
-      core.info(`✅ Generated: ${velPath}`);
-      core.setOutput('velocity-svg-path', velPath);
+      saveSvg('commit-velocity', velSvg);
+      core.info('✅ Generated Commit Velocity Wave');
+      core.setOutput('velocity-svg-path', path.join(resolvedDir, 'commit-velocity.svg'));
     }
 
     // 8. Engineering Competency Radar
     if (requested.includes('radar') || requested.includes('skills-radar')) {
       core.info('Generating Engineering Competency Radar...');
       const radSvg = renderSkillsRadar(username, selectedTheme, universalOptions);
-      const radPath = path.join(resolvedDir, 'skills-radar.svg');
-      fs.writeFileSync(radPath, radSvg, 'utf8');
-      core.info(`✅ Generated: ${radPath}`);
-      core.setOutput('radar-svg-path', radPath);
+      saveSvg('skills-radar', radSvg);
+      core.info('✅ Generated Skills Radar');
+      core.setOutput('radar-svg-path', path.join(resolvedDir, 'skills-radar.svg'));
     }
 
-    // 9. Executive Summary Banner
+    // 9. Executive Summary Banner (100% Real Telemetry & Real LeetCode Data)
     if (requested.includes('summary') || requested.includes('executive-summary')) {
-      core.info('Generating Executive Summary Banner...');
+      core.info('Generating Executive Summary Banner with live telemetry...');
       const sumSvg = renderExecutiveSummary(
         username,
-        { commits: calendarData?.total || 2480, prs: 12, stars: 5 },
-        { total: 'Active', ranking: 340000 },
+        {
+          commits: calendarData?.totalCommitContributions || calendarData?.total || 0,
+          prs: calendarData?.totalPullRequestContributions || 0,
+          stars: calendarData?.totalStars || 0,
+        },
+        realLeetCodeData || { total: 'Active', ranking: 0 },
         selectedTheme,
         universalOptions
       );
-      const sumPath = path.join(resolvedDir, 'executive-summary.svg');
-      fs.writeFileSync(sumPath, sumSvg, 'utf8');
-      core.info(`✅ Generated: ${sumPath}`);
-      core.setOutput('summary-svg-path', sumPath);
+      saveSvg('executive-summary', sumSvg);
+      core.info('✅ Generated Executive Summary Banner');
+      core.setOutput('summary-svg-path', path.join(resolvedDir, 'executive-summary.svg'));
     }
 
-    // 10. GitHub Core Analytics & Stats Card
+    // 10. GitHub Core Analytics & Stats Card (100% Real Telemetry)
     if (requested.includes('stats') || requested.includes('analytics')) {
-      core.info('Generating GitHub Core Analytics & Stats Card...');
+      core.info('Generating GitHub Core Analytics & Stats Card with live telemetry...');
       const statsSvg = renderStatsCard(
         username,
         {
-          commits: calendarData?.totalCommitContributions || calendarData?.total || 3113,
-          prs: calendarData?.totalPullRequestContributions || 15,
-          stars: calendarData?.totalStars || 8,
-          publicRepos: calendarData?.totalRepositoryContributions || 28
+          commits: calendarData?.totalCommitContributions || calendarData?.total || 0,
+          prs: calendarData?.totalPullRequestContributions || 0,
+          stars: calendarData?.totalStars || 0,
+          publicRepos: calendarData?.totalRepositoryContributions || 0
         },
         selectedTheme,
         universalOptions
       );
-      const statsPath = path.join(resolvedDir, 'stats.svg');
-      fs.writeFileSync(statsPath, statsSvg, 'utf8');
-      core.info(`✅ Generated: ${statsPath}`);
-      core.setOutput('stats-svg-path', statsPath);
+      saveSvg('stats', statsSvg);
+      core.info('✅ Generated Stats Card');
+      core.setOutput('stats-svg-path', path.join(resolvedDir, 'stats.svg'));
     }
 
-    core.info('🎉 All requested visualizers completed successfully!');
+    core.info('🎉 All requested visualizers completed successfully with real numbers!');
   } catch (error) {
     core.setFailed(error.message);
   }
