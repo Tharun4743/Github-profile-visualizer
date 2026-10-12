@@ -240,7 +240,7 @@ async function run() {
       const achSvg = renderAchievements(
         username,
         {
-          commits: calendarData?.totalCommitContributions || calendarData?.total || 0,
+          commits: calendarData?.lifetimeCommits || calendarData?.totalCommitContributions || calendarData?.total || 0,
           stars: calendarData?.totalStars || 0,
           publicRepos: calendarData?.totalRepositoryContributions || 0,
           activeDays,
@@ -277,7 +277,7 @@ async function run() {
       const sumSvg = renderExecutiveSummary(
         username,
         {
-          commits: calendarData?.totalCommitContributions || calendarData?.total || 0,
+          commits: calendarData?.lifetimeCommits || calendarData?.totalCommitContributions || calendarData?.total || 0,
           prs: calendarData?.totalPullRequestContributions || 0,
           stars: calendarData?.totalStars || 0,
         },
@@ -296,7 +296,7 @@ async function run() {
       const statsSvg = renderStatsCard(
         username,
         {
-          commits: calendarData?.totalCommitContributions || calendarData?.total || 0,
+          commits: calendarData?.lifetimeCommits || calendarData?.totalCommitContributions || calendarData?.total || 0,
           prs: calendarData?.totalPullRequestContributions || 0,
           stars: calendarData?.totalStars || 0,
           publicRepos: calendarData?.totalRepositoryContributions || 0

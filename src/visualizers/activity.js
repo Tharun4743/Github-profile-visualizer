@@ -34,7 +34,7 @@ function fetchJson(url, token) {
 }
 
 function timeAgo(dateStr) {
-  const diff = Date.now() - new Date(dateStr).getTime();
+  const diff = Math.max(0, Date.now() - new Date(dateStr).getTime());
   const mins = Math.floor(diff / 60000);
   if (mins < 60) return `${mins}m ago`;
   const hours = Math.floor(mins / 60);
@@ -46,17 +46,19 @@ function timeAgo(dateStr) {
 function formatEvent(e) {
   const repo = e.repo ? e.repo.name.replace(/^[^/]+\//, '') : 'repository';
   const time = timeAgo(e.created_at);
+  const ref = e.payload?.ref?.replace('refs/heads/', '') || 'main';
 
   switch (e.type) {
     case 'PushEvent': {
-      const commitCount = e.payload?.commits?.length || 1;
-      const msg = e.payload?.commits?.[0]?.message?.split('\n')[0] || 'code updates';
-      const cleanMsg = msg.length > 32 ? msg.substring(0, 30) + '...' : msg;
+      const commitCount = e.payload?.commits?.length || (e.payload?.size !== undefined ? e.payload.size : (e.payload?.distinct_size !== undefined ? e.payload.distinct_size : 1));
+      const commitTxt = commitCount ? ` ${commitCount} commit${commitCount > 1 ? 's' : ''}` : '';
+      const msg = e.payload?.commits?.[0]?.message?.split('\n')[0];
+      const detail = msg ? (msg.length > 28 ? msg.substring(0, 26) + '...' : msg) : ref;
       return {
         icon: '⚡',
-        action: `Pushed ${commitCount} commit${commitCount > 1 ? 's' : ''} to`,
+        action: `Pushed${commitTxt} to`,
         target: repo,
-        detail: cleanMsg,
+        detail,
         time,
         color: '#00f0ff',
       };
@@ -67,7 +69,7 @@ function formatEvent(e) {
         icon: '🚀',
         action: `Published release ${tag} in`,
         target: repo,
-        detail: 'Production Release',
+        detail: 'Release',
         time,
         color: '#ff79c6',
       };
@@ -75,7 +77,7 @@ function formatEvent(e) {
     case 'PullRequestEvent': {
       const action = e.payload?.action || 'opened';
       const title = e.payload?.pull_request?.title || 'Pull Request';
-      const cleanTitle = title.length > 32 ? title.substring(0, 30) + '...' : title;
+      const cleanTitle = title.length > 28 ? title.substring(0, 26) + '...' : title;
       return {
         icon: '🔀',
         action: `${action.charAt(0).toUpperCase() + action.slice(1)} PR in`,
@@ -90,18 +92,18 @@ function formatEvent(e) {
         icon: '⭐',
         action: 'Starred repository',
         target: repo,
-        detail: 'Added to favorites',
+        detail: 'Starred',
         time,
         color: '#ffd866',
       };
     }
     case 'CreateEvent': {
-      const refType = e.payload?.ref_type || 'repo';
+      const refType = e.payload?.ref_type || 'repository';
       return {
         icon: '📦',
         action: `Created ${refType} in`,
         target: repo,
-        detail: e.payload?.ref || 'main',
+        detail: ref,
         time,
         color: '#50fa7b',
       };
@@ -109,7 +111,7 @@ function formatEvent(e) {
     default:
       return {
         icon: '🔨',
-        action: 'Contributed to',
+        action: 'Updated repository',
         target: repo,
         detail: 'Activity',
         time,
@@ -119,11 +121,11 @@ function formatEvent(e) {
 }
 
 async function renderActivityTimeline(username, token, theme = {}, options = {}) {
-  const eventsRaw = await fetchJson(`https://api.github.com/users/${username}/events/public?per_page=100`, token);
+  const eventsRaw = options.eventsRaw || options.events || await fetchJson(`https://api.github.com/users/${username}/events/public?per_page=100`, token);
   
   const targetUser = (username || '').toLowerCase();
 
-  // Only include activity on the user's own repositories (no external other repos)
+  // Filter public activity belonging to the target developer's own repositories
   const filteredEvents = Array.isArray(eventsRaw)
     ? eventsRaw.filter((e) => {
         const repoFullName = (e.repo?.name || '').toLowerCase();
@@ -131,8 +133,36 @@ async function renderActivityTimeline(username, token, theme = {}, options = {})
       })
     : [];
 
-  const events = filteredEvents.slice(0, 5).map(formatEvent);
+  // Strictly sort chronological newest-first
+  filteredEvents.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
+  // Deduplicate by distinct repo first to showcase multi-project activity cleanly
+  const distinctEvents = [];
+  const seenRepos = new Set();
+
+  for (const e of filteredEvents) {
+    const repoName = (e.repo?.name || '').replace(/^[^/]+\//, '').toLowerCase();
+    if (!seenRepos.has(repoName)) {
+      seenRepos.add(repoName);
+      distinctEvents.push(e);
+    }
+    if (distinctEvents.length >= 5) break;
+  }
+
+  // Backfill if less than 5 distinct repos in public activity
+  if (distinctEvents.length < 5) {
+    const seenEventIds = new Set(distinctEvents.map((e) => e.id));
+    for (const e of filteredEvents) {
+      if (!seenEventIds.has(e.id)) {
+        seenEventIds.add(e.id);
+        distinctEvents.push(e);
+      }
+      if (distinctEvents.length >= 5) break;
+    }
+    distinctEvents.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  }
+
+  const events = distinctEvents.slice(0, 5).map(formatEvent);
 
   const width = options.width || 467;
   const height = 195;

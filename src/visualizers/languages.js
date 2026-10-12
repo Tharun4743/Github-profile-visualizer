@@ -57,7 +57,7 @@ const LANG_COLORS = {
 async function renderLanguageMatrix(username, token, theme = {}, options = {}) {
   let sorted = [];
   try {
-    const reposRaw = await fetchJson(`https://api.github.com/users/${username}/repos?per_page=100`, token);
+    const reposRaw = options.reposRaw || options.repos || await fetchJson(`https://api.github.com/users/${username}/repos?per_page=100`, token);
     const repos = Array.isArray(reposRaw) ? reposRaw : [];
 
     const langCounts = {};

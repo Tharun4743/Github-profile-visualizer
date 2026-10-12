@@ -1,5 +1,38 @@
 const https = require('https');
 
+function fetchLeetCodeFallback(username) {
+  return new Promise((resolve) => {
+    const req = https.get(
+      `https://alfa-leetcode-api.onrender.com/userProfile/${username}`,
+      {
+        headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
+        timeout: 8000,
+      },
+      (res) => {
+        let d = '';
+        res.on('data', (c) => (d += c));
+        res.on('end', () => {
+          try {
+            const data = JSON.parse(d);
+            if (data && (data.totalSolved !== undefined || data.ranking !== undefined)) {
+              return resolve({
+                total: data.totalSolved || 0,
+                easy: data.easySolved || 0,
+                medium: data.mediumSolved || 0,
+                hard: data.hardSolved || 0,
+                ranking: data.ranking || 0,
+              });
+            }
+          } catch (e) {}
+          resolve({ total: 0, easy: 0, medium: 0, hard: 0, ranking: 0 });
+        });
+      }
+    );
+    req.on('timeout', () => { req.destroy(); resolve({ total: 0, easy: 0, medium: 0, hard: 0, ranking: 0 }); });
+    req.on('error', () => resolve({ total: 0, easy: 0, medium: 0, hard: 0, ranking: 0 }));
+  });
+}
+
 function fetchLeetCode(username) {
   return new Promise((resolve) => {
     const body = JSON.stringify({
@@ -29,6 +62,7 @@ function fetchLeetCode(username) {
         headers: {
           'Content-Type': 'application/json',
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+          Referer: 'https://leetcode.com',
           'Content-Length': Buffer.byteLength(body),
         },
         timeout: 6000,
@@ -36,7 +70,7 @@ function fetchLeetCode(username) {
       (res) => {
         let d = '';
         res.on('data', (c) => (d += c));
-        res.on('end', () => {
+        res.on('end', async () => {
           try {
             const parsed = JSON.parse(d);
             const ac = parsed?.data?.matchedUser?.submitStatsGlobal?.acSubmissionNum || [];
@@ -48,19 +82,25 @@ function fetchLeetCode(username) {
               if (item.difficulty === 'Medium') medium = item.count;
               if (item.difficulty === 'Hard') hard = item.count;
             });
-            resolve({ total, easy, medium, hard, ranking });
-          } catch (e) {
-            resolve({ total: 0, easy: 0, medium: 0, hard: 0, ranking: 0 });
-          }
+            if (total > 0 || ranking > 0) {
+              return resolve({ total, easy, medium, hard, ranking });
+            }
+          } catch (e) {}
+          const fallback = await fetchLeetCodeFallback(username);
+          resolve(fallback);
         });
       }
     );
 
-    req.on('timeout', () => {
+    req.on('timeout', async () => {
       req.destroy();
-      resolve({ total: 0, easy: 0, medium: 0, hard: 0, ranking: 0 });
+      const fallback = await fetchLeetCodeFallback(username);
+      resolve(fallback);
     });
-    req.on('error', () => resolve({ total: 0, easy: 0, medium: 0, hard: 0, ranking: 0 }));
+    req.on('error', async () => {
+      const fallback = await fetchLeetCodeFallback(username);
+      resolve(fallback);
+    });
     req.write(body);
     req.end();
   });

@@ -50,7 +50,6 @@ async function fetchDuolingo(username) {
     courses: (user.courses || []).map(c => ({
       title: c.title,
       xp: Number(c.xp || 0),
-      crowns: Number(c.crowns || 0)
     }))
   };
 }
@@ -80,8 +79,12 @@ async function renderDuolingoCard(username, theme = {}, options = {}) {
   const watermarkColor = theme.watermarkColor || (theme.isLight ? '#94a3b8' : '#565f89');
 
   const topCourse = duo.courses.length > 0 ? duo.courses[0] : null;
-  const courseTitle = topCourse?.title || duo.learningLanguage?.toUpperCase() || 'Language Practice';
+  const courseTitle = topCourse?.title || (duo.learningLanguage === 'ja' ? 'Japanese' : duo.learningLanguage?.toUpperCase()) || 'Language Practice';
   const courseXp = topCourse?.xp || duo.totalXp;
+
+  const courseListStr = duo.courses.length > 0
+    ? duo.courses.map(c => `${escapeXml(c.title)}: ${c.xp} XP`).join(' • ')
+    : 'Active Learner';
 
   return `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" fill="none" xmlns="http://www.w3.org/2000/svg">
   <style>
@@ -117,15 +120,15 @@ async function renderDuolingoCard(username, theme = {}, options = {}) {
       <text x="240" class="stat-val" fill="#58cc02">${escapeXml(courseTitle)}</text>
     </g>
     <g transform="translate(0, 88)">
-      <text class="stat-label">Language XP / Crowns:</text>
-      <text x="240" class="stat-val" fill="#00d26a">${courseXp.toLocaleString()} XP • ${topCourse?.crowns || 0} 👑</text>
+      <text class="stat-label">Language Experience:</text>
+      <text x="240" class="stat-val" fill="#00d26a">${courseXp.toLocaleString()} XP</text>
     </g>
   </g>
 
   <!-- Courses Badges -->
   <g transform="translate(24, 168)">
     <text fill="${subtextColor}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
-      Enrolled Courses: <tspan fill="${textColor}" font-weight="700">${duo.courses.length || 1}</tspan> (${duo.courses.map(c => escapeXml(c.title)).slice(0, 3).join(', ') || 'Global'})
+      Enrolled Courses: <tspan fill="${textColor}" font-weight="700">${courseListStr}</tspan>
     </text>
   </g>
 
