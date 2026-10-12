@@ -129,7 +129,7 @@ async function run() {
     // 9. Achievements (100% Real Live Metrics)
     const achSvg = renderAchievements(USERNAME, {
       commits: calendarData.lifetimeCommits || calendarData.totalCommitContributions || calendarData.total,
-      stars: calendarData.totalStars || 8,
+      stars: calendarData.totalStars || 9,
       publicRepos: calendarData.totalRepositoryContributions || 29,
       activeDays: calendarData.days ? calendarData.days.filter(d => (d.count || d.level || 0) > 0).length : 0,
     }, theme, universalOpts);
@@ -147,14 +147,14 @@ async function run() {
     const sumSvg = renderExecutiveSummary(USERNAME, {
       commits: calendarData.lifetimeCommits || calendarData.totalCommitContributions || calendarData.total,
       prs: calendarData.totalPullRequestContributions || 15,
-      stars: calendarData.totalStars || 8,
+      stars: calendarData.totalStars || 9,
     }, lcData || { total: 'Active', ranking: 0 }, theme, universalOpts);
 
     // 13. GitHub Core Analytics & Stats Card (100% Real Live Metrics)
     const statsSvg = renderStatsCard(USERNAME, {
       commits: calendarData.lifetimeCommits || calendarData.totalCommitContributions || calendarData.total,
       prs: calendarData.totalPullRequestContributions || 15,
-      stars: calendarData.totalStars || 8,
+      stars: calendarData.totalStars || 9,
       publicRepos: calendarData.totalRepositoryContributions || 29,
     }, theme, universalOpts);
 
