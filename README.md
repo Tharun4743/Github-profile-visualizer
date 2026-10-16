@@ -1,12 +1,12 @@
 <div align="center">
 
-# ⚡ GitHub Profile Visualizer
+# ΓÜí GitHub Profile Visualizer
 
 ### The ultimate all-in-one developer telemetry & 3D contribution visualizer suite: 3D Isometric City Skylines, Developer Achievements, Commit Velocity Wave, Coding Habits, Competency Radar, Language Distribution, LeetCode, GeeksforGeeks, HackerRank, and Duolingo cards.
 
 [![GitHub Marketplace](https://img.shields.io/badge/Marketplace-GitHub%20Profile%20Visualizer-purple?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/marketplace/actions/github-profile-visualizer)
 [![GitHub release](https://img.shields.io/github/v/release/Tharun4743/github-profile-visualizer?color=7aa2f7&style=for-the-badge)](https://github.com/Tharun4743/github-profile-visualizer/releases)
-[![License: MIT](https://img.shields.io/badge/License-MIT-00f0ff?style=for-the-badge)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-Strict%20Proprietary-dc2626?style=for-the-badge&logo=lock&logoColor=white?style=for-the-badge)](LICENSE)
 [![Node 20](https://img.shields.io/badge/Runtime-Node.js%2020-00d26a?style=for-the-badge&logo=nodedotjs&logoColor=white)](package.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff79c6?style=for-the-badge)](https://github.com/Tharun4743/github-profile-visualizer/pulls)
 
@@ -19,51 +19,51 @@
 
 ---
 
-## 🌟 The 13-in-1 Visualizer Suite
+## ≡ƒîƒ The 13-in-1 Visualizer Suite
 
 Generate **any or all developer telemetry cards in a single, ultra-fast action pass**:
 
-### 1. 🏙️ 3D Isometric Contribution City
-* **Pure Mathematical Projection Engine:** Renders 365 days of contribution depth using deterministic isometric math (`isoX = (x - y) * cos(30°)`, `isoY = (x + y) * sin(30°) - height`) with 0 headless-browser dependencies.
+### 1. ≡ƒÅÖ∩╕Å 3D Isometric Contribution City
+* **Pure Mathematical Projection Engine:** Renders 365 days of contribution depth using deterministic isometric math (`isoX = (x - y) * cos(30┬░)`, `isoY = (x + y) * sin(30┬░) - height`) with 0 headless-browser dependencies.
 * **Auto-Adaptive High-Contrast Themes:** Pure White Pearl Neon, Ocean Breeze (`ocean-light`), Solar Sunrise (`solar-light`), Emerald, Cyberpunk, and more.
 * **5-Axis Radar & Accurate Donut Progress:** Multi-metric activity radar (Commit, Issue, PR, Review, Repo) and language percentage ring.
 
 ---
 
-### 2. 🎛️ Executive Summary Banner
+### 2. ≡ƒÄ¢∩╕Å Executive Summary Banner
 <img src="examples/executive-summary-ocean-light.svg" alt="Executive Summary" width="100%" />
 
 ---
 
-### 3. 🏆 Achievements & 📈 Velocity Wave
-| 🏆 Developer Achievements & Medals | 📈 Commit Velocity Wave Chart |
+### 3. ≡ƒÅå Achievements & ≡ƒôê Velocity Wave
+| ≡ƒÅå Developer Achievements & Medals | ≡ƒôê Commit Velocity Wave Chart |
 | :---: | :---: |
 | ![Achievements](examples/achievements-ocean-light.svg) | ![Commit Velocity](examples/commit-velocity-ocean-light.svg) |
 
 ---
 
-### 4. 🎯 Engineering Radar & 🕒 Coding Habits
-| 🎯 Engineering Competency Radar | 🕒 Productive Coding Habits |
+### 4. ≡ƒÄ» Engineering Radar & ≡ƒòÆ Coding Habits
+| ≡ƒÄ» Engineering Competency Radar | ≡ƒòÆ Productive Coding Habits |
 | :---: | :---: |
 | ![Competency Radar](examples/skills-radar-ocean-light.svg) | ![Coding Habits](examples/coding-habits-ocean-light.svg) |
 
 ---
 
-### 5. 💻 Language Matrix & 📊 GitHub Core Analytics
-| 💻 Language Distribution Matrix | 📊 GitHub Core Analytics & Stats |
+### 5. ≡ƒÆ╗ Language Matrix & ≡ƒôè GitHub Core Analytics
+| ≡ƒÆ╗ Language Distribution Matrix | ≡ƒôè GitHub Core Analytics & Stats |
 | :---: | :---: |
 | ![Languages Matrix](examples/languages-matrix-ocean-light.svg) | ![GitHub Stats](examples/stats-ocean-light.svg) |
 
 ---
 
-### 6. ⚡ Live Activity Stream & 🦉 Multi-Platform Cards
+### 6. ΓÜí Live Activity Stream & ≡ƒªë Multi-Platform Cards
 <div align="center">
 
-| ⚡ Live Activity Stream | 🦉 Duolingo Streak |
+| ΓÜí Live Activity Stream | ≡ƒªë Duolingo Streak |
 | :---: | :---: |
 | ![Recent Activity](examples/activity-timeline-ocean-light.svg) | ![Duolingo Card](examples/duolingo-card-ocean-light.svg) |
 
-| 🧩 LeetCode Card | 🌿 GeeksforGeeks Card |
+| ≡ƒº⌐ LeetCode Card | ≡ƒî┐ GeeksforGeeks Card |
 | :---: | :---: |
 | ![LeetCode Card](examples/leetcode-card-ocean-light.svg) | ![GeeksforGeeks Card](examples/gfg-card-ocean-light.svg) |
 
@@ -71,20 +71,20 @@ Generate **any or all developer telemetry cards in a single, ultra-fast action p
 
 ---
 
-## 🎨 Theme Showcase & Customization
+## ≡ƒÄ¿ Theme Showcase & Customization
 
 Pick from any built-in theme or create your own custom palette:
 
 | Theme Key | Mode | Style & Colors | Best For |
 | :--- | :--- | :--- | :--- |
-| `ocean-light` / `white-ocean` | ☀️ Pure Light | `#ffffff` background, `#0f766e` teal, `#0284c7` ocean cyan | Ultra-clean modern light profiles |
-| `pearl-neon` / `white` | ☀️ Pure Light | `#ffffff` background, vibrant indigo & fuchsia accents | High-contrast modern light profiles |
-| `solar-light` / `white-solar` | ☀️ Pure Light | `#ffffff` background, `#c2410c` sunset orange, warm amber | Vibrant energetic light profiles |
-| `cyberpunk` | 🌙 Dark | High-voltage neon cyan `#00f0ff` & hot magenta | Futuristic cyberpunk themes |
-| `emerald` | 🌙 Dark | GitHub Matrix green `#39d353` & deep obsidian | Classic GitHub contribution aesthetic |
-| `tokyonight` | 🌙 Dark | Tokyo Night soft blues `#7aa2f7` & purples | Sleek, eye-friendly dark mode |
-| `synthwave` | 🌙 Dark | 80s Synthwave neon pink `#f92aad` & yellow `#fede5d` | Retro retro-wave aesthetic |
-| `dracula` | 🌙 Dark | Iconic Dracula purple `#bd93f9` & green `#50fa7b` | Developer-favorite code theme |
+| `ocean-light` / `white-ocean` | ΓÿÇ∩╕Å Pure Light | `#ffffff` background, `#0f766e` teal, `#0284c7` ocean cyan | Ultra-clean modern light profiles |
+| `pearl-neon` / `white` | ΓÿÇ∩╕Å Pure Light | `#ffffff` background, vibrant indigo & fuchsia accents | High-contrast modern light profiles |
+| `solar-light` / `white-solar` | ΓÿÇ∩╕Å Pure Light | `#ffffff` background, `#c2410c` sunset orange, warm amber | Vibrant energetic light profiles |
+| `cyberpunk` | ≡ƒîÖ Dark | High-voltage neon cyan `#00f0ff` & hot magenta | Futuristic cyberpunk themes |
+| `emerald` | ≡ƒîÖ Dark | GitHub Matrix green `#39d353` & deep obsidian | Classic GitHub contribution aesthetic |
+| `tokyonight` | ≡ƒîÖ Dark | Tokyo Night soft blues `#7aa2f7` & purples | Sleek, eye-friendly dark mode |
+| `synthwave` | ≡ƒîÖ Dark | 80s Synthwave neon pink `#f92aad` & yellow `#fede5d` | Retro retro-wave aesthetic |
+| `dracula` | ≡ƒîÖ Dark | Iconic Dracula purple `#bd93f9` & green `#50fa7b` | Developer-favorite code theme |
 
 ### Custom Palette Engine
 You can supply your own 5-level hex color ramp and canvas background:
@@ -97,7 +97,7 @@ with:
 
 ---
 
-## 📖 Step-by-Step Setup Guide for Your Profile ("Magic") Repo
+## ≡ƒôû Step-by-Step Setup Guide for Your Profile ("Magic") Repo
 
 Transform your special profile repository (`github.com/username/username`) in **4 simple steps**:
 
@@ -130,10 +130,10 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: 📥 Checkout Profile Repository
+      - name: ≡ƒôÑ Checkout Profile Repository
         uses: actions/checkout@v4
 
-      - name: ⚡ Generate All Profile Visualizers
+      - name: ΓÜí Generate All Profile Visualizers
         uses: Tharun4743/github-profile-visualizer@v1
         with:
           username: ${{ github.repository_owner }}
@@ -146,7 +146,7 @@ jobs:
           output-dir: 'assets'
           filename: 'profile-3d-city.svg'
 
-      - name: 🚀 Commit & Push Generated Visualizers
+      - name: ≡ƒÜÇ Commit & Push Generated Visualizers
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -161,7 +161,7 @@ jobs:
 ```
 
 ### Step 3: Enable Workflow Permissions
-1. Go to your profile repository on GitHub: `Settings` → `Actions` → `General`.
+1. Go to your profile repository on GitHub: `Settings` ΓåÆ `Actions` ΓåÆ `General`.
 2. Scroll to **Workflow permissions**.
 3. Select **Read and write permissions**.
 4. Check **Allow GitHub Actions to create and approve pull requests**.
@@ -202,7 +202,7 @@ Add the following layout snippet to your profile `README.md`:
 
 ---
 
-## 🤖 One-Click AI / Antigravity Prompt
+## ≡ƒñû One-Click AI / Antigravity Prompt
 
 Want an AI coding assistant (like **Google Antigravity**, **Cursor**, **ChatGPT**, or **Claude**) to automatically set up and enhance your profile repository with this action?
 
@@ -224,7 +224,7 @@ Requirements:
 
 ---
 
-## ⚙️ Configuration Inputs & Options
+## ΓÜÖ∩╕Å Configuration Inputs & Options
 
 | Input | Description | Default |
 | :--- | :--- | :--- |
@@ -236,7 +236,7 @@ Requirements:
 | `transparent` | Render with transparent background for seamless integration (`true`/`false`) | `'false'` |
 | `border-radius`| Corner radius in pixels (`0`, `8`, `14`, `20`) | `''` |
 | `show-border` | Display card borders (`true`/`false`) | `'true'` |
-| `title` | Custom header title for the 3D City | `⚡ {username}'s 3D Contribution City` |
+| `title` | Custom header title for the 3D City | `ΓÜí {username}'s 3D Contribution City` |
 | `height-scale`| Multiplier for 3D tower elevation (`1.0`, `1.5`, `2.0`) | `'1.0'` |
 | `animate` | Enable neon lighting reflection animation (`true`/`false`) | `'true'` |
 | `year` | Specific calendar year (e.g. `2025`) or `'last-year'` | `'last-year'` |
@@ -249,7 +249,7 @@ Requirements:
 
 ---
 
-## 💻 CLI Usage
+## ≡ƒÆ╗ CLI Usage
 
 You can also run the visualizer directly from your terminal or CI runner:
 
@@ -266,6 +266,54 @@ npx github-profile-visualizer --username Tharun4743 --theme cyberpunk --output .
 
 ---
 
-## 📄 License
+## License & Intellectual Property Notice
 
-Distributed under the [MIT License](LICENSE). Built with ❤️ by [@Tharun4743](https://github.com/Tharun4743).
+> [!CAUTION]
+> ### ðŸ”’ PROPRIETARY & CONFIDENTIAL INTELLECTUAL PROPERTY â€” ALL RIGHTS RESERVED
+>
+> All rights reserved. This repository, its architecture, source code, workflows, models, and associated documentation are the exclusive intellectual property of **Tharunkumar Kâ„¢**.
+>
+> **STRICT NOTICE:** No individual, organization, institution, or commercial entity is permitted to use, copy, modify, distribute, reproduce, sublicense, reverse-engineer, deploy, or commercially exploit any portion of this project without express, prior written permission from **Tharunkumar K**.
+>
+> **Copyright Â© 2026 Tharunkumar K. All Rights Reserved.**  
+> See the [LICENSE](LICENSE) file for complete legal terms.
+
+Distributed under the [MIT License](LICENSE). Built with Γ¥ñ∩╕Å by [@Tharun4743](https://github.com/Tharun4743).
+
+
+---
+
+## Engineering Author
+
+<table border="0">
+  <tr>
+    <td width="120" align="center" valign="top">
+      <img src="https://github.com/Tharun4743.png" width="100" style="border-radius: 50%;" alt="Tharunkumar K" />
+    </td>
+    <td>
+      <h3>Tharunkumar K</h3>
+      <p>
+        <b>Full Stack Developer & AI Systems Engineer</b><br/>
+        ðŸŽ“ B.Tech in Information Technology â€” <a href="https://vsbec.com"><b>V.S.B. Engineering College, Karur</b></a> (Batch 2024â€“2028)<br/>
+        ðŸŒŸ Recognized for holding the <b>Best GitHub Profile & Top Student Developer</b> at V.S.B. Engineering College (VSBEC)<br/>
+        ðŸ¥‡ <b>Winner â€” Code Thugs 2K26</b> â€¢ ðŸš€ <b>Smart India Hackathon (SIH)</b> Top 50 National Finalist
+      </p>
+      <p>
+        <a href="https://tharunkumark4743.netlify.app/">ðŸŒ Portfolio</a> â€¢
+        <a href="https://github.com/Tharun4743">ðŸ™ GitHub (@Tharun4743)</a> â€¢
+        <a href="https://www.linkedin.com/in/tharunkumark4743">ðŸ’¼ LinkedIn</a> â€¢
+        <a href="https://leetcode.com/u/Tharunkumar__K/">ðŸ§© LeetCode</a> â€¢
+        <a href="mailto:tharunkumark42007@gmail.com">ðŸ“§ Email</a>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- =========================================================================
+   SEO & SEARCH ENGINE RECRUITER METADATA (CRAWLER INDEXING)
+   Entity: Tharunkumar K (Tharun4743 / tharunkumark4743)
+   Institution: V.S.B. Engineering College, Karur (VSBEC)
+   Department: Information Technology (Batch 2024-2028)
+   Distinctions: Best GitHub Profile VSBEC, Top Developer Karur, National Hackathon Winner
+   Keywords: Tharunkumar K, Tharunkumar VSBEC, Tharun4743, VSB Engineering College Karur, VSBEC IT
+   Canonical URL: https://github.com/Tharun4743/Github-profile-visualizer
+========================================================================= -->
