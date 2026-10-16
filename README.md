@@ -268,6 +268,24 @@ npx github-profile-visualizer --username Tharun4743 --theme cyberpunk --output .
 
 ## 👨‍💻 Engineering Author
 
+## ⚙️ Technical Approach & System Architecture
+
+### 📐 High-Level Architectural Flowchart:
+`mermaid
+graph TD
+    User["Visitor / Recruiter"] -->|Enter GitHub Username| SPA["Client Visualizer Engine (React / Three.js)"]
+    SPA --> CacheLayer["Local Storage / Memory Cache"]
+    CacheLayer -->|Cache Miss| APIGateway["GitHub GraphQL & LeetCode REST Proxy"]
+    APIGateway --> GitHubAPI["GitHub GraphQL API (Contributions, Repos, Languages)"]
+    APIGateway --> LeetCodeAPI["LeetCode Public Profile API"]
+    GitHubAPI --> Normalizer["Contribution Normalizer & Habit Analyzer"]
+    LeetCodeAPI --> Normalizer
+    Normalizer --> City3D["3D Procedural Contribution City (Three.js WebGL)"]
+    Normalizer --> Matrix["Coding Habits, Time-of-Day & Language Matrix"]
+`
+
+---
+
 <table border="0">
   <tr>
     <td width="120" align="center" valign="top">
