@@ -180,131 +180,31 @@ Add the following layout snippet to your profile `README.md`:
 <img src="assets/executive-summary.svg" width="100%" alt="Executive Summary" />
 
 <!-- 2-Column Telemetry Grid -->
-<table border="0" width="100%">
-  <tr>
-    <td width="50%"><img src="assets/commit-velocity.svg" width="100%" alt="Commit Velocity" /></td>
-    <td width="50%"><img src="assets/activity-timeline.svg" width="100%" alt="Live Activity Stream" /></td>
-  </tr>
-  <tr>
-    <td width="50%"><img src="assets/skills-radar.svg" width="100%" alt="Skills Radar" /></td>
-    <td width="50%"><img src="assets/achievements.svg" width="100%" alt="Achievements" /></td>
-  </tr>
-  <tr>
-    <td width="50%"><img src="assets/languages-matrix.svg" width="100%" alt="Languages Matrix" /></td>
-    <td width="50%"><img src="assets/stats.svg" width="100%" alt="GitHub Core Analytics" /></td>
-  </tr>
-  <tr>
-    <td width="50%"><img src="assets/leetcode-card.svg" width="100%" alt="LeetCode Card" /></td>
-    <td width="50%"><img src="assets/duolingo-card.svg" width="100%" alt="Duolingo Streak" /></td>
-  </tr>
-</table>
-```
-
----
-
-## 🤖 One-Click AI / Antigravity Prompt
-
-Want an AI coding assistant (like **Google Antigravity**, **Cursor**, **ChatGPT**, or **Claude**) to automatically set up and enhance your profile repository with this action?
-
-Copy and paste this prompt into your assistant:
-
-```text
-Please build and upgrade my GitHub Profile Magic Repository (username/username) into a stunning, world-class developer profile.
-
-STRICT INSTRUCTION:
-Do NOT write custom SVG generators, headless scrapers, or ad-hoc scripts from scratch.
-You MUST strictly configure and use the official published GitHub Marketplace Action: `Tharun4743/github-profile-visualizer@v1`.
-
-Requirements:
-1. Create/update `.github/workflows/profile-visualizers.yml` using `uses: Tharun4743/github-profile-visualizer@v1` with `visualizers: 'all'` and `theme: 'ocean-light'` (or your preferred theme).
-2. Configure my platform usernames (GitHub, LeetCode, GeeksforGeeks, HackerRank, Duolingo) in the action parameters.
-3. Update `README.md` to embed the generated 3D City (`profile-3d-city.svg`), Executive Summary (`executive-summary.svg`), Commit Velocity Wave, Skills Radar, Coding Habits, Language Matrix, GitHub Stats, and Multi-Platform Cards inside clean responsive tables.
-4. Verify that all SVGs sync cleanly into `assets/` on every push and scheduled run.
-```
-
----
-
-## ⚙️ Configuration Inputs & Options
-
-| Input | Description | Default |
-| :--- | :--- | :--- |
-| `username` | Target GitHub username | `${{ github.repository_owner }}` |
-| `visualizers`| Choice of visualizers: `'all'` or comma-separated list (`'3d-city,activity,habits,languages,leetcode,gfg,hackerrank,duolingo,achievements,velocity,radar,summary,stats'`) | `'all'` |
-| `theme` | Built-in palette: `ocean-light`, `pearl-neon`, `solar-light`, `cyberpunk`, `emerald`, `tokyonight`, `dracula`, `synthwave` | `'pearl-neon'` |
-| `custom-colors` | 5 comma-separated hex codes for custom tower levels | `''` |
-| `custom-bg` | Custom canvas background hex color | `''` |
-| `transparent` | Render with transparent background for seamless integration (`true`/`false`) | `'false'` |
-| `border-radius`| Corner radius in pixels (`0`, `8`, `14`, `20`) | `''` |
-| `show-border` | Display card borders (`true`/`false`) | `'true'` |
-| `title` | Custom header title for the 3D City | `⚡ {username}'s 3D Contribution City` |
-| `height-scale`| Multiplier for 3D tower elevation (`1.0`, `1.5`, `2.0`) | `'1.0'` |
-| `animate` | Enable neon lighting reflection animation (`true`/`false`) | `'true'` |
-| `year` | Specific calendar year (e.g. `2025`) or `'last-year'` | `'last-year'` |
-| `leetcode-username`| LeetCode handle for problem solving telemetry | `${{ github.repository_owner }}` |
-| `gfg-username` | GeeksforGeeks handle for problem solving telemetry | `${{ github.repository_owner }}` |
-| `hackerrank-username`| HackerRank handle for badges and achievements | `${{ github.repository_owner }}` |
-| `duolingo-username`| Duolingo handle for streak and course telemetry | `${{ github.repository_owner }}` |
-| `output-dir` | Output folder where SVGs will be saved | `'assets'` |
-| `filename` | Output filename for primary 3D city SVG | `'profile-3d-city.svg'` |
-
----
-
-## 💻 CLI Usage
-
-You can also run the visualizer directly from your terminal or CI runner:
-
-```bash
-# Generate all visualizers in White Ocean Light theme
-npx github-profile-visualizer --username Tharun4743 --visualizers all --theme ocean-light --output ./assets
-
-# Generate specific cards with custom border radius
-npx github-profile-visualizer --username Tharun4743 --visualizers "stats,velocity,radar,summary" --border-radius 16
-
-# Generate Cyberpunk Neon theme
-npx github-profile-visualizer --username Tharun4743 --theme cyberpunk --output ./assets
-```
-
----
-
-## 👨‍💻 Engineering Author
-
-## ⚙️ Technical Approach & System Architecture
-
-### 📐 High-Level Architectural Flowchart:
-`mermaid
-graph TD
-    User["Visitor / Recruiter"] -->|Enter GitHub Username| SPA["Client Visualizer Engine (React / Three.js)"]
-    SPA --> CacheLayer["Local Storage / Memory Cache"]
-    CacheLayer -->|Cache Miss| APIGateway["GitHub GraphQL & LeetCode REST Proxy"]
-    APIGateway --> GitHubAPI["GitHub GraphQL API (Contributions, Repos, Languages)"]
-    APIGateway --> LeetCodeAPI["LeetCode Public Profile API"]
-    GitHubAPI --> Normalizer["Contribution Normalizer & Habit Analyzer"]
-    LeetCodeAPI --> Normalizer
-    Normalizer --> City3D["3D Procedural Contribution City (Three.js WebGL)"]
-    Normalizer --> Matrix["Coding Habits, Time-of-Day & Language Matrix"]
-`
-
----
-
-<table border="0">
+<table border="0" itemscope itemtype="https://schema.org/Person">
   <tr>
     <td width="120" align="center" valign="top">
-      <img src="https://github.com/Tharun4743.png" width="100" style="border-radius: 4px;" alt="Tharunkumar K" />
+      <img src="https://github.com/Tharun4743.png" width="100" style="border-radius: 6px;" alt="Tharunkumar K — Full Stack Developer & AI Systems Engineer at V.S.B. Engineering College" title="Tharunkumar K — V.S.B. Engineering College (VSBEC)" itemprop="image" />
     </td>
     <td>
-      <h3>Tharunkumar K</h3>
+      <h3 itemprop="name">Tharunkumar K</h3>
       <p>
-        <b>Full Stack Developer & AI Systems Engineer</b><br/>
-        🎓 B.Tech in Information Technology — <a href="https://vsbec.com"><b>V.S.B. Engineering College, Karur</b></a> (Batch 2024–2028)<br/>
-        🌟 Recognized for holding the <b>Best GitHub Profile & Top Student Developer</b> at V.S.B. Engineering College (VSBEC)<br/>
-        🥇 <b>Winner — Code Thugs 2K26</b> • 🚀 <b>Smart India Hackathon (SIH)</b> Top 50 National Finalist
+        <b itemprop="jobTitle">Full Stack Developer & AI Systems Engineer</b> | <b>V.S.B. Engineering College (VSBEC)</b><br/>
+        🎓 <b>B.Tech in Information Technology</b> — <a href="https://vsbec.com" target="_blank" itemprop="alumniOf" style="text-decoration: none;"><b>V.S.B. Engineering College, Karur</b></a> (Batch 2024–2028)<br/>
+        🌟 Recognized for holding the <b>Best GitHub Profile & Top Student Developer</b> at <b>V.S.B. Engineering College (VSBEC)</b><br/>
+        🥇 <b>Winner — Code Thugs 2K26</b> • 🚀 <b>Smart India Hackathon (SIH)</b> Top 50 National Finalist • 🏆 <b>Odoo × NMIT</b> National Finalist • 🎓 <b>GFG Campus Mantri</b>
       </p>
       <p>
-        <a href="https://tharunkumark4743.netlify.app/">🌐 Portfolio</a> •
-        <a href="https://github.com/Tharun4743">🐙 GitHub (@Tharun4743)</a> •
-        <a href="https://www.linkedin.com/in/tharunkumark4743">💼 LinkedIn</a> •
-        <a href="https://leetcode.com/u/Tharunkumar__K/">🧩 LeetCode</a> •
-        <a href="mailto:tharunkumark42007@gmail.com">📧 Email</a>
+        🚀 <b>Top Flagship Engineering Projects:</b><br/>
+        • 🏛️ <a href="https://github.com/Tharun4743/Taskmanager" style="text-decoration: none;"><b>TaskManager (VSBEC IT Vault)</b></a> — Institutional Task Governance & LeetCode/GitHub Daemon Sync (<a href="https://it-taskmanager.vercel.app/" style="text-decoration: none;">Live Portal</a>)<br/>
+        • 🧠 <a href="https://github.com/Tharun4743/AURA" style="text-decoration: none;"><b>AURA</b></a> — Air-Gapped Local Multimodal RAG Engine & Offline AI Knowledge Assistant<br/>
+        • 🪖 <a href="https://github.com/Tharun4743/AGILE-INNOVATORS-smart-helmet-" style="text-decoration: none;"><b>Smart Helmet IoT</b></a> — SIH Top 50 Dual-Unit Embedded Motorcycle Accident Prevention System
+      </p>
+      <p>
+        <a href="https://tharunkumark4743.netlify.app/" target="_blank" rel="noopener me" style="text-decoration: none;">🌐 Tharunkumar K Portfolio</a> •
+        <a href="https://github.com/Tharun4743" target="_blank" rel="noopener me" style="text-decoration: none;">🐙 GitHub (@Tharun4743)</a> •
+        <a href="https://www.linkedin.com/in/tharunkumark4743" target="_blank" rel="noopener me" style="text-decoration: none;">💼 LinkedIn</a> •
+        <a href="https://leetcode.com/u/Tharunkumar__K/" target="_blank" rel="noopener me" style="text-decoration: none;">🧩 LeetCode</a> •
+        <a href="mailto:tharunkumark42007@gmail.com" itemprop="email" style="text-decoration: none;">📧 Email</a>
       </p>
     </td>
   </tr>
