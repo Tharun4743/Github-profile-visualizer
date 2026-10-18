@@ -8,7 +8,7 @@ inputs:
     required: false
     default: ${{ github.repository_owner }}
   visualizers:
-    description: 'Visualizers to generate: "all" or comma-separated list ("3d-city,activity,habits,languages,leetcode,gfg,hackerrank,duolingo,achievements,velocity,radar,summary,stats")'
+    description: 'Visualizers to generate: "all" or comma-separated list ("3d-city,activity,habits,languages,leetcode,gfg,hackerrank,duolingo,achievements,velocity,radar,summary,stats,chart")'
     required: false
     default: 'all'
   theme:

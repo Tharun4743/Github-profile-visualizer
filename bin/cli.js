@@ -17,6 +17,7 @@ const { renderGFGCard } = require('../src/visualizers/gfg');
 const { renderHackerRankCard } = require('../src/visualizers/hackerrank');
 const { renderDuolingoCard } = require('../src/visualizers/duolingo');
 const { renderStatsCard } = require('../src/visualizers/stats');
+const { renderContributionChart } = require('../src/visualizers/chart');
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -148,7 +149,7 @@ async function main() {
   }
 
   const token = process.env.GITHUB_TOKEN;
-  const allVisualizers = ['3d-city', 'activity', 'habits', 'languages', 'leetcode', 'gfg', 'hackerrank', 'duolingo', 'achievements', 'velocity', 'radar', 'summary', 'stats'];
+  const allVisualizers = ['3d-city', 'activity', 'habits', 'languages', 'leetcode', 'gfg', 'hackerrank', 'duolingo', 'achievements', 'velocity', 'radar', 'summary', 'stats', 'chart'];
   const requested = options.visualizers.toLowerCase() === 'all'
     ? allVisualizers
     : options.visualizers.toLowerCase().split(',').map((v) => v.trim());
@@ -179,7 +180,7 @@ async function main() {
   console.log(`📋 Active visualizers: ${requested.join(', ')}`);
 
   let calendarData = null;
-  const needCalendar = requested.some((r) => ['3d-city', 'city', 'velocity', 'achievements', 'summary', 'stats', 'analytics'].includes(r));
+  const needCalendar = requested.some((r) => ['3d-city', 'city', 'velocity', 'achievements', 'summary', 'stats', 'analytics', 'chart', 'grid', 'calendar', 'contribution-chart'].includes(r));
   if (needCalendar) {
     console.log(`🏙️  Fetching contribution history (${options.year})...`);
     calendarData = await fetchContributions(options.username, token, options.year);
@@ -344,6 +345,20 @@ async function main() {
     const statsPath = path.join(outDir, 'stats.svg');
     fs.writeFileSync(statsPath, statsSvg, 'utf8');
     console.log(`✨ Generated: ${statsPath}`);
+  }
+
+  // 11. Native Contribution Chart Grid
+  if (requested.includes('chart') || requested.includes('grid') || requested.includes('calendar') || requested.includes('contribution-chart')) {
+    console.log('📈 Generating Native Contribution Chart Grid...');
+    const chartSvg = renderContributionChart(
+      calendarData.days,
+      options.username,
+      selectedTheme,
+      universalOptions
+    );
+    const chartPath = path.join(outDir, 'contribution-chart.svg');
+    fs.writeFileSync(chartPath, chartSvg, 'utf8');
+    console.log(`✨ Generated: ${chartPath}`);
   }
 
   console.log('🎉 Done! All requested visualizers generated successfully.');

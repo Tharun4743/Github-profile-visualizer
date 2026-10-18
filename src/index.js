@@ -16,6 +16,7 @@ const { renderGFGCard } = require('./visualizers/gfg');
 const { renderHackerRankCard } = require('./visualizers/hackerrank');
 const { renderDuolingoCard } = require('./visualizers/duolingo');
 const { renderStatsCard } = require('./visualizers/stats');
+const { renderContributionChart } = require('./visualizers/chart');
 
 async function run() {
   try {
@@ -52,7 +53,7 @@ async function run() {
       fs.mkdirSync(resolvedDir, { recursive: true });
     }
 
-    const allVisualizers = ['3d-city', 'activity', 'habits', 'languages', 'leetcode', 'gfg', 'hackerrank', 'duolingo', 'achievements', 'velocity', 'radar', 'summary', 'stats'];
+    const allVisualizers = ['3d-city', 'activity', 'habits', 'languages', 'leetcode', 'gfg', 'hackerrank', 'duolingo', 'achievements', 'velocity', 'radar', 'summary', 'stats', 'chart'];
     const requested = visualizersInput === 'all'
       ? allVisualizers
       : visualizersInput.split(',').map((v) => v.trim());
@@ -111,7 +112,7 @@ async function run() {
     }
 
     let calendarData = null;
-    const needCalendar = requested.some((r) => ['3d-city', 'city', 'velocity', 'achievements', 'summary', 'stats', 'analytics'].includes(r));
+    const needCalendar = requested.some((r) => ['3d-city', 'city', 'velocity', 'achievements', 'summary', 'stats', 'analytics', 'chart', 'grid', 'calendar', 'contribution-chart'].includes(r));
     if (needCalendar) {
       calendarData = await fetchContributions(username, token, year);
     }
@@ -307,6 +308,20 @@ async function run() {
       saveSvg('stats', statsSvg);
       core.info('✅ Generated Stats Card');
       core.setOutput('stats-svg-path', path.join(resolvedDir, 'stats.svg'));
+    }
+
+    // 11. Native Contribution Chart Grid (Direct ghchart.rshah.org replacement)
+    if (requested.includes('chart') || requested.includes('grid') || requested.includes('calendar') || requested.includes('contribution-chart')) {
+      core.info('Generating Native Contribution Chart Grid...');
+      const chartSvg = renderContributionChart(
+        calendarData.days,
+        username,
+        selectedTheme,
+        universalOptions
+      );
+      saveSvg('contribution-chart', chartSvg);
+      core.info('✅ Generated Native Contribution Chart Grid');
+      core.setOutput('chart-svg-path', path.join(resolvedDir, 'contribution-chart.svg'));
     }
 
     core.info('🎉 All requested visualizers completed successfully with real numbers!');
