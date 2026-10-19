@@ -20,15 +20,19 @@ function hexToRgb(hex) {
 
 function generateColorRamp(primaryHex, isLight = true) {
   const { r, g, b } = hexToRgb(primaryHex);
-  const empty = isLight ? '#ebedf0' : '#161b22';
+  const empty = isLight ? '#e2e8f0' : '#161b22';
   
-  // Calculate 4 progressive tints from subtle to primary full intensity
+  const dR = Math.max(0, Math.round(r * 0.72));
+  const dG = Math.max(0, Math.round(g * 0.72));
+  const dB = Math.max(0, Math.round(b * 0.72));
+
+  // High-contrast progressive ramp with deepened level 1 and dark maximum level 4
   return [
     empty,
-    `rgba(${r}, ${g}, ${b}, 0.28)`,
-    `rgba(${r}, ${g}, ${b}, 0.55)`,
-    `rgba(${r}, ${g}, ${b}, 0.80)`,
-    `rgba(${r}, ${g}, ${b}, 1.00)`
+    `rgba(${r}, ${g}, ${b}, 0.45)`,
+    `rgba(${r}, ${g}, ${b}, 0.72)`,
+    `rgba(${r}, ${g}, ${b}, 0.92)`,
+    `rgb(${dR}, ${dG}, ${dB})`
   ];
 }
 
