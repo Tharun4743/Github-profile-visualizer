@@ -339,15 +339,37 @@ function fetchFromPublic(username, year) {
         let html = '';
         res.on('data', (chunk) => (html += chunk));
         res.on('end', async () => {
+          const tooltipRegex = /<tool-tip[^>]*for="([^"]+)"[^>]*>([\s\S]*?)<\/tool-tip>/g;
+          const tdRegex = /<td[^>]*data-date="([^"]+)"[^>]*id="([^"]+)"/g;
+          const idToDate = {};
+          let m;
+          while ((m = tdRegex.exec(html)) !== null) {
+            idToDate[m[2]] = m[1];
+          }
+          const dateCounts = {};
+          while ((m = tooltipRegex.exec(html)) !== null) {
+            const id = m[1];
+            const text = m[2].trim();
+            const date = idToDate[id];
+            if (date) {
+              const countMatch = text.match(/^(\d+)\s+contribution/i);
+              const count = countMatch ? parseInt(countMatch[1], 10) : 0;
+              dateCounts[date] = { count, text };
+            }
+          }
+
           const days = [];
           let total = 0;
           const regex = /data-date="(\d{4}-\d{2}-\d{2})"[^>]*?data-level="(\d+)"/g;
           let match;
           while ((match = regex.exec(html)) !== null) {
+            const dateStr = match[1];
             const level = parseInt(match[2], 10);
+            const real = dateCounts[dateStr];
+            const count = real !== undefined ? real.count : (level === 0 ? 0 : Math.max(1, level * 2));
             days.push({
-              date: match[1],
-              count: level === 0 ? 0 : Math.max(1, level * 2),
+              date: dateStr,
+              count,
               level,
             });
           }
