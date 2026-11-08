@@ -546,7 +546,9 @@ function render3DCity(telemetry, username, options = {}) {
 
     const baseX = Math.round(offsetX + (week - dayOfWeek) * dx);
     const baseY = offsetY + (week + dayOfWeek) * dy;
-    const calHeight = Math.log10((day.count || 0) / 20 + 1) * 144 + 3;
+    const hScale = typeof options.heightScale === 'number' ? options.heightScale : 0.35;
+    const rawHeight = Math.log10((day.count || 0) / 20 + 1) * (144 * hScale) + 3;
+    const calHeight = Math.min(46, Math.max(3, rawHeight));
     const contribLevel = Math.min(4, Math.max(0, day.level || 0));
 
     const heightLeft = (calHeight / scaleLeft).toFixed(2);
