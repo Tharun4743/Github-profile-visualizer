@@ -548,10 +548,10 @@ function render3DCity(telemetry, username, options = {}) {
     const baseY = offsetY + (week + dayOfWeek) * dy;
     const contribLevel = Math.min(4, Math.max(0, day.level || 0));
     const hScale = typeof options.heightScale === 'number' && options.heightScale > 0 ? options.heightScale : 1.0;
-    // Consistent streak elevation: all active contribution days share uniform height.
-    // Higher and lower commit volumes are distinguished strictly by color gradient, not height disparity.
-    const activeHeight = Math.max(4, Math.round(9 * (hScale === 0.35 ? 1.0 : hScale)));
-    const calHeight = contribLevel > 0 ? activeHeight : 3;
+    // Elegant, reduced-height architectural profile (low-rise isometric perspective)
+    // Prevents tall spikes from obscuring rear tiles while preserving clear step tiers
+    const stepHeight = 2.8 * (hScale === 0.35 ? 1.0 : hScale);
+    const calHeight = contribLevel === 0 ? 3 : Math.min(15, Math.round(3 + contribLevel * stepHeight));
 
     const heightLeft = (calHeight / scaleLeft).toFixed(2);
     const heightRight = heightLeft;
