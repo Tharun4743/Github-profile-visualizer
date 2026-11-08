@@ -117,18 +117,18 @@ async function fetchContributions(username, token, year = 'last-year') {
 
 function fetchFromGraphQL(username, token, year) {
   return new Promise((resolve, reject) => {
-    let dateArgs = '';
+    let collArgs = '';
     if (year && year !== 'last-year') {
       const y = parseInt(year, 10);
       if (!isNaN(y)) {
-        dateArgs = `from: "${y}-01-01T00:00:00Z", to: "${y}-12-31T23:59:59Z"`;
+        collArgs = `(from: "${y}-01-01T00:00:00Z", to: "${y}-12-31T23:59:59Z")`;
       }
     }
 
     const query = `
       query($login: String!) {
         user(login: $login) {
-          contributionsCollection(${dateArgs}) {
+          contributionsCollection${collArgs} {
             contributionCalendar {
               isHalloween
               totalContributions
