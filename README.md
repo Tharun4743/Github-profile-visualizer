@@ -8,6 +8,8 @@
 [![GitHub release](https://img.shields.io/github/v/release/Tharun4743/github-profile-visualizer?color=7aa2f7&style=for-the-badge)](https://github.com/Tharun4743/github-profile-visualizer/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-00f0ff?style=for-the-badge)](LICENSE)
 [![Node 20](https://img.shields.io/badge/Runtime-Node.js%2020-00d26a?style=for-the-badge&logo=nodedotjs&logoColor=white)](package.json)
+[![Technical Report](https://img.shields.io/badge/Report-LaTeX%20PDF-ffd700?style=for-the-badge&logo=latex&logoColor=white)](docs/report/project-report.pdf)
+[![Architecture Docs](https://img.shields.io/badge/Architecture-Specification-0284c7?style=for-the-badge&logo=gitbook&logoColor=white)](docs/ARCHITECTURE.md)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff79c6?style=for-the-badge)](https://github.com/Tharun4743/github-profile-visualizer/pulls)
 
 <br/>
