@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "\ud83d\udea8 PROPRIETARY LICENSE NOTIFICATION",
+      "type": "shell",
+      "command": "echo '' && echo '=====================================================================================' && echo '\ud83d\udea8 MANDATORY AUTHORIZATION REQUIRED: THARUNKUMAR K PROPRIETARY REPOSITORY' && echo '=====================================================================================' && echo 'Notice: This repository is NOT open source. All rights are strictly reserved.' && echo 'You MUST obtain explicit written authorization from Tharunkumar K before' && echo 'compiling, running, or modifying this codebase in any IDE or terminal.' && echo '' && echo 'To request authorization:' && echo '  Email:     tharunkumark42007@gmail.com' && echo '  LinkedIn:  https://www.linkedin.com/in/tharunkumark4743' && echo '  Portfolio: https://tharunkumark4743.netlify.app/' && echo '=====================================================================================' && echo ''",
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "focus": true,
+        "clear": false
+      },
+      "problemMatcher": []
+    }
+  ]
+}
