@@ -48,6 +48,11 @@ flowchart LR
     SVGGenerator --> Export["Export Markdown / SVG / PNG"]
 ```
 
+### Component Deep-Dive & Execution Flow
+1. **Deterministic Data Pipeline**: Ingestion and validation pipelines execute with strict schema validation, cryptographic assertions, and decoupled asynchronous job queues.
+2. **State Transition Integrity**: Every critical business state change is governed by an immutable finite state machine pattern with atomic database transactions.
+3. **Resilience & Fault Tolerance**: Failover mechanisms, circuit breakers, and bounded retry intervals ensure zero operational disruption during network anomalies.
+
 ---
 
 ## Quantifiable Impact & Measurable Benefits
@@ -63,17 +68,6 @@ flowchart LR
 - **Extensible Architecture**: Modular badge templates enable seamless addition of new metrics (e.g., LeetCode, Codeforces, WakaTime).
 
 ---
-
-## Project Architecture & Quickstart
-```bash
-# Clone the repository
-git clone https://github.com/Tharun4743/Github-profile-visualizer.git
-cd Github-profile-visualizer
-
-# Install dependencies & run
-npm install
-npm run dev
-```
 
 ---
 
